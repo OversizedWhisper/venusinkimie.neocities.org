@@ -3,6 +3,18 @@ let isSidebar = false;
 let isAnimating = false;
 let currentSection = null;
 
+// ── deteta língua do browser ──
+const browserLang = navigator.language.startsWith('pt') ? 'pt' : 'en';
+document.body.lang = browserLang;
+document.getElementById('btn-pt').classList.toggle('active', browserLang === 'pt');
+document.getElementById('btn-en').classList.toggle('active', browserLang === 'en');
+
+function setLang(lang) {
+  document.body.lang = lang;
+  document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+
 // ── configuração inicial ──
 gsap.set(nav, {
   top: '50%',
@@ -41,14 +53,12 @@ introTl
 
 function openSection(id) {
   if (isAnimating) return;
-  const clickedLink = event.target;
+  const clickedLink = event.target.closest('a');
 
-  // se já está na mesma secção, não faz nada
   if (currentSection === id && isSidebar) return;
 
   isAnimating = true;
 
-  // remove links ativos
   document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active-link'));
   clickedLink.classList.add('active-link');
 
@@ -63,7 +73,6 @@ function openSection(id) {
     nav.classList.add('sidebar');
 
     tl
-      // nav desliza para o lado
       .to(nav, {
         top: '20%',
         left: '7.5%',
@@ -78,7 +87,6 @@ function openSection(id) {
         duration: 0.5,
         ease: 'expo.inOut'
       }, '<')
-      // links reorganizam-se
       .from('nav ul li', {
         x: -10,
         opacity: 0.3,
@@ -86,7 +94,6 @@ function openSection(id) {
         duration: 0.4,
         ease: 'power2.out'
       }, '-=0.3')
-      // conteúdo entra
       .call(() => {
         const section = document.getElementById(id);
         section.classList.add('visible');
@@ -115,7 +122,6 @@ function openSection(id) {
     const oldSection = document.querySelector('.content-section.visible');
 
     if (oldSection && oldSection.id !== id) {
-      // saída da secção atual
       tl
         .to(oldSection, {
           opacity: 0,
@@ -127,7 +133,6 @@ function openSection(id) {
             gsap.set(oldSection, { visibility: 'hidden', x: 80 });
           }
         })
-        // nova secção entra
         .call(() => {
           const section = document.getElementById(id);
           section.classList.add('visible');
@@ -152,7 +157,6 @@ function openSection(id) {
         }, '-=0.3');
 
     } else if (!oldSection) {
-      // sem secção visível
       tl
         .call(() => {
           const section = document.getElementById(id);
@@ -225,12 +229,3 @@ document.querySelector('.titleimg').addEventListener('click', () => {
       ease: 'power2.out'
     }, '-=0.3');
 });
-
-
-function setLang(lang) {
-  document.querySelectorAll('[data-pt]').forEach(el => {
-    el.textContent = el.dataset[lang];
-  });
-  document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-}
