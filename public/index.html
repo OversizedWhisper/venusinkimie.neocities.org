@@ -7,33 +7,52 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav>
+
+    <nav id="main-nav" class="centered">
       <div class="nav-header">
         <img class="titleimg" src="img/LOGOTIPO.png" />
       </div>
+
       <div class="lang-switch">
-        <button onclick="setLang('pt')" id="btn-pt">PT</button>
+        <button onclick="setLang('pt')" id="btn-pt" class="active">PT</button>
         <span>|</span>
         <button onclick="setLang('en')" id="btn-en">EN</button>
       </div>
+
       <ul>
-        <li>
-          <a href="#" data-pt="Sobre mim" data-en="About me">Sobre mim</a>
-        </li>
-        <li>
-          <a href="#" data-pt="Ilustração" data-en="Illustration">Ilustração</a>
-        </li>
-        <li><a href="#" data-pt="Animação" data-en="Animation">Animação</a></li>
-        <li>
-          <a href="#" data-pt="Design de produto" data-en="Product Design"
-            >Design de produto</a
-          >
-        </li>
-        <li>
-          <a href="#" data-pt="Links" data-en="My links">Links</a>
-        </li>
+        <li><a href="#" onclick="openSection('sobre')" data-pt="Sobre mim" data-en="About me">Sobre mim</a></li>
+        <li><a href="#" onclick="openSection('ilustracao')" data-pt="Ilustração" data-en="Illustration">Ilustração</a></li>
+        <li><a href="#" onclick="openSection('animacao')" data-pt="Animação" data-en="Animation">Animação</a></li>
+        <li><a href="#" onclick="openSection('web')" data-pt="Desenvolvimento Web" data-en="Web Development">Desenvolvimento Web</a></li>
+        <li><a href="#" onclick="openSection('links')" data-pt="Os meus links" data-en="My links">Os meus links</a></li>
       </ul>
     </nav>
+
+    <!-- Secções de conteúdo -->
+    <section id="sobre" class="content-section">
+      <h1 data-pt="Sobre mim" data-en="About me">Sobre mim</h1>
+      <p data-pt="Olá! Sou a Kimie..." data-en="Hi! I'm Kimie...">Olá! Sou a Kimie...</p>
+    </section>
+
+    <section id="ilustracao" class="content-section">
+      <h1 data-pt="Ilustração" data-en="Illustration">Ilustração</h1>
+      <p data-pt="Os meus trabalhos de ilustração..." data-en="My illustration work...">Os meus trabalhos de ilustração...</p>
+    </section>
+
+    <section id="animacao" class="content-section">
+      <h1 data-pt="Animação e Vídeo" data-en="Animation and Video">Animação e Vídeo</h1>
+      <p data-pt="Os meus trabalhos de animação..." data-en="My animation work...">Os meus trabalhos de animação...</p>
+    </section>
+
+    <section id="web" class="content-section">
+      <h1 data-pt="Desenvolvimento Web" data-en="Web Development">Desenvolvimento Web</h1>
+      <p data-pt="Os meus projetos web..." data-en="My web projects...">Os meus projetos web...</p>
+    </section>
+
+    <section id="links" class="content-section">
+      <h1 data-pt="Os meus links" data-en="My links">Os meus links</h1>
+      <p data-pt="Encontra-me em..." data-en="Find me at...">Encontra-me em...</p>
+    </section>
 
     <script src="script.js"></script>
   </body>

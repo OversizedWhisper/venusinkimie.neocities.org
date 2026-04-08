@@ -1,43 +1,75 @@
 @font-face {
-  font-family: "FUNGISBold";
-  src: url("fonts/FUNGIS Bold.woff") format("woff");
+  font-family: "FUNGISRegular";
+  src:
+    url("fonts/FUNGIS Regular.woff2") format("woff2"),
+  font-style: normal;
+  font-weight: normal;
   text-rendering: optimizeLegibility;
 }
 
 body {
   background-color: #f0e1bd;
+  font-family: "FUNGISRegular", sans-serif;
+  margin: 0;
+  overflow: hidden;
 }
 
 nav {
-  font-size: 2.5em;
-  font-family: FUNGISBold, sans-serif;
   position: fixed;
-  top: 20%;
-  left: 7.5%;
   z-index: 3;
-  width: fit-content;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.5em;
+  transition:
+    top 0.7s cubic-bezier(0.77, 0, 0.18, 1),
+    left 0.7s cubic-bezier(0.77, 0, 0.18, 1),
+    transform 0.7s cubic-bezier(0.77, 0, 0.18, 1),
+    font-size 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+nav.centered {
+  font-size: 3em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  text-align: center;
+}
+
+nav.sidebar {
+  font-size: 2.5em;
+  top: 20%;
+  left: 7.5%;
+  transform: translate(0, 0);
+  align-items: flex-start;
+  text-align: left;
 }
 
 .nav-header {
   display: flex;
   align-items: center;
-  gap: 0.5em;
 }
 
 .titleimg {
-  width: 25%; /* ajusta ao teu gosto */
+  width: 120px;
   height: auto;
+  transition: width 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+  cursor: pointer;
+}
+
+nav.centered .titleimg {
+  width: 180px;
 }
 
 nav ul {
   list-style: none;
-  padding-top: 2%;
-  padding-left: 5%;
+  padding: 0;
   margin: 0;
+}
+
+nav.sidebar ul {
+  padding-left: 5%;
 }
 
 nav ul li {
@@ -55,6 +87,51 @@ nav ul li a:hover {
   opacity: 0.6;
 }
 
+nav ul li a.active-link {
+  text-decoration: underline;
+  opacity: 0.6;
+}
+
+/* ── secções de conteúdo ── */
+.content-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #581c0c;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(60px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.77, 0, 0.18, 1);
+  padding-left: 30%; /* espaço para a nav sidebar */
+  box-sizing: border-box;
+}
+
+.content-section.visible {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+}
+
+.content-section h1 {
+  font-size: 3em;
+  margin-bottom: 0.3em;
+}
+
+.content-section p {
+  font-size: 1.2em;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* ── seletor de língua ── */
 .lang-switch {
   display: flex;
   align-items: center;
@@ -64,7 +141,6 @@ nav ul li a:hover {
 }
 
 .lang-switch button {
-    font-family: "FUNGISBold", sans-serif;
   background: none;
   border: none;
   color: #581c0c;
