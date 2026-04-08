@@ -1,8 +1,16 @@
 @font-face {
   font-family: "FUNGISRegular";
-  src: url("fonts/FUNGIS Regular.woff2") format("woff2");
+  src: url("fonts/FUNGIS Regular.woff2") format("woff2"),;
   font-style: normal;
   font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "FUNGISBold";
+  src: url("fonts/FUNGIS Bold.woff2") format("woff2"),;
+  font-style: normal;
+  font-weight: bold;
   text-rendering: optimizeLegibility;
 }
 
