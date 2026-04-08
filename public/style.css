@@ -1,24 +1,40 @@
 @font-face {
   font-family: "FUNGISRegular";
-  src: url("fonts/FUNGIS Regular.woff2") format("woff2"),;
+  src: url("fonts/FUNGIS Regular.woff2") format("woff2");
   font-style: normal;
   font-weight: normal;
-  text-rendering: optimizeLegibility;
+  text-rendering:auto;
 }
 
 @font-face {
   font-family: "FUNGISBold";
-  src: url("fonts/FUNGIS Bold.woff2") format("woff2"),;
+  src: url("fonts/FUNGIS Bold.woff2") format("woff2");
   font-style: normal;
   font-weight: bold;
-  text-rendering: optimizeLegibility;
+  text-rendering: auto;
 }
 
 body {
+  margin: 0;
   background-color: #f0e1bd;
   font-family: "FUNGISRegular", sans-serif;
-  margin: 0;
   overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url("img/Ativo 3.png");
+  background-position: center;
+
+  opacity: 0.1;
+  z-index: -1;
 }
 
 nav {
@@ -28,7 +44,6 @@ nav {
   flex-direction: column;
   align-items: center;
   gap: 0.5em;
-  /* sem transition aqui — GSAP controla tudo */
 }
 
 nav.centered {
@@ -91,20 +106,29 @@ nav ul li a.active-link {
   opacity: 0.6;
 }
 
+.stamp {
+  position: absolute;
+  top: 0%;
+  left: 60%;
+  width: 150px;
+  height: auto;
+  opacity: 0.8;
+}
+
 .content-section {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   color: #581c0c;
   opacity: 0;
   pointer-events: none;
-  padding-left: 30%;
+  padding-left: 40%;
   box-sizing: border-box;
 }
 
@@ -118,9 +142,9 @@ nav ul li a.active-link {
 }
 
 .content-section p {
-  font-size: 1.2em;
-  max-width: 500px;
-  text-align: center;
+  font-size: 1.5em;
+  max-width: 70%;
+  text-align: left;
 }
 
 .lang-switch {
@@ -145,4 +169,28 @@ nav ul li a.active-link {
 .lang-switch button:hover {
   opacity: 1;
   font-weight: bold;
+}
+
+.inspo{
+  margin: 0;
+}
+
+#websitebutton {
+  margin-bottom: unset;
+  max-width: 88px;
+  max-height: 35px;
+}
+
+.imsphynx {
+  text-decoration: none;
+  color: #581c0c;
+}
+
+.footer {
+  position: fixed;
+  bottom: 25px;
+  width: 100%;
+  text-align: center;
+  font-size: 1em;
+  color: #581c0c;
 }
