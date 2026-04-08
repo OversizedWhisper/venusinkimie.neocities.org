@@ -1,0 +1,81 @@
+@font-face {
+  font-family: "FUNGISBold";
+  src: url("fonts/FUNGIS Bold.woff") format("woff");
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: #f0e1bd;
+}
+
+nav {
+  font-size: 2.5em;
+  font-family: FUNGISBold, sans-serif;
+  position: fixed;
+  top: 20%;
+  left: 7.5%;
+  z-index: 3;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.titleimg {
+  width: 25%; /* ajusta ao teu gosto */
+  height: auto;
+}
+
+nav ul {
+  list-style: none;
+  padding-top: 2%;
+  padding-left: 5%;
+  margin: 0;
+}
+
+nav ul li {
+  color: #581c0c;
+  margin: 0.5em 0;
+}
+
+nav ul li a {
+  color: #581c0c;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+nav ul li a:hover {
+  opacity: 0.6;
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  font-size: 0.45em;
+  color: #581c0c;
+}
+
+.lang-switch button {
+    font-family: "FUNGISBold", sans-serif;
+  background: none;
+  border: none;
+  color: #581c0c;
+  cursor: pointer;
+  font-size: 1em;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.lang-switch button.active,
+.lang-switch button:hover {
+  opacity: 1;
+  font-weight: bold;
+}
