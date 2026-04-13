@@ -14,8 +14,12 @@
   text-rendering: auto;
 }
 
-body[lang="pt"] [lang="en"] { display: none; }
-body[lang="en"] [lang="pt"] { display: none; }
+body[lang="pt"] [lang="en"] {
+  display: none;
+}
+body[lang="en"] [lang="pt"] {
+  display: none;
+}
 
 body {
   margin: 0;
@@ -62,6 +66,9 @@ nav.sidebar {
   font-size: 2.5em;
   align-items: flex-start;
   text-align: left;
+  top: 20% !important;
+  max-height: 90vh;
+  padding-left: 5%;
 }
 
 .nav-header {
@@ -154,7 +161,7 @@ nav ul li a.active-link {
   margin-bottom: 0;
 }
 
-.content-section i{
+.content-section i {
   font-size: 0.8em;
 }
 .content-section .descjob {
@@ -195,6 +202,130 @@ nav ul li a.active-link {
 
 .inspo {
   margin: 0;
+}
+
+#links {
+ padding-top: 30% ;
+ padding-left: 50%;
+}
+
+.illus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  max-width: 70%;
+  margin-bottom: 2em;
+}
+
+.illus-card {
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.illus-card:hover {
+  border-color: #581c0c;
+  transform: scale(1.02);
+}
+
+.illus-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(30, 10, 5, 0.88);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+#lightbox.open {
+  display: flex;
+}
+
+#lightbox-img {
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 6px;
+  cursor: default;
+}
+
+#lightbox-close {
+  position: fixed;
+  top: 1.5em;
+  right: 1.5em;
+  background: none;
+  border: none;
+  color: #f0e1bd;
+  font-size: 1.8em;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  z-index: 101;
+}
+
+#lightbox-close:hover {
+  opacity: 1;
+}
+
+/* ── Projetos ── */
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  max-width: 70%;
+  margin-bottom: 3em;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+
+.project-title {
+  font-size: 1.8em;
+  margin: 0;
+  color: #581c0c;
+}
+
+.project-img {
+  width: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.project-desc {
+  font-size: 1.2em;
+  margin: 0;
+  max-width: 100%;
+}
+
+.project-link {
+  font-size: 1.1em;
+  color: #581c0c;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  width: fit-content;
+}
+
+.project-link:hover {
+  opacity: 1;
+  text-decoration: underline;
 }
 
 #websitebutton {

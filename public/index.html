@@ -39,9 +39,15 @@
           </a>
         </li>
         <li>
+          <a href="#" onclick="openSection('design')">
+            <span lang="pt">Design</span>
+            <span lang="en">Design</span>
+          </a>
+        </li>
+        <li>
           <a href="#" onclick="openSection('web')">
-            <span lang="pt">Desenvolvimento Web</span>
-            <span lang="en">Web Development</span>
+            <span lang="pt">Des. Web</span>
+            <span lang="en">Web Dev.</span>
           </a>
         </li>
         <li>
@@ -63,10 +69,10 @@
       <p>
         <span lang="pt"
           >Olá! O meu nome é Luísa, mas nas artes sou conhecida como Kimie! Sou
-          artista digital e designer gráfica. Atualmente a viver na
-          ilha da Madeira.<br /><br />Sou uma pessoa movida pela curiosidade,
-          por desafios e pela criatividade. Procuro constantemente novas formas
-          de crescer, tanto a nível pessoal como profissional, explorando ideias
+          artista digital e designer gráfica. Atualmente a viver na ilha da
+          Madeira.<br /><br />Sou uma pessoa movida pela curiosidade, por
+          desafios e pela criatividade. Procuro constantemente novas formas de
+          crescer, tanto a nível pessoal como profissional, explorando ideias
           que me desafiem a pensar de maneira diferente.<br /><br />No meu tempo
           livre, gosto de ouvir música e desenhar, usando esses momentos como
           forma de me expressar e relaxar. Sinto-me especialmente ligada a
@@ -75,14 +81,13 @@
         >
         <span lang="en"
           >Hi! My name is Luísa, but artistically I go by Kimie! I'm a digital
-          artist and graphic designer. Currently based in Madeira
-          Island.<br /><br />I am driven by curiosity, challenges, and
-          creativity. I constantly seek new ways to grow, both personally and
-          professionally, exploring ideas that push me to think differently.<br /><br />In
-          my free time, I enjoy listening to music and drawing, using these
-          moments to express myself and unwind. I feel especially connected to
-          creative projects that allow me to experiment and bring ideas to
-          life.</span
+          artist and graphic designer. Currently based in Madeira Island.<br /><br />I
+          am driven by curiosity, challenges, and creativity. I constantly seek
+          new ways to grow, both personally and professionally, exploring ideas
+          that push me to think differently.<br /><br />In my free time, I enjoy
+          listening to music and drawing, using these moments to express myself
+          and unwind. I feel especially connected to creative projects that
+          allow me to experiment and bring ideas to life.</span
         >
       </p>
 
@@ -92,12 +97,10 @@
       </h1>
       <p>
         <span lang="pt"
-          >Português (nativo)<br />Inglês C1<br />Espanhol
-          B1</span
+          >Português (nativo)<br />Inglês C1<br />Espanhol B1</span
         >
         <span lang="en"
-          >Portuguese (native)<br />English C1<br />Spanish
-          B1</span
+          >Portuguese (native)<br />English C1<br />Spanish B1</span
         >
       </p>
 
@@ -165,22 +168,256 @@
         <span lang="pt">Ilustração</span>
         <span lang="en">Illustration</span>
       </h1>
-      <p>
-        <span lang="pt">Os meus trabalhos de ilustração...</span>
-        <span lang="en">My illustration work...</span>
-      </p>
+
+      <div class="illus-grid">
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/1.jpg" alt="Ilustração 1" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/2.jpg" alt="Ilustração 2" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/3.png" alt="Ilustração 3" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/4.jpg" alt="Ilustração 4" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/5.jpeg" alt="Ilustração 5" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/6.jpg" alt="Ilustração 6" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/7.jpeg" alt="Ilustração 7" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/8.jpg" alt="Ilustração 8" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/9.jpg" alt="Ilustração 9" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/10.jpg" alt="Ilustração 10" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/11.jpg" alt="Ilustração 11" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/12.jpg" alt="Ilustração 12" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/13.jpg" alt="Ilustração 13" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/14.jpg" alt="Ilustração 14" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/ilus/15.jpg" alt="Ilustração 15" />
+        </div>
+      </div>
     </section>
+
+    <!-- Lightbox overlay -->
+    <div id="lightbox" onclick="closeLightbox()">
+      <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+      <img id="lightbox-img" src="" alt="" />
+    </div>
 
     <!-- ── Animação ── -->
     <section id="animacao" class="content-section">
       <h1>
-        <span lang="pt">Animação e Vídeo</span>
-        <span lang="en">Animation and Video</span>
+        <span lang="pt">Animação</span>
+        <span lang="en">Animation</span>
       </h1>
-      <p>
-        <span lang="pt">Os meus trabalhos de animação...</span>
-        <span lang="en">My animation work...</span>
-      </p>
+
+      <div class="project-list">
+        <div class="project-card">
+          <h2 class="project-title">
+            <span lang="pt">Carved in Fear</span>
+            <span lang="en">Carved in Fear</span>
+          </h2>
+          <img
+            class="project-img"
+            src=""
+            alt="Project preview"
+          />
+          <p class="project-desc">
+            <span lang="pt"
+              >Descrição breve do projeto de animação. Ferramenta usada,
+              contexto, objetivo.</span
+            >
+            <span lang="en"
+              >Brief description of the animation project. Tools used, context,
+              and goal.</span
+            >
+          </p>
+          <a
+            class="project-link"
+            href="https://www.youtube.com/watch?v=B-xZtDVXMbY"
+            target="_blank"
+          >
+            <span lang="pt">Ver projeto →</span>
+            <span lang="en">View project →</span>
+          </a>
+        </div>
+
+        <div class="project-card">
+          <h2 class="project-title">
+            <span lang="pt">Enemy- Lyric video</span>
+            <span lang="en">Enemy - Lyric Video</span>
+          </h2>
+          <img
+            class="project-img"
+            src="img/ani/enemy.jpeg"
+            alt="Project preview"
+          />
+          <p class="project-desc">
+            <span lang="pt"
+              >Descrição breve do projeto de animação. Ferramenta usada,
+              contexto, objetivo.</span
+            >
+            <span lang="en"
+              >Brief description of the animation project. Tools used, context,
+              and goal.</span
+            >
+          </p>
+          <a
+            class="project-link"
+            href="https://www.youtube.com/watch?v=B-xZtDVXMbY"
+            target="_blank"
+          >
+            <span lang="pt">Ver projeto →</span>
+            <span lang="en">View project →</span>
+          </a>
+        </div>
+
+        <div class="project-card">
+          <h2 class="project-title">
+            <span lang="pt">Sally Face, mas uma série</span>
+            <span lang="en">Sally Face, but as a series</span>
+          </h2>
+          <img
+            class="project-img"
+            src="img/ani/sally.png"
+            alt="Project preview"
+          />
+          <p class="project-desc">
+            <span lang="pt">Descrição breve do segundo projeto.</span>
+            <span lang="en">Brief description of the second project.</span>
+          </p>
+          <a
+            class="project-link"
+            href="https://www.youtube.com/watch?v=EcckX6MMHdA"
+            target="_blank"
+          >
+            <span lang="pt">Ver projeto →</span>
+            <span lang="en">View project →</span>
+          </a>
+        </div>
+
+        <div class="project-card">
+          <h2 class="project-title">
+            <span lang="pt">Render de Animação</span>
+            <span lang="en">Animation Render</span>
+          </h2>
+          <img
+            class="project-img"
+            src="https://placehold.co/700x400/f0e1bd/581c0c?text=Animação+1"
+            alt="Project preview"
+          />
+          <p class="project-desc">
+            <span lang="pt"
+              >Descrição breve do projeto de animação. Ferramenta usada,
+              contexto, objetivo.</span
+            >
+            <span lang="en"
+              >Brief description of the animation project. Tools used, context,
+              and goal.</span
+            >
+          </p>
+          <a class="project-link" href="#" target="_blank">
+            <span lang="pt">Ver projeto →</span>
+            <span lang="en">View project →</span>
+          </a>
+        </div>
+
+        <div class="project-card">
+          <h2 class="project-title">
+            <span lang="pt"></span>
+            <span lang="en"></span>
+          </h2>
+          <img
+            class="project-img"
+            src="https://placehold.co/700x400/e8d4a8/581c0c?text=Animação+2"
+            alt="Project preview"
+          />
+          <p class="project-desc">
+            <span lang="pt">Descrição breve do segundo projeto.</span>
+            <span lang="en">Brief description of the second project.</span>
+          </p>
+          <a class="project-link" href="#" target="_blank">
+            <span lang="pt">Ver projeto →</span>
+            <span lang="en">View project →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Design ── -->
+    <section id="design" class="content-section">
+      <h1>
+        <span lang="pt">Design</span>
+        <span lang="en">Design</span>
+      </h1>
+
+      <div class="project-list">
+        <div class="project-card">
+          <h2 class="project-title">
+            <span lang="pt">Nome do Projeto</span>
+            <span lang="en">Project Name</span>
+          </h2>
+          <img
+            class="project-img"
+            src="https://placehold.co/700x400/f0e1bd/581c0c?text=Animação+1"
+            alt="Project preview"
+          />
+          <p class="project-desc">
+            <span lang="pt"
+              >Descrição breve do projeto de animação. Ferramenta usada,
+              contexto, objetivo.</span
+            >
+            <span lang="en"
+              >Brief description of the animation project. Tools used, context,
+              and goal.</span
+            >
+          </p>
+          <a class="project-link" href="#" target="_blank">
+            <span lang="pt">Ver projeto →</span>
+            <span lang="en">View project →</span>
+          </a>
+        </div>
+
+        <div class="project-card">
+          <h2 class="project-title">
+            <span lang="pt">Outro Projeto</span>
+            <span lang="en">Another Project</span>
+          </h2>
+          <img
+            class="project-img"
+            src="https://placehold.co/700x400/e8d4a8/581c0c?text=Animação+2"
+            alt="Project preview"
+          />
+          <p class="project-desc">
+            <span lang="pt">Descrição breve do segundo projeto.</span>
+            <span lang="en">Brief description of the second project.</span>
+          </p>
+          <a class="project-link" href="#" target="_blank">
+            <span lang="pt">Ver projeto →</span>
+            <span lang="en">View project →</span>
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- ── Web ── -->
@@ -189,12 +426,55 @@
         <span lang="pt">Desenvolvimento Web</span>
         <span lang="en">Web Development</span>
       </h1>
-      <p>
-        <span lang="pt">Os meus projetos web...</span>
-        <span lang="en">My web projects...</span>
-      </p>
-    </section>
 
+      <div class="project-list">
+        <div class="project-card">
+          <h2 class="project-title">
+            <span lang="pt">Nome do Projeto Web</span>
+            <span lang="en">Web Project Name</span>
+          </h2>
+          <img
+            class="project-img"
+            src="https://placehold.co/700x400/f0e1bd/581c0c?text=Web+1"
+            alt="Project preview"
+          />
+          <p class="project-desc">
+            <span lang="pt"
+              >Descrição do projeto web: tecnologias usadas, problema resolvido,
+              resultado.</span
+            >
+            <span lang="en"
+              >Web project description: technologies used, problem solved,
+              outcome.</span
+            >
+          </p>
+          <a class="project-link" href="#" target="_blank">
+            <span lang="pt">Ver projeto →</span>
+            <span lang="en">View project →</span>
+          </a>
+        </div>
+
+        <div class="project-card">
+          <h2 class="project-title">
+            <span lang="pt">Outro Projeto Web</span>
+            <span lang="en">Another Web Project</span>
+          </h2>
+          <img
+            class="project-img"
+            src="https://placehold.co/700x400/e8d4a8/581c0c?text=Web+2"
+            alt="Project preview"
+          />
+          <p class="project-desc">
+            <span lang="pt">Descrição breve.</span>
+            <span lang="en">Brief description.</span>
+          </p>
+          <a class="project-link" href="#" target="_blank">
+            <span lang="pt">Ver projeto →</span>
+            <span lang="en">View project →</span>
+          </a>
+        </div>
+      </div>
+    </section>
     <!-- ── Links ── -->
     <section id="links" class="content-section">
       <h1>
