@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="pt">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,16 +7,20 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   </head>
+
   <body>
+    <!-- ══════════════════════════════════════
+         NAVEGAÇÃO
+    ══════════════════════════════════════ -->
     <nav id="main-nav" class="centered">
       <div class="nav-header">
-        <img class="titleimg" src="img/LOGOTIPO.png" />
+        <img class="titleimg" src="img/LOGOTIPO.png" alt="Kimie logo" />
       </div>
 
       <div class="lang-switch">
-        <button onclick="setLang('pt')" id="btn-pt" class="active">PT</button>
+        <button id="btn-pt" class="active" onclick="setLang('pt')">PT</button>
         <span>|</span>
-        <button onclick="setLang('en')" id="btn-en">EN</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
       </div>
 
       <ul>
@@ -28,8 +32,14 @@
         </li>
         <li>
           <a href="#" onclick="openSection('ilustracao')">
-            <span lang="pt">Ilustração</span>
-            <span lang="en">Illustration</span>
+            <span lang="pt">Ilustração Digital</span>
+            <span lang="en">Digital Illustration</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="openSection('ilustracaotrad')">
+            <span lang="pt">Ilustração Tradicional</span>
+            <span lang="en">Traditional Illustration</span>
           </a>
         </li>
         <li>
@@ -59,37 +69,55 @@
       </ul>
     </nav>
 
-    <!-- ── Sobre mim ── -->
+    <!-- ══════════════════════════════════════
+         LIGHTBOX
+    ══════════════════════════════════════ -->
+    <div id="lightbox" onclick="closeLightbox()">
+      <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+      <img id="lightbox-img" src="" alt="" />
+    </div>
+
+    <!-- ══════════════════════════════════════
+         SECÇÃO: SOBRE MIM
+    ══════════════════════════════════════ -->
     <section id="sobre" class="content-section">
       <h1>
         <span lang="pt">Sobre mim</span>
         <span lang="en">About me</span>
       </h1>
 
-      <p>
-        <span lang="pt"
-          >Olá! O meu nome é Luísa, mas nas artes sou conhecida como Kimie! Sou
-          artista digital e designer gráfica. Atualmente a viver na ilha da
-          Madeira.<br /><br />Sou uma pessoa movida pela curiosidade, por
-          desafios e pela criatividade. Procuro constantemente novas formas de
-          crescer, tanto a nível pessoal como profissional, explorando ideias
-          que me desafiem a pensar de maneira diferente.<br /><br />No meu tempo
-          livre, gosto de ouvir música e desenhar, usando esses momentos como
-          forma de me expressar e relaxar. Sinto-me especialmente ligada a
-          projetos criativos que me permitem experimentar e dar vida a novas
-          ideias.</span
-        >
-        <span lang="en"
-          >Hi! My name is Luísa, but artistically I go by Kimie! I'm a digital
-          artist and graphic designer. Currently based in Madeira Island.<br /><br />I
-          am driven by curiosity, challenges, and creativity. I constantly seek
-          new ways to grow, both personally and professionally, exploring ideas
-          that push me to think differently.<br /><br />In my free time, I enjoy
-          listening to music and drawing, using these moments to express myself
-          and unwind. I feel especially connected to creative projects that
-          allow me to experiment and bring ideas to life.</span
-        >
-      </p>
+      <div class="about-container">
+        <div class="about-text">
+          <p>
+            <span lang="pt">
+              Olá! O meu nome é Luísa, mas nas artes sou conhecida como Kimie!
+              Sou artista digital e designer gráfica. Atualmente a viver na ilha
+              da Madeira.<br /><br />
+              Sou uma pessoa movida pela curiosidade, por desafios e pela
+              criatividade. Procuro constantemente novas formas de crescer,
+              tanto a nível pessoal como profissional, explorando ideias que me
+              desafiem a pensar de maneira diferente.<br /><br />
+              No meu tempo livre, gosto de ouvir música e desenhar, usando esses
+              momentos como forma de me expressar e relaxar. Sinto-me
+              especialmente ligada a projetos criativos que me permitem
+              experimentar e dar vida a novas ideias.
+            </span>
+
+            <span lang="en">
+              Hi! My name is Luísa, but artistically I go by Kimie! I'm a
+              digital artist and graphic designer. Currently based in Madeira
+              Island.<br /><br />
+              I am driven by curiosity, challenges, and creativity. I constantly
+              seek new ways to grow, both personally and professionally,
+              exploring ideas that push me to think differently.<br /><br />
+              In my free time, I enjoy listening to music and drawing, using
+              these moments to express myself and unwind. I feel especially
+              connected to creative projects that allow me to experiment and
+              bring ideas to life.
+            </span>
+          </p>
+        </div>
+      </div>
 
       <h1>
         <span lang="pt">Línguas</span>
@@ -104,37 +132,27 @@
         >
       </p>
 
-      <div class="divider">
-        〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰
-      </div>
-
       <h1>
         <span lang="pt">Educação</span>
         <span lang="en">Education</span>
       </h1>
       <p>
-        <span lang="pt"
-          >Mestrado em Design e Multimédia<br /><i>Universidade de Coimbra</i> |
-          2023–2025<br /><br />Erasmus+<br /><i
-            >Universidade de Castilla-La Mancha, Espanha</i
-          >
-          | 2023<br /><br />Licenciatura em Design<br /><i
-            >Universidade da Madeira</i
-          >
-          | 2020–2023</span
-        >
-        <span lang="en"
-          >Master's Degree in Design and Multimedia<br /><i
-            >University of Coimbra</i
-          >
-          | 2023–2025<br /><br />Erasmus+<br /><i
-            >University of Castilla-La Mancha, Spain</i
-          >
-          | 2023<br /><br />Bachelor's Degree in Design<br /><i
-            >University of Madeira</i
-          >
-          | 2020–2023</span
-        >
+        <span lang="pt">
+          Mestrado em Design e Multimédia<br />
+          <i>Universidade de Coimbra</i> | 2023–2025<br /><br />
+          Erasmus+<br />
+          <i>Universidade de Castilla-La Mancha, Espanha</i> | 2023<br /><br />
+          Licenciatura em Design<br />
+          <i>Universidade da Madeira</i> | 2020–2023
+        </span>
+        <span lang="en">
+          Master's Degree in Design and Multimedia<br />
+          <i>University of Coimbra</i> | 2023–2025<br /><br />
+          Erasmus+<br />
+          <i>University of Castilla-La Mancha, Spain</i> | 2023<br /><br />
+          Bachelor's Degree in Design<br />
+          <i>University of Madeira</i> | 2020–2023
+        </span>
       </p>
 
       <h1>
@@ -142,31 +160,45 @@
         <span lang="en">Experience</span>
       </h1>
       <p>
-        <span lang="pt"
-          >Ilustradora Autónoma<br /><i>2025–presente</i><br />– Ilustração<br />–
-          Design de personagem<br />– Layout e design de página<br /><br />Estágio<br /><i
+        <span lang="pt">
+          Ilustradora Autónoma<br /><i>2025–presente</i><br />
+          – Ilustração<br />
+          – Design de personagem<br />
+          – Layout e design de página<br /><br />
+          Estágio<br />
+          <i
             >Centro de Neurociências e Biologia Celular (CNC-UC), Coimbra |
             2024–2025</i
-          ><br />– Design de personagem<br />– Ilustração e criação de elementos
-          visuais<br />– Desenvolvimento web <br />
-          -Colaboração multidisciplinar e em equipa
+          ><br />
+          – Design de personagem<br />
+          – Ilustração e criação de elementos visuais<br />
+          – Desenvolvimento web<br />
+          – Colaboração multidisciplinar e em equipa
         </span>
-        <span lang="en"
-          >Freelance Illustrator<br /><i>2025–present</i><br />– Illustration<br />–
-          Character design<br />– Layout and page design<br /><br />Internship<br /><i
+        <span lang="en">
+          Freelance Illustrator<br /><i>2025–present</i><br />
+          – Illustration<br />
+          – Character design<br />
+          – Layout and page design<br /><br />
+          Internship<br />
+          <i
             >Center for Neuroscience and Cell Biology (CNC-UC), Coimbra |
             2024–2025</i
-          ><br />– Character design<br />– Illustration and visual asset
-          creation<br />– Web development</span
-        >
+          ><br />
+          – Character design<br />
+          – Illustration and visual asset creation<br />
+          – Web development
+        </span>
       </p>
     </section>
 
-    <!-- ── Ilustração ── -->
+    <!-- ══════════════════════════════════════
+         SECÇÃO: ILUSTRAÇÃO DIGITAL
+    ══════════════════════════════════════ -->
     <section id="ilustracao" class="content-section">
       <h1>
-        <span lang="pt">Ilustração</span>
-        <span lang="en">Illustration</span>
+        <span lang="pt">Ilustração Digital</span>
+        <span lang="en">Digital Illustration</span>
       </h1>
 
       <div class="illus-grid">
@@ -218,13 +250,49 @@
       </div>
     </section>
 
-    <!-- Lightbox overlay -->
-    <div id="lightbox" onclick="closeLightbox()">
-      <button id="lightbox-close" onclick="closeLightbox()">✕</button>
-      <img id="lightbox-img" src="" alt="" />
-    </div>
+    <!-- ══════════════════════════════════════
+         SECÇÃO: ILUSTRAÇÃO TRADICIONAL
+    ══════════════════════════════════════ -->
+    <section id="ilustracaotrad" class="content-section">
+      <h1>
+        <span lang="pt">Ilustração Tradicional</span>
+        <span lang="en">Traditional Illustration</span>
+      </h1>
 
-    <!-- ── Animação ── -->
+      <div class="illus-grid">
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/trad_ilu/1.jpg" alt="Ilustração 1" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/trad_ilu/2.jpg" alt="Ilustração 2" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/trad_ilu/3.jpg" alt="Ilustração 3" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/trad_ilu/4.jpg" alt="Ilustração 4" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/trad_ilu/5.jpg" alt="Ilustração 5" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/trad_ilu/6.jpg" alt="Ilustração 6" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/trad_ilu/7.jpg" alt="Ilustração 7" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/trad_ilu/8.jpg" alt="Ilustração 8" />
+        </div>
+        <div class="illus-card" onclick="openLightbox(this)">
+          <img src="img/trad_ilu/9.jpg" alt="Ilustração 9" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECÇÃO: ANIMAÇÃO
+    ══════════════════════════════════════ -->
     <section id="animacao" class="content-section">
       <h1>
         <span lang="pt">Animação</span>
@@ -233,21 +301,18 @@
 
       <div class="project-list">
         <div class="project-card">
-          <h2 class="project-title">
-            <span lang="pt">Carved in Fear</span>
-            <span lang="en">Carved in Fear</span>
-          </h2>
+          <h2 class="project-title">Carved in Fear</h2>
           <img
             class="project-img"
             src="img/ani/carved.png"
-            alt="Project preview"
+            alt="Carved in Fear"
           />
           <p class="project-desc">
             <span lang="pt"
-              >Animação feita no âmbito da diciplina de animação e imagem em
+              >Animação feita no âmbito da disciplina de animação e imagem em
               media computacionais orientada pela docente Sandra Santos no
               segundo ano de mestrado de design e multimédia da Universidade de
-              Coimbra</span
+              Coimbra.</span
             >
             <span lang="en"
               >Animation created as part of the Animation and Image in Computer
@@ -267,20 +332,17 @@
         </div>
 
         <div class="project-card">
-          <h2 class="project-title">
-            <span lang="pt">Enemy- Lyric video</span>
-            <span lang="en">Enemy - Lyric Video</span>
-          </h2>
+          <h2 class="project-title">Enemy – Lyric Video</h2>
           <img
             class="project-img"
             src="img/ani/enemy.jpeg"
-            alt="Project preview"
+            alt="Enemy Lyric Video"
           />
           <p class="project-desc">
             <span lang="pt"
-              >Animação feita no âmbito da diciplina de "Diseño Digital" em
-              Programa Erasmus+ na UCLM (Universidad de Castilla-La
-              Mancha)</span
+              >Animação feita no âmbito da disciplina de "Diseño Digital" em
+              Programa Erasmus+ na UCLM (Universidade de Castilla-La
+              Mancha).</span
             >
             <span lang="en"
               >Animation created as part of the "Diseño Digital" course in the
@@ -302,16 +364,12 @@
             <span lang="pt">Sally Face, mas uma série</span>
             <span lang="en">Sally Face, but as a series</span>
           </h2>
-          <img
-            class="project-img"
-            src="img/ani/sally.png"
-            alt="Project preview"
-          />
+          <img class="project-img" src="img/ani/sally.png" alt="Sally Face" />
           <p class="project-desc">
             <span lang="pt"
-              >Animação feita no âmbito da diciplina de "Diseño Digital" em
-              Programa Erasmus+ na UCLM (Universidad de Castilla-La
-              Mancha)</span
+              >Animação feita no âmbito da disciplina de "Diseño Digital" em
+              Programa Erasmus+ na UCLM (Universidade de Castilla-La
+              Mancha).</span
             >
             <span lang="en"
               >Animation created as part of the "Diseño Digital" course in the
@@ -336,12 +394,12 @@
           <img
             class="project-img"
             src="img/ani/render.png"
-            alt="Project preview"
+            alt="Animation Render"
           />
           <p class="project-desc">
             <span lang="pt"
-              >Animação feita no âmbito da diciplina de ACT em Programa Erasmus+
-              na UCLM (Universidad de Castilla-La Mancha)</span
+              >Animação feita no âmbito da disciplina de ACT em Programa
+              Erasmus+ na UCLM (Universidade de Castilla-La Mancha).</span
             >
             <span lang="en"
               >Animation created as part of the ACT course in the Erasmus+
@@ -360,37 +418,47 @@
 
         <div class="project-card">
           <h2 class="project-title">
-            <span lang="pt">Resumo em animação- Monstros e Companhia</span>
-            <span lang="en">Summary in Animation - Monsters Inc.</span>
+            <span lang="pt">Resumo em animação – Monstros e Companhia</span>
+            <span lang="en">Summary in Animation – Monsters Inc.</span>
           </h2>
           <img
             class="project-img"
             src="img/ani/monster.png"
-            alt="Project preview"
+            alt="Monsters Inc."
           />
           <p class="project-desc">
             <span lang="pt"
-              >Animação feita no âmbito da diciplina de Laboratório Digital na
-              Universidade da Madeira
-            </span>
+              >Animação feita no âmbito da disciplina de Laboratório Digital na
+              Universidade da Madeira.</span
+            >
             <span lang="en"
               >Animation created as part of the Digital Laboratory course at the
               University of Madeira.</span
             >
           </p>
-          <a class="project-link" href="https://www.youtube.com/watch?v=Y2RsZfMVr8U" target="_blank">
+          <a
+            class="project-link"
+            href="https://www.youtube.com/watch?v=Y2RsZfMVr8U"
+            target="_blank"
+          >
             <span lang="pt">Ver projeto →</span>
             <span lang="en">View project →</span>
           </a>
-          <a class="project-link" href="https://www.youtube.com/watch?v=8KLfEZS-vkE" target="_blank">
-            <span lang="pt">Um extra→</span>
+          <a
+            class="project-link"
+            href="https://www.youtube.com/watch?v=8KLfEZS-vkE"
+            target="_blank"
+          >
+            <span lang="pt">Um extra →</span>
             <span lang="en">An extra →</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- ── Design ── -->
+    <!-- ══════════════════════════════════════
+         SECÇÃO: DESIGN
+    ══════════════════════════════════════ -->
     <section id="design" class="content-section">
       <h1>
         <span lang="pt">Design</span>
@@ -405,17 +473,17 @@
           </h2>
           <img
             class="project-img"
-            src="https://placehold.co/700x400/f0e1bd/581c0c?text=Animação+1"
+            src="https://placehold.co/700x400/f0e1bd/581c0c?text=Design+1"
             alt="Project preview"
           />
           <p class="project-desc">
             <span lang="pt"
-              >Descrição breve do projeto de animação. Ferramenta usada,
-              contexto, objetivo.</span
+              >Descrição breve do projeto de design. Ferramenta usada, contexto,
+              objetivo.</span
             >
             <span lang="en"
-              >Brief description of the animation project. Tools used, context,
-              and goal.</span
+              >Brief description of the design project. Tools used, context, and
+              goal.</span
             >
           </p>
           <a class="project-link" href="#" target="_blank">
@@ -431,7 +499,7 @@
           </h2>
           <img
             class="project-img"
-            src="https://placehold.co/700x400/e8d4a8/581c0c?text=Animação+2"
+            src="https://placehold.co/700x400/e8d4a8/581c0c?text=Design+2"
             alt="Project preview"
           />
           <p class="project-desc">
@@ -446,7 +514,9 @@
       </div>
     </section>
 
-    <!-- ── Web ── -->
+    <!-- ══════════════════════════════════════
+         SECÇÃO: DESENVOLVIMENTO WEB
+    ══════════════════════════════════════ -->
     <section id="web" class="content-section">
       <h1>
         <span lang="pt">Desenvolvimento Web</span>
@@ -456,25 +526,31 @@
       <div class="project-list">
         <div class="project-card">
           <h2 class="project-title">
-            <span lang="pt">Nome do Projeto Web</span>
-            <span lang="en">Web Project Name</span>
+            <span lang="pt"
+              >Página Web para a "Cogumelos do 'Prado ao Prato'"</span
+            >
+            <span lang="en">Website for "Cogumelos do 'Prado ao Prato'"</span>
           </h2>
-          <img
-            class="project-img"
-            src="https://placehold.co/700x400/f0e1bd/581c0c?text=Web+1"
-            alt="Project preview"
-          />
+          <img class="project-img" src="img/web/1.jpg" alt="Project preview" />
           <p class="project-desc">
             <span lang="pt"
-              >Descrição do projeto web: tecnologias usadas, problema resolvido,
-              resultado.</span
+              >Projeto de Dissertação, com foco no desenvolvimento de um website
+              para o projeto, da Universidade de Coimbra, “Cogumelos do 'Prado
+              ao Prato'”, de modo a promover o consumo de cogumelos para uma
+              alimentação saudável e promover o cultivo sustentável.</span
             >
             <span lang="en"
-              >Web project description: technologies used, problem solved,
-              outcome.</span
-            >
+              >Dissertation project, focused on the development of a website for
+              the project, from the University of Coimbra, “Cogumelos do 'Prado
+              ao Prato'”, in order to promote the consumption of mushrooms for a
+              healthy diet and promote sustainable cultivation.
+            </span>
           </p>
-          <a class="project-link" href="#" target="_blank">
+          <a
+            class="project-link"
+            href="https://cogumelosdopradoaoprato.github.io/"
+            target="_blank"
+          >
             <span lang="pt">Ver projeto →</span>
             <span lang="en">View project →</span>
           </a>
@@ -482,17 +558,51 @@
 
         <div class="project-card">
           <h2 class="project-title">
-            <span lang="pt">Outro Projeto Web</span>
-            <span lang="en">Another Web Project</span>
+            <span lang="pt">Calçada de Carriche- Scrollytelling</span>
+            <span lang="en">Calçada de Carriche- Scrollytelling</span>
           </h2>
-          <img
-            class="project-img"
-            src="https://placehold.co/700x400/e8d4a8/581c0c?text=Web+2"
-            alt="Project preview"
-          />
+          <img class="project-img" src="img/web/2.png" alt="Project preview" />
           <p class="project-desc">
-            <span lang="pt">Descrição breve.</span>
-            <span lang="en">Brief description.</span>
+            <span lang="pt"
+              >Scrollytelling feito para a aula de Narrativa Visual. O projecto
+              baseia-se na história contida no poema "Calçada de Carriche" do
+              escritor português António Gedeão.
+            </span>
+            <span lang="en"
+              >Scrollytelling created for the Visual Narration class. The
+              project is based on the story contained in the poem "Calçada de
+              Carriche" by the Portuguese writer António Gedeão.
+            </span>
+          </p>
+          <a
+            class="project-link"
+            href="https://oversizedwhisper.github.io/"
+            target="_blank"
+          >
+            <span lang="pt">Ver projeto →</span>
+            <span lang="en">View project →</span>
+          </a>
+        </div>
+
+        <div class="project-card">
+          <h2 class="project-title">
+            <span lang="pt">DinoLand Paris</span>
+            <span lang="en">DinoLand Paris</span>
+          </h2>
+          <img class="project-img" src="img/web/3.png" alt="Project preview" />
+          <p class="project-desc">
+            <span lang="pt"
+              >Este projeto foi feito em Design de Meios Interativos na
+              Universidade da Madeira em 2022. A ideia era criar um website onde
+              foi escolhido fazer algo inspirado em Jurassic Park, criando um
+              website para um zoológico de dinossauros!
+            </span>
+            <span lang="en"
+              >This project was done in Design de Meios Interativos at
+              Universidade da Madeira in 2022. The idea was to create a website,
+              where was chosen to do something inspired by Jurassic Park by
+              creating a website for a dinosaur zoo!
+            </span>
           </p>
           <a class="project-link" href="#" target="_blank">
             <span lang="pt">Ver projeto →</span>
@@ -501,7 +611,10 @@
         </div>
       </div>
     </section>
-    <!-- ── Links ── -->
+
+    <!-- ══════════════════════════════════════
+         SECÇÃO: LINKS
+    ══════════════════════════════════════ -->
     <section id="links" class="content-section">
       <h1>
         <span lang="pt">Links</span>
@@ -511,6 +624,20 @@
         <span lang="pt">Podes encontrar mais do meu trabalho em:</span>
         <span lang="en">You can find more of my work at:</span>
       </p>
+      <p>
+        Instagram:
+        <a href="https://www.instagram.com/venusinkimie/">@venusinkimie</a
+        ><br />
+        Behance: <a href="https://www.behance.net/venusinkimie">@venusinkimie</a
+        ><br />
+        Artstation:
+        <a href="https://www.artstation.com/venusinkimie">@venusinkimie</a
+        ><br />
+        BlueSky:
+        <a href="https://bsky.app/profile/venusinkimie.bsky.social"
+          >@venusinkimie.bsky.social</a
+        >
+      </p>
 
       <h1>
         <span lang="pt">Sobre o website</span>
@@ -518,8 +645,8 @@
       </h1>
       <p>
         <span lang="pt"
-          >Website foi criado para mostrar os meus projetos, sejam estes
-          académicos ou pessoais.</span
+          >Website criado para mostrar os meus projetos, sejam académicos ou
+          pessoais.</span
         >
         <span lang="en"
           >This website was created to showcase my projects, whether academic or
@@ -532,13 +659,14 @@
         <span lang="en">Inspiration for the website</span>
       </h2>
       <p class="inspo">
-        <a href="https://solilokii.neocities.org/"
-          ><img src="https://files.catbox.moe/qbry58.gif"
-        /></a>
+        <a href="https://solilokii.neocities.org/">
+          <img src="https://files.catbox.moe/qbry58.gif" alt="solilokii" />
+        </a>
         <a class="imsphynx" href="https://imsphynx.neocities.org/">
           <img
             id="websitebutton"
             src="https://imsphynx.neocities.org/img/avatarStill.png"
+            alt="imsphynx avatar"
           />
           imsphynx
         </a>
@@ -551,8 +679,11 @@
       </p>
     </section>
 
+    <!-- ══════════════════════════════════════
+         RODAPÉ
+    ══════════════════════════════════════ -->
     <footer class="footer">
-      (c) venusinkimie 2026 - present | venusinkimie@gmail.com
+      &copy; venusinkimie 2026–present | venusinkimie@gmail.com
     </footer>
 
     <script src="script.js"></script>
