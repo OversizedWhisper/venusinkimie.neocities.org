@@ -204,3 +204,35 @@ document.querySelector(".titleimg").addEventListener("click", () => {
 
   tl.call(() => animateNavToCenter(tl, visibleSection ? "-=0.1" : "0"));
 });
+
+function toggleMenu() {
+  const navEl = document.getElementById("main-nav");
+  if (navEl.classList.contains("show")) {
+    // Fechar menu
+    gsap.to(navEl, {
+      x: "-100%",
+      duration: 0.5,
+      ease: "power2.inOut",
+      onComplete: () => {
+        navEl.classList.remove("show");
+      }
+    });
+  } else {
+    // Abrir menu
+    navEl.classList.add("show");
+    gsap.to(navEl, {
+      x: "0%",
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+  }
+}
+
+function openSection(id) {
+  // Fecha o menu mobile se estiver aberto
+  const navEl = document.getElementById("main-nav");
+  if (navEl.classList.contains("show")) {
+    toggleMenu();
+  }
+  // resto do seu código...
+}

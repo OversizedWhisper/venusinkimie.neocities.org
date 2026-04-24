@@ -131,7 +131,42 @@ nav ul li a.active-link {
 }
 
 /* ═══════════════════════════════════════════
-   SELETOR DE IDIOMA
+   HAM
+═══════════════════════════════════════════ */
+.hamburger {
+  display: none;
+  font-size: 2em;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  z-index: 4;
+  background: transparent;
+}
+
+
+@media(max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  /* Opcional: ajustar navegação para ocupar toda a tela ao abrir */
+  #main-nav {
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+    background-color: rgba(240, 225, 189, 0.95);
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(-100%);
+  }
+  #main-nav.show {
+    transform: translateX(0);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   IDIOMA
 ═══════════════════════════════════════════ */
 
 .lang-switch {
@@ -360,6 +395,13 @@ nav ul li a.active-link {
 }
 
 /* ═══════════════════════════════════════════
+   LINKS
+═══════════════════════════════════════════ */
+.content-section .links {
+  color: #581c0c;
+}
+
+/* ═══════════════════════════════════════════
    UTILITÁRIOS & MISCELÂNEA
 ═══════════════════════════════════════════ */
 
@@ -382,3 +424,4 @@ nav ul li a.active-link {
   text-align: center;
   color: #581c0c;
 }
+
