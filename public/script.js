@@ -150,6 +150,12 @@ function openSection(id) {
   if (isAnimating) return;
   if (currentSection === id && isSidebar) return;
 
+  // Fecha o menu mobile se estiver aberto
+  const navEl = document.getElementById("main-nav");
+  if (navEl.classList.contains("show")) {
+    toggleMenu();
+  }
+
   const clickedLink = event.target.closest("a");
   isAnimating = true;
 
@@ -205,6 +211,11 @@ document.querySelector(".titleimg").addEventListener("click", () => {
   tl.call(() => animateNavToCenter(tl, visibleSection ? "-=0.1" : "0"));
 });
 
+
+/* ═══════════════════════════════════════════
+   MENU MOBILE (HAMBURGER)
+═══════════════════════════════════════════ */
+
 function toggleMenu() {
   const navEl = document.getElementById("main-nav");
   if (navEl.classList.contains("show")) {
@@ -226,13 +237,4 @@ function toggleMenu() {
       ease: "power2.inOut",
     });
   }
-}
-
-function openSection(id) {
-  // Fecha o menu mobile se estiver aberto
-  const navEl = document.getElementById("main-nav");
-  if (navEl.classList.contains("show")) {
-    toggleMenu();
-  }
-  // resto do seu código...
 }
