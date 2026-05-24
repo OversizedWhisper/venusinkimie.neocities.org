@@ -11,9 +11,10 @@
   font-family: "FUNGISBold";
   src: url("fonts/FUNGIS Bold.woff2") format("woff2");
 }
-  /* ================================================================
-     INTERNACIONALIZAÇÃO (i18n)
-  ================================================================ */
+
+/* ================================================================
+   INTERNACIONALIZAÇÃO (i18n)
+================================================================ */
 
 body[lang="pt"] [lang="en"] {
   display: none;
@@ -26,12 +27,17 @@ body[lang="en"] [lang="pt"] {
    BASE
 ================================================================ */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   position: relative;
   margin: 0;
   overflow-x: hidden;
   background-color: #f0e1bd;
   font-family: "FUNGISRegular", sans-serif;
+  min-height: 100vh;
 }
 
 /* Textura de fundo */
@@ -46,57 +52,73 @@ body::before {
 }
 
 /* ================================================================
-   NAVEGAÇÃO
+   NAVEGAÇÃO - BASE
 ================================================================ */
 
 nav {
   position: fixed;
-  z-index: 3;
+  z-index: 10000;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5em;
 }
 
-nav.centered {
-  font-size: 3em;
-  text-align: center;
-  align-items: center;
-  transform: translate(-50%, -50%);
-}
-
-nav.sidebar {
-  top: 20% !important;
-  max-width: 30%;
-  padding-left: 5%;
-  font-size: 2.5em;
-  text-align: left;
-  align-items: flex-start;
-}
-
-/* Cabeçalho da nav (logo + título) */
 .nav-header {
   display: flex;
   align-items: center;
 }
 
 .titleimg {
-  width: 300px;
-  height: auto;
   cursor: pointer;
+  transition: width 0.5s ease;
+}
+
+/* ================================================================
+   NAVEGAÇÃO - CENTERED (Estado inicial)
+================================================================ */
+
+nav.centered {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: clamp(2em, 5vw, 3em);
 }
 
 nav.centered .titleimg {
-  width: 250px;
+  width: clamp(180px, 40vw, 250px);
 }
 
-/* Lista de links */
+/* ================================================================
+   NAVEGAÇÃO - SIDEBAR (Desktop)
+================================================================ */
+
+nav.sidebar {
+  top: 5% !important;
+  left: 7.5%;
+  transform: none;
+  max-width: 30%;
+  padding-left: 5%;
+  font-size: clamp(1.8em, 3vw, 2.5em);
+  text-align: left;
+  align-items: flex-start;
+}
+
+nav.sidebar .titleimg {
+  width: 120px;
+}
+
+/* ================================================================
+   NAVEGAÇÃO - LINKS
+================================================================ */
+
 nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
   font-size: 0.8em;
-  max-width: 80%;
+  max-width: 100%;
 }
 
 nav ul li {
@@ -119,7 +141,10 @@ nav ul li a.active-link {
   text-decoration: underline;
 }
 
-/* Works folder structure */
+/* ================================================================
+   WORKS FOLDER
+================================================================ */
+
 .works-subfolder {
   list-style: none;
   padding-left: 1em;
@@ -136,30 +161,34 @@ nav ul li a.active-link {
 .works-folder.expanded .works-subfolder {
   max-height: 500px;
   opacity: 1;
+  margin-top: 0.5em;
 }
 
-.works-folder ul {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-
-.works-folder.expanded ul {
-  max-height: 500px;
-}
-
-/* ================================================================ 
-   HAM
+/* ================================================================
+   HAMBURGER MENU (Mobile)
 ================================================================ */
-.hamburger {
+
+#hamburger {
   display: none;
-  font-size: 2em;
-  cursor: pointer;
   position: fixed;
-  top: 10px;
-  right: 20px;
-  z-index: 4;
-  background: transparent;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: none;
+  border: none;
+  font-size: 2.5em;
+  color: #581c0c;
+  cursor: pointer;
+  padding: 0.2em;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.section-open #hamburger {
+  display: block;
+  opacity: 1;
+  pointer-events: all;
 }
 
 /* ================================================================
@@ -190,7 +219,7 @@ nav ul li a.active-link {
   font-weight: bold;
 }
 
-/* ================================================================ 
+/* ================================================================
    SEÇÕES DE CONTEÚDO
 ================================================================ */
 
@@ -201,15 +230,15 @@ nav ul li a.active-link {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  box-sizing: border-box;
-  padding: 5% 0 80px 40%;
+  padding: 5% 5% 100px 40%;
   overflow-y: auto;
   scroll-behavior: smooth;
+  scrollbar-width: thin;
   scrollbar-color: #581c0c #f0e1bd;
   color: #581c0c;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  width: 100%;
 }
 
 .content-section.visible {
@@ -217,15 +246,15 @@ nav ul li a.active-link {
 }
 
 .content-section h1 {
-  font-size: 3em;
+  font-size: clamp(2em, 5vw, 3em);
   margin-bottom: 0.3em;
 }
 
 .content-section p {
   max-width: 70%;
-  font-size: 1.5em;
+  font-size: clamp(1.2em, 2.5vw, 1.5em);
   text-align: left;
-  margin-bottom: 0;
+  margin-bottom: 0.5em;
 }
 
 .content-section i {
@@ -244,7 +273,7 @@ nav ul li a.active-link {
   color: #581c0c;
 }
 
-/* ================================================================ 
+/* ================================================================
    ELEMENTOS DECORATIVOS
 ================================================================ */
 
@@ -252,7 +281,7 @@ nav ul li a.active-link {
   position: absolute;
   top: 0%;
   left: 60%;
-  width: 150px;
+  width: clamp(100px, 15vw, 150px);
   height: auto;
   opacity: 0.8;
 }
@@ -261,17 +290,13 @@ nav ul li a.active-link {
   margin: 0;
 }
 
-#links {
-  padding-left: 50%;
-}
-
-/* ================================================================ 
+/* ================================================================
    GRELHA DE ILUSTRAÇÕES + LIGHTBOX
 ================================================================ */
 
 .illus-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1em;
   max-width: 70%;
   margin-bottom: 2em;
@@ -299,7 +324,6 @@ nav ul li a.active-link {
   object-fit: cover;
 }
 
-/* Lightbox */
 #lightbox {
   display: none;
   position: fixed;
@@ -327,22 +351,21 @@ nav ul li a.active-link {
   position: absolute;
   top: 1rem;
   right: 1rem;
-
   background: none;
   border: none;
-
   color: white;
   font-size: 2rem;
-
   cursor: pointer;
-  z-index: 1000;
+  z-index: 101;
+  opacity: 0.7;
+  transition: opacity 0.2s;
 }
 
 #lightbox-close:hover {
   opacity: 1;
 }
 
-/* ================================================================ 
+/* ================================================================
    PROJETOS
 ================================================================ */
 
@@ -351,6 +374,7 @@ nav ul li a.active-link {
   flex-direction: column;
   gap: 3em;
   margin-bottom: 3em;
+  max-width: 70%;
 }
 
 .project-card {
@@ -361,38 +385,45 @@ nav ul li a.active-link {
 
 .project-title {
   margin: 0;
-  font-size: 1.8em;
+  font-size: clamp(1.4em, 3vw, 1.8em);
   color: #581c0c;
 }
 
 .project-img {
-  width: 85%;
+  width: 100%;
   max-width: 100%;
   border-radius: 6px;
   object-fit: cover;
+  gap: 1em;
 }
 
 .project-desc {
   margin: 0;
-  font-size: 1.2em;
-  max-width: 70%;
+  font-size: clamp(1em, 2vw, 1.2em);
+}
+
+.project-link {
+  display: flex;
+  gap: 1em;
+  color: #581c0c;
 }
 
 /* ================================================================
    LINKS
 ================================================================ */
+
 .content-section .links {
   color: #581c0c;
 }
 
-/* ================================================================ 
-   UTILITÁRIOS & MISCELÂNEA
+/* ================================================================
+   UTILITÁRIOS
 ================================================================ */
 
 #websitebutton {
   max-width: 88px;
   max-height: 35px;
-  margin-bottom: unset;
+  margin-bottom: 0;
 }
 
 .imsphynx {
@@ -400,19 +431,175 @@ nav ul li a.active-link {
   text-decoration: none;
 }
 
+/* ================================================================
+   FOOTER
+================================================================ */
+
 .footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   padding: 15px 0;
-  font-size: 1em;
+  font-size: clamp(0.8em, 2vw, 1em);
   text-align: center;
   color: #f0e1bd;
-  background-color: #581c0ce0;
+  background-color: rgba(88, 28, 12, 0.88);
   z-index: 2;
 }
 
-/* ================================================================ 
-   RESPONSIVO
+/* ================================================================
+   RESPONSIVO - TABLET (768px - 1024px)
 ================================================================ */
+
+@media (max-width: 1024px) {
+  nav.sidebar {
+    max-width: 20%;
+    font-size: 2em;
+  }
+
+  .content-section {
+    padding: 5% 5% 100px 38%;
+  }
+
+  .illus-grid,
+  .project-list {
+    max-width: 85%;
+  }
+
+  .content-section p,
+  .project-desc {
+    max-width: 85%;
+  }
+  .content-section .links {
+  color: #581c0c;
+}
+}
+
+/* ================================================================
+   RESPONSIVO - MOBILE (até 768px)
+================================================================ */
+
+@media (max-width: 768px) {
+  /* Navegação centrada inicial */
+  nav.centered {
+    font-size: 2.5em;
+  }
+
+  nav.centered .titleimg {
+    width: clamp(200px, 35vw, 300px);
+  }
+
+  /* Navegação sidebar em mobile - logo no canto superior esquerdo */
+  nav.sidebar {
+    top: 1rem !important;
+    left: 1rem !important;
+    padding: 0;
+    max-width: none;
+    font-size: 1.4em;
+  }
+
+  nav.sidebar .titleimg {
+    width: 150px;
+  }
+
+  nav.sidebar .lang-switch,
+  nav.sidebar > ul {
+    display: none;
+    font-size: 1em;
+  }
+
+  /* Menu mobile quando aberto */
+ @media (max-width: 768px) {
+  #main-nav.show {
+    position: fixed;
+    inset: 0; /* <- isto garante full screen (top/right/bottom/left: 0) */
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(240, 225, 189, 0.98);
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    font-size: 2em;
+  }
+
+  #main-nav.show .nav-header {
+    display: none;
+  }
+
+  #main-nav.show .lang-switch,
+  #main-nav.show > ul {
+    display: block !important;
+  }
+}
+  #main-nav.show nav.sidebar .lang-switch,
+  #main-nav.show nav.sidebar > ul {
+    display: block !important;
+  }
+
+  #main-nav.show > ul {
+    font-size: 1.5em;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* Conteúdo em mobile */
+  .content-section {
+    padding: 80px 5% 100px 5%;
+  }
+
+  .content-section h1 {
+    font-size: 1.5em;
+  }
+
+  .content-section p,
+  .illus-grid,
+  .project-list,
+  .project-desc {
+    max-width: 100%;
+  }
+
+  .illus-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8em;
+  }
+
+  .stamp {
+    display: none;
+  }
+
+  .footer {
+    font-size: 0.85em;
+    padding: 12px 0;
+  }
+}
+
+/* ================================================================
+   RESPONSIVO - MOBILE PEQUENO (até 480px)
+================================================================ */
+
+@media (max-width: 480px) {
+  nav.centered {
+    font-size: 2em;
+  }
+
+  #main-nav.show {
+    font-size: 1.6em;
+  }
+
+  .illus-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-section h1 {
+    font-size: 1.6em;
+  }
+}
