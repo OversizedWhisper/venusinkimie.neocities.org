@@ -1,6 +1,6 @@
-/* ═══════════════════════════════════════════
+﻿/* ================================================================
    FONTS
-═══════════════════════════════════════════ */
+================================================================ */
 
 @font-face {
   font-family: "FUNGISRegular";
@@ -11,10 +11,9 @@
   font-family: "FUNGISBold";
   src: url("fonts/FUNGIS Bold.woff2") format("woff2");
 }
-
-/* ═══════════════════════════════════════════
-   INTERNACIONALIZAÇÃO (i18n)
-═══════════════════════════════════════════ */
+  /* ================================================================
+     INTERNACIONALIZAÇÃO (i18n)
+  ================================================================ */
 
 body[lang="pt"] [lang="en"] {
   display: none;
@@ -23,9 +22,9 @@ body[lang="en"] [lang="pt"] {
   display: none;
 }
 
-/* ═══════════════════════════════════════════
+/* ================================================================
    BASE
-═══════════════════════════════════════════ */
+================================================================ */
 
 body {
   position: relative;
@@ -46,9 +45,9 @@ body::before {
   opacity: 0.1;
 }
 
-/* ═══════════════════════════════════════════
+/* ================================================================
    NAVEGAÇÃO
-═══════════════════════════════════════════ */
+================================================================ */
 
 nav {
   position: fixed;
@@ -153,9 +152,9 @@ nav ul li a.active-link {
   max-height: 500px;
 }
 
-/* ═══════════════════════════════════════════
+/* ================================================================ 
    HAM
-═══════════════════════════════════════════ */
+================================================================ */
 .hamburger {
   display: none;
   font-size: 2em;
@@ -167,29 +166,9 @@ nav ul li a.active-link {
   background: transparent;
 }
 
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-  /* Opcional: ajustar navegação para ocupar toda a tela ao abrir */
-  #main-nav {
-    width: 80%;
-    max-width: 300px;
-    height: 100%;
-    background-color: rgba(240, 225, 189, 0.95);
-    position: fixed;
-    top: 0;
-    right: 0;
-    transform: translateX(-100%);
-  }
-  #main-nav.show {
-    transform: translateX(0);
-  }
-}
-
-/* ═══════════════════════════════════════════
+/* ================================================================
    IDIOMA
-═══════════════════════════════════════════ */
+================================================================ */
 
 .lang-switch {
   display: flex;
@@ -215,9 +194,9 @@ nav ul li a.active-link {
   font-weight: bold;
 }
 
-/* ═══════════════════════════════════════════
-   SECÇÕES DE CONTEÚDO
-═══════════════════════════════════════════ */
+/* ================================================================ 
+   SEÇÕES DE CONTEÚDO
+================================================================ */
 
 .content-section {
   position: fixed;
@@ -234,6 +213,7 @@ nav ul li a.active-link {
   color: #581c0c;
   opacity: 0;
   pointer-events: none;
+  width: 100%;
 }
 
 .content-section.visible {
@@ -268,9 +248,40 @@ nav ul li a.active-link {
   color: #581c0c;
 }
 
-/* ═══════════════════════════════════════════
+@media (max-width: 1024px) {
+  .content-section {
+    padding: 5% 4% 90px 4%;
+  }
+
+  .content-section p,
+  .project-desc,
+  .content-section .descjob {
+    max-width: 100%;
+    font-size: 1.15em;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-section {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 100vh;
+    padding: 5% 4% 100px 4%;
+  }
+
+  .content-section h1 {
+    font-size: 2.4em;
+  }
+
+  .content-section p {
+    font-size: 1.1em;
+  }
+}
+
+/* ================================================================ 
    ELEMENTOS DECORATIVOS
-═══════════════════════════════════════════ */
+================================================================ */
 
 .stamp {
   position: absolute;
@@ -289,9 +300,9 @@ nav ul li a.active-link {
   padding-left: 50%;
 }
 
-/* ═══════════════════════════════════════════
+/* ================================================================ 
    GRELHA DE ILUSTRAÇÕES + LIGHTBOX
-═══════════════════════════════════════════ */
+================================================================ */
 
 .illus-grid {
   display: grid;
@@ -321,6 +332,19 @@ nav ul li a.active-link {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .illus-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .illus-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Lightbox */
@@ -366,9 +390,9 @@ nav ul li a.active-link {
   opacity: 1;
 }
 
-/* ═══════════════════════════════════════════
+/* ================================================================ 
    PROJETOS
-═══════════════════════════════════════════ */
+================================================================ */
 
 .project-list {
   display: flex;
@@ -391,6 +415,7 @@ nav ul li a.active-link {
 
 .project-img {
   width: 85%;
+  max-width: 100%;
   border-radius: 6px;
   object-fit: cover;
 }
@@ -401,30 +426,40 @@ nav ul li a.active-link {
   max-width: 70%;
 }
 
-.project-link {
-  width: fit-content;
-  font-size: 1.1em;
-  color: #581c0c;
-  text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.2s;
+@media (max-width: 1024px) {
+  .project-img {
+    width: 100%;
+  }
+
+  .project-desc {
+    max-width: 100%;
+  }
 }
 
-.project-link:hover {
-  opacity: 1;
-  text-decoration: underline;
+@media (max-width: 768px) {
+  .project-title {
+    font-size: 1.5em;
+  }
+
+  .project-desc {
+    font-size: 1.05em;
+  }
+
+  .project-card {
+    gap: 0.75em;
+  }
 }
 
-/* ═══════════════════════════════════════════
+/* ================================================================
    LINKS
-═══════════════════════════════════════════ */
+================================================================ */
 .content-section .links {
   color: #581c0c;
 }
 
-/* ═══════════════════════════════════════════
+/* ================================================================ 
    UTILITÁRIOS & MISCELÂNEA
-═══════════════════════════════════════════ */
+================================================================ */
 
 #websitebutton {
   max-width: 88px;
@@ -450,392 +485,95 @@ nav ul li a.active-link {
   z-index: 2;
 }
 
-/* ═══════════════════════════════════════════
+/* ================================================================ 
    RESPONSIVO
-═══════════════════════════════════════════ */
-
-@media (max-width: 1100px) {
-  nav.sidebar {
-    left: 4% !important;
-    font-size: 2em !important;
-  }
-
-  .content-section {
-    padding: 6% 6% 90px 34%;
-  }
-
-  #links {
-    padding-left: 42%;
-  }
-
-  .content-section p,
-  .project-desc {
-    max-width: 100%;
-  }
-
-  .illus-grid {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 100%;
-  }
-
-  .project-img {
-    width: 100%;
-  }
-}
+================================================================ */
 
 @media (max-width: 768px) {
+
   .hamburger {
     display: block;
   }
 
-  .titleimg {
-    max-width: 55vw;
-  }
+  /* menu base mobile = centrado */
+  nav.centered {
+    inset: 0;
+    width: 100%;
+    height: 100vh;
 
-  #main-nav.centered {
-    top: 50% !important;
-    right: auto !important;
-    left: 50% !important;
-    width: min(90vw, 420px) !important;
-    max-width: none !important;
-    height: auto !important;
-    padding: 0;
-    overflow: visible;
-    font-size: 2.1em !important;
-    background: transparent !important;
-    transform: translate(-50%, -50%) !important;
-  }
+    transform: none;
+    top: 0;
+    left: 0;
 
-  nav.centered ul {
-    padding-left: 0;
-  }
+    justify-content: center;
+    align-items: center;
+    padding-top: 2.5rem;
 
-  #main-nav.sidebar {
-    top: 0 !important;
-    right: -100% !important;
-    left: auto !important;
-    width: min(84vw, 320px) !important;
-    max-width: none !important;
-    height: 100dvh !important;
-    max-height: none;
-    box-sizing: border-box;
-    padding: 4.5rem 1.25rem 5rem;
+    background: #f0e1bd;
     overflow-y: auto;
-    font-size: 1.65em !important;
-    background-color: rgba(240, 225, 189, 0.97);
-    transform: none !important;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.25s ease;
   }
 
-  #main-nav.sidebar.show {
-    right: 0 !important;
+  /* aberto no mobile */
+  nav.centered.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+
+  /* sidebar NÃO existe no mobile */
+  nav.sidebar {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    left: auto;
+    width: auto;
+    max-height: none;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    text-align: right;
+    align-items: flex-end;
+    z-index: 5;
+  }
+
+  nav.sidebar .nav-header {
+    width: auto;
+    margin-bottom: 0.25rem;
+  }
+
+  nav.sidebar .titleimg {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 90px;
+    height: auto;
+    z-index: 6;
+    margin: 0;
+  }
+
+  nav.sidebar .lang-switch {
+    justify-content: flex-end;
+    margin-bottom: 0.4rem;
   }
 
   nav.sidebar ul {
     padding-left: 0;
   }
 
-  .works-subfolder {
-    padding-left: 0.75em;
+  nav.sidebar ul li {
+    margin: 0.35em 0;
   }
 
-  .lang-switch {
-    font-size: 0.5em;
-  }
-
-  .content-section,
   #links {
-    padding: 5.5rem 1.1rem 5.5rem;
-  }
-
-  .content-section h1 {
-    font-size: 2.2em;
-  }
-
-  .content-section h2,
-  .project-title {
-    font-size: 1.45em;
-  }
-
-  .content-section p {
-    max-width: 100%;
-    font-size: 1.2em;
-  }
-
-  .illus-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75em;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .project-list {
-    gap: 2.2em;
-  }
-
-  .project-desc,
-  .project-link {
-    font-size: 1em;
-  }
-
-  .inspo img {
-    max-width: 100%;
-    height: auto;
+    padding-left: 0;
   }
 
   .footer {
-    padding: 12px 0;
-    font-size: 0.9em;
-  }
-}
-
-@media (max-width: 480px) {
-  #main-nav.centered {
-    font-size: 1.85em !important;
-  }
-
-  #main-nav.sidebar {
-    width: 88vw !important;
-    font-size: 1.45em !important;
-  }
-
-  .content-section h1 {
-    font-size: 1.9em;
-  }
-
-  .content-section p {
-    font-size: 1.1em;
-  }
-
-  .illus-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Menu hamburger para telemóvel */
-@media (max-width: 768px) {
-  body.menu-open {
-    overflow: hidden;
-  }
-
-  .hamburger {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 20;
-    display: grid;
-    width: 48px;
-    height: 48px;
-    place-items: center;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: #581c0c;
-    font-family: "FUNGISRegular", sans-serif;
-    font-size: 2.2rem;
-    line-height: 1;
-    cursor: pointer;
-  }
-
-  #main-nav.centered,
-  #main-nav.sidebar {
-    position: fixed;
-    inset: 0 auto 0 0;
-    top: 0 !important;
-    right: -100% !important;
-    left: auto !important;
-    z-index: 10;
-    display: flex;
-    width: 100vw !important;
-    max-width: none !important;
-    height: 100dvh !important;
-    max-height: none;
-    box-sizing: border-box;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 4.5rem 1.25rem 5rem;
-    overflow-y: auto;
-    background-color: rgba(240, 225, 189, 0.98) !important;
-    text-align: center;
-    transform: none !important;
-  }
-
-  #main-nav.centered.show,
-  #main-nav.sidebar.show {
-    right: 0 !important;
-  }
-
-  #main-nav .nav-header {
-    justify-content: center;
-  }
-
-  #main-nav .titleimg {
-    width: 120px !important;
-    max-width: 45vw;
-  }
-
-  #main-nav ul {
-    width: 100%;
-    padding-left: 0;
-  }
-
-  #main-nav ul li {
-    margin: 0.22em 0;
-  }
-
-  #main-nav ul li a {
-    display: inline-block;
-    padding: 0.08em 0;
-  }
-
-  #main-nav.centered,
-  #main-nav.sidebar {
-    font-size: 1.9em !important;
-  }
-
-  .works-subfolder {
-    padding-left: 0;
-    margin-top: 0.15em;
-  }
-
-  .works-subfolder li {
-    font-size: 0.72em;
-  }
-}
-
-@media (max-width: 480px) {
-  #main-nav.centered,
-  #main-nav.sidebar {
-    font-size: 1.55em !important;
-  }
-
-  #main-nav .titleimg {
-    width: 105px !important;
-  }
-}
-
-/* Animação do menu hamburger */
-@media (max-width: 768px) {
-  #main-nav.centered,
-  #main-nav.sidebar {
-    opacity: 0;
-    visibility: hidden;
-    transform-origin: top right !important;
-  }
-
-  #main-nav.centered.show,
-  #main-nav.sidebar.show {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .hamburger {
-    transform-origin: center;
-    transition: opacity 0.2s ease;
-  }
-
-  .hamburger:hover {
-    opacity: 0.65;
-  }
-}
-
-/* Estado inicial mobile: menu centrado; depois passa a hamburger */
-@media (max-width: 768px) {
-  body:not(.section-open) .hamburger {
-    display: none;
-  }
-
-  body:not(.section-open):not(.menu-open) #main-nav.centered {
-    top: 50% !important;
-    right: auto !important;
-    left: 50% !important;
-    width: min(90vw, 420px) !important;
-    height: auto !important;
-    max-height: none !important;
-    padding: 0 !important;
-    overflow: visible !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    background: transparent !important;
-    transform: translate(-50%, -50%) !important;
-  }
-
-  body:not(.section-open):not(.menu-open) #main-nav.centered .titleimg {
-    width: min(180px, 55vw) !important;
-  }
-
-  body.section-open #main-nav.sidebar:not(.show) {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  body.section-open .hamburger {
-    display: grid;
-  }
-}
-
-/* Logo no canto depois da escolha inicial */
-@media (max-width: 768px) {
-  body.section-open:not(.menu-open) #main-nav.sidebar {
-    top: 1rem !important;
-    right: auto !important;
-    left: 1rem !important;
-    z-index: 15;
-    width: auto !important;
-    height: auto !important;
-    max-height: none !important;
-    padding: 0 !important;
-    overflow: visible !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    background: transparent !important;
-    transform: none !important;
-  }
-
-  body.section-open:not(.menu-open) #main-nav.sidebar .lang-switch,
-  body.section-open:not(.menu-open) #main-nav.sidebar > ul {
-    display: none;
-  }
-
-  body.section-open:not(.menu-open) #main-nav.sidebar .nav-header {
-    display: flex;
-  }
-
-  body.section-open:not(.menu-open) #main-nav.sidebar .titleimg {
-    width: 96px !important;
-    max-width: 32vw;
-  }
-}
-
-/* Correção do logo no estado recolhido */
-@media (max-width: 768px) {
-  body.section-open:not(.menu-open) #main-nav.sidebar {
-    top: 0.85rem !important;
-    left: 0.85rem !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    gap: 0 !important;
-    font-size: 1rem !important;
-  }
-
-  body.section-open:not(.menu-open) #main-nav.sidebar .nav-header {
-    width: auto;
-    height: auto;
-    align-items: flex-start;
-  }
-
-  body.section-open:not(.menu-open) #main-nav.sidebar .titleimg {
-    display: block;
-    width: 120px !important;
-    max-width: 34vw;
-    height: auto;
-  }
-}
-
-@media (max-width: 480px) {
-  body.section-open:not(.menu-open) #main-nav.sidebar .titleimg {
-    width: 96px !important;
-    max-width: 32vw;
+    position: relative;
   }
 }

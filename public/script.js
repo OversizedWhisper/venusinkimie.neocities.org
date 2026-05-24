@@ -1,6 +1,6 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+﻿/* ================================================================
    ESTADO GLOBAL
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+================================================================ */
 
 const nav = document.getElementById("main-nav");
 let isSidebar = false;
@@ -13,9 +13,9 @@ function isSmallScreen() {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   INTERNACIONALIZAÃ‡ÃƒO (i18n)
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ================================================================
+   INTERNACIONALIZAÇÃO (i18n)
+================================================================ */
 
 function setLang(lang) {
   document.body.lang = lang;
@@ -23,13 +23,13 @@ function setLang(lang) {
   document.getElementById("btn-en").classList.toggle("active", lang === "en");
 }
 
-// Deteta a lÃ­ngua do browser na inicializaÃ§Ã£o
+// Deteta a língua do browser na inicialização
 const browserLang = navigator.language.startsWith("pt") ? "pt" : "en";
 setLang(browserLang);
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ================================================================
    LIGHTBOX
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+================================================================ */
 
 function openLightbox(card) {
   const img = card.querySelector("img");
@@ -83,9 +83,9 @@ function closeLightbox() {
   });
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   ANIMAÃ‡ÃƒO INICIAL
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ================================================================
+   ANIMAÇÃO INICIAL
+================================================================ */
 
 gsap.set(nav, {
   top: "50%",
@@ -111,11 +111,11 @@ gsap
     "-=0.3",
   );
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   HELPERS DE ANIMAÃ‡ÃƒO DE SECÃ‡ÃƒO
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ================================================================
+   HELPERS DE ANIMAÇÃO DE SEÇÃO
+================================================================ */
 
-/** Mostra uma secÃ§Ã£o com animaÃ§Ã£o de entrada. */
+/** Mostra uma secção com animação de entrada. */
 function animateSectionIn(tl, id, offset = "-=0.2") {
   const section = document.getElementById(id);
   section.classList.add("visible");
@@ -139,7 +139,7 @@ function animateSectionIn(tl, id, offset = "-=0.2") {
     );
 }
 
-/** Esconde a secÃ§Ã£o visÃ­vel atual com animaÃ§Ã£o de saÃ­da. */
+/** Esconde a secção visível atual com animação de saída. */
 function animateSectionOut(tl, section, onDone) {
   tl.to(section, {
     opacity: 0,
@@ -244,9 +244,9 @@ function animateNavToCenter(tl, offset = "0") {
     );
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   NAVEGAÃ‡ÃƒO DE SECÃ‡Ã•ES
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ================================================================
+   NAVEGAÇÃO DE SEÇÕES
+================================================================ */ 
 
 function openSection(id) {
   if (isAnimating) return;
@@ -287,16 +287,16 @@ function openSection(id) {
   const oldSection = document.querySelector(".content-section.visible");
 
   if (!isSidebar) {
-    // Primeira abertura: cenÃ¡rio â†’ sidebar
+    // Primeira abertura: cenário → sidebar
     isSidebar = true;
     animateNavToSidebar(tl);
     tl.call(() => animateSectionIn(tl, id));
   } else if (oldSection && oldSection.id !== id) {
-    // Troca entre secÃ§Ãµes
+    // Troca entre seções
     animateSectionOut(tl, oldSection);
     tl.call(() => animateSectionIn(tl, id, "+=0.05"));
   } else if (!oldSection) {
-    // Sidebar ativa mas sem secÃ§Ã£o visÃ­vel
+    // Sidebar ativa mas sem secção visível
     tl.call(() => animateSectionIn(tl, id, "0"));
   }
 
@@ -343,9 +343,9 @@ document.querySelector(".titleimg").addEventListener("click", () => {
   tl.call(() => animateNavToCenter(tl, visibleSection ? "-=0.1" : "0"));
 });
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ================================================================
    MENU MOBILE (HAMBURGER)
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+================================================================ */
 
 function toggleMenu() {
   const navEl = document.getElementById("main-nav");
@@ -389,9 +389,9 @@ function toggleMenu() {
       .to(menuItems, { opacity: 1, y: 0, stagger: 0.055, duration: 0.45 }, 0.12);
   }
 }
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ================================================================
    WORKS FOLDER EXPANSION
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+================================================================ */
 
 function openWorks(event) {
   event.preventDefault();
