@@ -31,35 +31,43 @@
             <span lang="en">About me</span>
           </a>
         </li>
-        <li>
-          <a href="#" onclick="openSection('ilustracao')">
-            <span lang="pt">Ilustração Digital</span>
-            <span lang="en">Digital Illustration</span>
+        <li class="works-folder">
+          <a href="#" onclick="openWorks(event)">
+            <span lang="pt">Trabalhos</span>
+            <span lang="en">Works</span>
           </a>
-        </li>
-        <li>
-          <a href="#" onclick="openSection('ilustracaotrad')">
-            <span lang="pt">Ilustração Tradicional</span>
-            <span lang="en">Traditional Illustration</span>
-          </a>
-        </li>
-       <li>
-          <a href="#" onclick="openSection('animacao')">
-            <span lang="pt">Animação</span>
-            <span lang="en">Animation</span>
-          </a>
-        </li>
-         <!--<li>
-          <a href="#" onclick="openSection('edesign')">
-            <span lang="pt">Design editorial </span>
-            <span lang="en">Editorial design </span>
-          </a>
-        </li>-->
-        <li>
-          <a href="#" onclick="openSection('web')">
-            <span lang="pt">Des. Web</span>
-            <span lang="en">Web Dev.</span>
-          </a>
+          <ul class="works-subfolder">
+            <li>
+              <a href="#" onclick="openSection('ilustracao')">
+                <span lang="pt">Ilustração Digital</span>
+                <span lang="en">Digital Illustration</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" onclick="openSection('ilustracaotrad')">
+                <span lang="pt">Ilustração Tradicional</span>
+                <span lang="en">Traditional Illustration</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" onclick="openSection('animacao')">
+                <span lang="pt">Animação</span>
+                <span lang="en">Animation</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" onclick="openSection('web')">
+                <span lang="pt">Desenvolvimento Web</span>
+                <span lang="en">Web Dev</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" onclick="openSection('game')">
+                <span lang="pt">Desenvolvimento de Jogos</span>
+                <span lang="en">Game Dev</span>
+              </a>
+            </li>
+          </ul>
         </li>
         <li>
           <a href="#" onclick="openSection('links')">
@@ -614,6 +622,78 @@
     </section>
 
     <!-- ══════════════════════════════════════
+         DESENVOLVIMENTO DE JOGOS
+    ══════════════════════════════════════ -->
+    <section id="game" class="content-section">
+      <h1>
+        <span lang="pt">Desenvolvimento de Jogos</span>
+        <span lang="en">Game Development</span>
+      </h1>
+
+      <div class="project-list">
+        <div class="project-card">
+          <h2 class="project-title">
+            <span lang="pt">A.L.M.A: Crónicas de Portugal</span>
+            <span lang="en">A.L.M.A: Chronicles of Portugal</span>
+          </h2>
+          <img class="project-img" src="" alt="Project preview" />
+          <p class="project-desc">
+            <span lang="pt"
+              >“A.L.M.A: Crónicas de Portugal” é um jogo eletrónico criado no
+              âmbito da disciplina de Design de Jogos no primeiro ano do
+              Mestrado em Design e Multimédia. O tema do jogo é a história e as
+              lendas de Portugal, e como estas se podem influenciar mutuamente e
+              afetar o futuro da nação quando modificadas.</span
+            >
+            <span lang="en"
+              >“A.L.M.A: Chronicles of Portugal” is a video game created as part
+              of the Game Design course in the 1st year of the Master's in
+              Design and Multimedia. The game's theme is the history and legends
+              of Portugal, and how these can affect each other and the future of
+              the nation when modified.
+            </span>
+          </p>
+          <a
+            class="project-link"
+            href="https://youtu.be/sn_vhUGBwms"
+            target="_blank"
+          >
+            <span lang="pt">Ver projeto →</span>
+            <span lang="en">View project →</span>
+          </a>
+        </div>
+
+        <div class="project-card">
+          <h2 class="project-title">
+            <span lang="pt">Falling to Hell</span>
+            <span lang="en">Falling to Hell</span>
+          </h2>
+          <img class="project-img" src="img/web/2.png" alt="Project preview" />
+          <p class="project-desc">
+            <span lang="pt"
+              >Scrollytelling feito para a aula de Narrativa Visual. O projecto
+              baseia-se na história contida no poema "Calçada de Carriche" do
+              escritor português António Gedeão.
+            </span>
+            <span lang="en"
+              >Scrollytelling created for the Visual Narration class. The
+              project is based on the story contained in the poem "Calçada de
+              Carriche" by the Portuguese writer António Gedeão.
+            </span>
+          </p>
+          <a
+            class="project-link"
+            href="https://oversizedwhisper.github.io/"
+            target="_blank"
+          >
+            <span lang="pt">Ver projeto →</span>
+            <span lang="en">View project →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
          LINKS
     ══════════════════════════════════════ -->
     <section id="links" class="content-section">
@@ -627,15 +707,21 @@
       </p>
       <p>
         Instagram:
-        <a class="links" href="https://www.instagram.com/venusinkimie/">@venusinkimie</a
+        <a class="links" href="https://www.instagram.com/venusinkimie/"
+          >@venusinkimie</a
         ><br />
-        Behance: <a class="links" href="https://www.behance.net/venusinkimie">@venusinkimie</a
+        Behance:
+        <a class="links" href="https://www.behance.net/venusinkimie"
+          >@venusinkimie</a
         ><br />
         Artstation:
-        <a class="links" href="https://www.artstation.com/venusinkimie">@venusinkimie</a
+        <a class="links" href="https://www.artstation.com/venusinkimie"
+          >@venusinkimie</a
         ><br />
         BlueSky:
-        <a class="links" href="https://bsky.app/profile/venusinkimie.bsky.social"
+        <a
+          class="links"
+          href="https://bsky.app/profile/venusinkimie.bsky.social"
           >@venusinkimie.bsky.social</a
         >
       </p>

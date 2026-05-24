@@ -162,6 +162,13 @@ function openSection(id) {
   document.querySelectorAll("nav ul li a").forEach((a) => a.classList.remove("active-link"));
   clickedLink.classList.add("active-link");
 
+  // If opening a works subcategory, expand the works folder
+  const worksCategories = ['ilustracao', 'ilustracaotrad', 'animacao', 'web'];
+  if (worksCategories.includes(id)) {
+    const worksFolder = document.querySelector('.works-folder');
+    worksFolder.classList.add('expanded');
+  }
+
   const tl = gsap.timeline({ onComplete: () => { isAnimating = false; } });
   const oldSection = document.querySelector(".content-section.visible");
 
@@ -191,6 +198,12 @@ document.querySelector(".titleimg").addEventListener("click", () => {
   currentSection = null;
 
   document.querySelectorAll("nav ul li a").forEach((a) => a.classList.remove("active-link"));
+
+  // Collapse the works folder when going back to center
+  const worksFolder = document.querySelector('.works-folder');
+  if (worksFolder) {
+    worksFolder.classList.remove('expanded');
+  }
 
   const tl = gsap.timeline({ onComplete: () => { isAnimating = false; } });
   const visibleSection = document.querySelector(".content-section.visible");
@@ -237,4 +250,22 @@ function toggleMenu() {
       ease: "power2.inOut",
     });
   }
+}
+
+
+/* ═══════════════════════════════════════════
+   WORKS FOLDER EXPANSION
+═══════════════════════════════════════════ */
+
+function openWorks(event) {
+  event.preventDefault();
+  
+  // Expand the works folder to show subcategories
+  const worksFolder = document.querySelector('.works-folder');
+  worksFolder.classList.add('expanded');
+  
+  // Also mark the Works link as active
+  const clickedLink = event.target.closest("a");
+  document.querySelectorAll("nav ul li a").forEach((a) => a.classList.remove("active-link"));
+  clickedLink.classList.add("active-link");
 }

@@ -130,6 +130,22 @@ nav ul li a.active-link {
   text-decoration: underline;
 }
 
+/* Works folder structure */
+.works-subfolder {
+  list-style: none;
+  padding-left: 1em;
+  margin-top: 0.5em;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
+}
+
+.works-folder.expanded .works-subfolder {
+  max-height: 500px;
+  opacity: 1;
+}
+
 /* ═══════════════════════════════════════════
    HAM
 ═══════════════════════════════════════════ */
@@ -205,7 +221,7 @@ nav ul li a.active-link {
   justify-content: flex-start;
   align-items: flex-start;
   box-sizing: border-box;
-  padding: 5% 0 5% 40%;
+  padding: 5% 0 80px 40%;
   overflow-y: auto;
   scroll-behavior: smooth;
   scrollbar-color: #581c0c #f0e1bd;
@@ -352,7 +368,6 @@ nav ul li a.active-link {
   display: flex;
   flex-direction: column;
   gap: 3em;
-  max-width: 70%;
   margin-bottom: 3em;
 }
 
@@ -369,7 +384,7 @@ nav ul li a.active-link {
 }
 
 .project-img {
-  width: 100%;
+  width: 85%;
   border-radius: 6px;
   object-fit: cover;
 }
@@ -377,7 +392,7 @@ nav ul li a.active-link {
 .project-desc {
   margin: 0;
   font-size: 1.2em;
-  width: 100%;
+  max-width: 70%;
 }
 
 .project-link {
@@ -418,9 +433,13 @@ nav ul li a.active-link {
 
 .footer {
   position: fixed;
-  bottom: 25px;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  padding: 15px 0;
   font-size: 1em;
   text-align: center;
-  color: #581c0c;
+  color: #f0e1bd;
+  background-color: #581c0ce0;
+  z-index: 2;
 }
