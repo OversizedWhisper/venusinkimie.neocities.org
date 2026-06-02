@@ -394,7 +394,6 @@ body.section-open #hamburger {
   max-width: 100%;
   border-radius: 6px;
   object-fit: cover;
-  gap: 1em;
 }
 
 .project-desc {
@@ -471,9 +470,6 @@ body.section-open #hamburger {
   .project-desc {
     max-width: 85%;
   }
-  .content-section .links {
-  color: #581c0c;
-}
 }
 
 /* ================================================================
@@ -510,21 +506,17 @@ body.section-open #hamburger {
   }
 
   /* Menu mobile quando aberto */
- @media (max-width: 768px) {
   #main-nav.show {
     position: fixed;
-    inset: 0; /* <- isto garante full screen (top/right/bottom/left: 0) */
+    inset: 0;
     width: 100vw;
     height: 100vh;
-
     background-color: rgba(240, 225, 189, 0.98);
     z-index: 9999;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
     font-size: 2em;
   }
@@ -535,11 +527,6 @@ body.section-open #hamburger {
 
   #main-nav.show .lang-switch,
   #main-nav.show > ul {
-    display: block !important;
-  }
-}
-  #main-nav.show nav.sidebar .lang-switch,
-  #main-nav.show nav.sidebar > ul {
     display: block !important;
   }
 
