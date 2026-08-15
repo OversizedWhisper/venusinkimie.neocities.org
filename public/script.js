@@ -1,390 +1,468 @@
 ﻿/* ================================================================
-   ESTADO GLOBAL
+   ESTADO
 ================================================================ */
 
-const nav = document.getElementById("main-nav");
-let isSidebar = false;
-let isAnimating = false;
+const nav =
+  document.getElementById("main-nav");
+
 let currentSection = null;
 
+let isSidebar = false;
+
+let isAnimating = false;
+
+
 /* ================================================================
-   HELPERS
+   RESPONSIVE
 ================================================================ */
 
 function isSmallScreen() {
-  return window.matchMedia("(max-width: 768px)").matches;
+
+  return window.matchMedia(
+    "(max-width: 1024px)"
+  ).matches;
+
 }
 
-/* ================================================================
-   INICIALIZAÇÃO
-================================================================ */
-
-// Atualiza o ano no footer
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// Deteta a língua do browser
-const browserLang = navigator.language.startsWith("pt") ? "pt" : "en";
-setLang(browserLang);
-
-// Configuração inicial do GSAP
-gsap.set(nav, {
-  top: "50%",
-  left: "50%",
-  xPercent: -50,
-  yPercent: -50,
-  fontSize: "3em",
-});
-gsap.set(".titleimg", { width: 250 });
-gsap.set(".content-section", { opacity: 0, x: 80, visibility: "hidden" });
-
-// Animação inicial de entrada
-gsap
-  .timeline()
-  .from(".titleimg", { opacity: 0, y: -20, duration: 0.8, ease: "power3.out" })
-  .from(
-    ".lang-switch",
-    { opacity: 0, y: -10, duration: 0.2, ease: "power2.out" },
-    "-=0.4"
-  )
-  .from(
-    "nav ul li",
-    { opacity: 0, y: 15, stagger: 0.08, duration: 0.2, ease: "power2.out" },
-    "-=0.3"
-  );
 
 /* ================================================================
-   INTERNACIONALIZAÇÃO
+   IDIOMA
 ================================================================ */
 
 function setLang(lang) {
+
+  document.documentElement.lang = lang;
+
   document.body.lang = lang;
-  document.getElementById("btn-pt").classList.toggle("active", lang === "pt");
-  document.getElementById("btn-en").classList.toggle("active", lang === "en");
+
+
+  document
+    .getElementById("btn-pt")
+    .classList
+    .toggle(
+      "active",
+      lang === "pt"
+    );
+
+
+  document
+    .getElementById("btn-en")
+    .classList
+    .toggle(
+      "active",
+      lang === "en"
+    );
+
 }
+
+
+/* ================================================================
+   MENU HAMBURGER
+================================================================ */
+
+function toggleMenu() {
+
+  const navEl =
+    document.getElementById("main-nav");
+
+  const hamburger =
+    document.getElementById("hamburger");
+
+
+  const isOpen =
+    navEl.classList.contains("show");
+
+
+  if (isOpen) {
+
+    navEl.classList.remove("show");
+
+    document.body.classList.remove(
+      "menu-open"
+    );
+
+
+    hamburger.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+
+    hamburger.setAttribute(
+      "aria-label",
+      "Abrir menu"
+    );
+
+
+    hamburger.textContent = "☰";
+
+
+    return;
+
+  }
+
+
+  navEl.classList.add("show");
+
+  document.body.classList.add(
+    "menu-open"
+  );
+
+
+  hamburger.setAttribute(
+    "aria-expanded",
+    "true"
+  );
+
+
+  hamburger.setAttribute(
+    "aria-label",
+    "Fechar menu"
+  );
+
+
+  hamburger.textContent = "×";
+
+}
+
+
+/* ================================================================
+   PASTAS
+================================================================ */
+
+function toggleFolder(event) {
+
+  event.preventDefault();
+
+  event.stopPropagation();
+
+
+  const link =
+    event.target.closest("a");
+
+
+  const folder =
+    link.closest(".nav-folder");
+
+
+  folder.classList.toggle(
+    "expanded"
+  );
+
+}
+
+
+/* ================================================================
+   NAVEGAÇÃO
+================================================================ */
+
+function openSection(
+  id,
+  event
+) {
+
+  if (event) {
+
+    event.preventDefault();
+
+  }
+
+
+  const section =
+    document.getElementById(id);
+
+
+  if (!section) {
+
+    return;
+
+  }
+
+
+  /* Fecha hamburger */
+
+  const navEl =
+    document.getElementById("main-nav");
+
+
+  if (
+    navEl.classList.contains("show")
+  ) {
+
+    toggleMenu();
+
+  }
+
+
+  /* Remove estado anterior */
+
+  document
+    .querySelectorAll(
+      ".content-section"
+    )
+    .forEach(
+      (item) => {
+
+        item.classList.remove(
+          "visible"
+        );
+
+      }
+    );
+
+
+  /* Ativa nova section */
+
+  section.classList.add(
+    "visible"
+  );
+
+
+  /* Links ativos */
+
+  document
+    .querySelectorAll(
+      "#main-nav a"
+    )
+    .forEach(
+      (link) => {
+
+        link.classList.remove(
+          "active-link"
+        );
+
+      }
+    );
+
+
+  if (event) {
+
+    const clicked =
+      event.target.closest("a");
+
+
+    if (clicked) {
+
+      clicked.classList.add(
+        "active-link"
+      );
+
+    }
+
+  }
+
+
+  currentSection = id;
+
+  isSidebar = true;
+
+}
+
+
+/* ================================================================
+   LOGO / START (voltar à página inicial)
+================================================================ */
+
+function goHome(event) {
+
+  if (event) {
+
+    event.preventDefault();
+
+  }
+
+  document
+    .querySelectorAll(".nav-folder.expanded")
+    .forEach((folder) => {
+      folder.classList.remove("expanded");
+    });
+
+  openSection("sobre", event && event.target.closest("a") ? event : null);
+
+}
+
+document
+  .querySelector(".titleimg")
+  .addEventListener("click", (event) => goHome(event));
+
+document
+  .querySelector(".titleimg")
+  .addEventListener("keydown", (event) => {
+
+    if (event.key === "Enter" || event.key === " ") {
+
+      event.preventDefault();
+      goHome(event);
+
+    }
+
+  });
+
 
 /* ================================================================
    LIGHTBOX
 ================================================================ */
 
 function openLightbox(card) {
-  const img = card.querySelector("img");
-  const rect = card.getBoundingClientRect();
-  const lightbox = document.getElementById("lightbox");
-  const lbImg = document.getElementById("lightbox-img");
 
-  lbImg.src = img.src;
-  lbImg.alt = img.alt;
-  lightbox.classList.add("open");
+  const img =
+    card.querySelector("img");
 
-  gsap.fromTo(
-    lbImg,
-    {
-      opacity: 0,
-      scale: 0.4,
-      x: rect.left + rect.width / 2 - window.innerWidth / 2,
-      y: rect.top + rect.height / 2 - window.innerHeight / 2,
-    },
-    { opacity: 1, scale: 1, x: 0, y: 0, duration: 0.55, ease: "expo.out" }
-  );
 
-  gsap.fromTo(
-    lightbox,
-    { backgroundColor: "rgba(30, 10, 5, 0)" },
-    { backgroundColor: "rgba(30, 10, 5, 0.88)", duration: 0.4, ease: "power2.out" }
-  );
-
-  gsap.fromTo(
-    "#lightbox-close",
-    { opacity: 0, y: -10 },
-    { opacity: 0.7, y: 0, duration: 0.3, delay: 0.25, ease: "power2.out" }
-  );
-}
-
-function closeLightbox() {
-  const lightbox = document.getElementById("lightbox");
-  const lbImg = document.getElementById("lightbox-img");
-
-  gsap.to(lbImg, { opacity: 0, scale: 0.85, duration: 0.3, ease: "power2.in" });
-  gsap.to(lightbox, {
-    backgroundColor: "rgba(30, 10, 5, 0)",
-    duration: 0.3,
-    ease: "power2.in",
-    onComplete: () => lightbox.classList.remove("open"),
-  });
-}
-
-/* ================================================================
-   ANIMAÇÕES DE SEÇÃO
-================================================================ */
-
-function animateSectionIn(tl, id, offset = "-=0.2") {
-  const section = document.getElementById(id);
-  section.classList.add("visible");
-  gsap.set(section, { visibility: "visible" });
-
-  tl.fromTo(
-    `#${id}`,
-    { opacity: 0, x: 80 },
-    { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" },
-    offset
-  )
-    .from(
-      `#${id} h1`,
-      { opacity: 0, y: 20, duration: 0.5, ease: "power3.out" },
-      "-=0.4"
-    )
-    .from(
-      `#${id} p`,
-      { opacity: 0, y: 15, duration: 0.4, ease: "power2.out" },
-      "-=0.3"
-    );
-}
-
-function animateSectionOut(tl, section, onDone) {
-  tl.to(section, {
-    opacity: 0,
-    x: -50,
-    duration: 0.35,
-    ease: "power2.in",
-    onComplete: () => {
-      section.classList.remove("visible");
-      gsap.set(section, { visibility: "hidden", x: 80 });
-      onDone?.();
-    },
-  });
-}
-
-/* ================================================================
-   ANIMAÇÕES DE NAVEGAÇÃO
-================================================================ */
-
-function animateNavToSidebar(tl) {
-  nav.classList.remove("centered");
-  nav.classList.add("sidebar");
-
-  // Mobile: logo canto superior esquerdo + hamburger canto superior direito
-  if (isSmallScreen()) {
-    const menuParts = nav.querySelectorAll(".lang-switch, #main-nav > ul");
-
-    gsap.set(nav, { visibility: "visible", opacity: 1 });
-
-    tl.to(menuParts, { opacity: 0, y: -12, duration: 0.25, ease: "power2.in" }, 0)
-      .to(
-        nav,
-        {
-          top: "1rem",
-          left: "1rem",
-          right: "auto",
-          xPercent: 0,
-          yPercent: 0,
-          fontSize: "1.4em",
-          duration: 0.7,
-          ease: "expo.inOut",
-        },
-        0
-      )
-      .to(".titleimg", { width: 100, duration: 0.7, ease: "expo.inOut" }, 0)
-      .fromTo(
-        "#hamburger",
-        { opacity: 0, scale: 0.75, rotate: -35 },
-        { opacity: 1, scale: 1, rotate: 0, duration: 0.35, ease: "back.out(1.8)" },
-        "-=0.18"
-      )
-      .call(() => {
-        document.body.classList.add("section-open");
-        gsap.set(menuParts, { clearProps: "opacity,y" });
-      });
+  if (!img) {
 
     return;
+
   }
 
-  // Desktop: sidebar lateral
-  tl.to(nav, {
-    top: "5%",
-    left: "7.5%",
-    xPercent: 0,
-    yPercent: 0,
-    fontSize: "2.5em",
-    duration: 0.5,
-    ease: "expo.inOut",
-  })
-    .to(".titleimg", { width: 120, duration: 0.5, ease: "expo.inOut" }, "<")
-    .from(
-      "nav ul li",
-      { x: -10, opacity: 0.3, stagger: 0.06, duration: 0.4, ease: "power2.out" },
-      "-=0.3"
+
+  const lightbox =
+    document.getElementById(
+      "lightbox"
     );
+
+
+  const lightboxImg =
+    document.getElementById(
+      "lightbox-img"
+    );
+
+
+  lightboxImg.src =
+    img.src;
+
+
+  lightboxImg.alt =
+    img.alt;
+
+
+  lightbox.classList.add(
+    "open"
+  );
+
 }
 
-function animateNavToCenter(tl, offset = "0") {
-  nav.classList.remove("sidebar");
-  nav.classList.add("centered");
-  isSidebar = false;
 
-  tl.to(
-    nav,
-    {
-      top: "50%",
-      left: "50%",
-      xPercent: -50,
-      yPercent: -50,
-      fontSize: "3em",
-      duration: 0.9,
-      ease: "expo.inOut",
-    },
-    offset
-  )
-    .to(".titleimg", { width: 180, duration: 0.5, ease: "expo.inOut" }, "<")
-    .from(
-      "nav ul li",
-      { opacity: 0.3, x: 10, stagger: 0.06, duration: 0.2, ease: "power2.out" },
-      "-=0.3"
+function closeLightbox() {
+
+  const lightbox =
+    document.getElementById(
+      "lightbox"
     );
+
+
+  lightbox.classList.remove(
+    "open"
+  );
+
 }
+
 
 /* ================================================================
-   NAVEGAÇÃO - ABRIR SEÇÃO
+   ESC
 ================================================================ */
 
-function openSection(id) {
-  if (isAnimating) return;
-  if (currentSection === id && isSidebar) return;
+document.addEventListener(
+  "keydown",
+  (event) => {
 
-  // Fecha o menu mobile se estiver aberto
-  if (nav.classList.contains("show")) {
-    toggleMenu();
+    if (
+      event.key === "Escape"
+    ) {
+
+      closeLightbox();
+
+    }
+
   }
+);
 
-  const clickedLink = event.target.closest("a");
-  isAnimating = true;
-
-  // Remove active de todos os links
-  document.querySelectorAll("nav ul li a").forEach((a) => a.classList.remove("active-link"));
-  clickedLink.classList.add("active-link");
-
-  // Se for uma categoria de trabalhos, expande a pasta
-  const worksCategories = ["ilustracao", "ilustracaotrad", "animacao", "web", "game"];
-  if (worksCategories.includes(id)) {
-    const worksFolder = document.querySelector(".works-folder");
-    worksFolder?.classList.add("expanded");
-  }
-
-  const tl = gsap.timeline({ onComplete: () => { isAnimating = false; } });
-  const oldSection = document.querySelector(".content-section.visible");
-
-  if (!isSidebar) {
-    // Primeira abertura: centro → sidebar
-    isSidebar = true;
-    animateNavToSidebar(tl);
-    tl.call(() => animateSectionIn(tl, id));
-  } else if (oldSection && oldSection.id !== id) {
-    // Troca entre seções
-    animateSectionOut(tl, oldSection);
-    tl.call(() => animateSectionIn(tl, id, "+=0.05"));
-  } else if (!oldSection) {
-    // Sidebar ativa mas sem seção visível
-    tl.call(() => animateSectionIn(tl, id, "0"));
-  }
-
-  currentSection = id;
-}
 
 /* ================================================================
-   NAVEGAÇÃO - VOLTAR AO CENTRO (LOGO CLICK)
+   RELÓGIO DA BARRA DE TAREFAS
 ================================================================ */
 
-document.querySelector(".titleimg").addEventListener("click", () => {
-  if (!isSidebar || isAnimating) return;
-  isAnimating = true;
-  currentSection = null;
+function updateTaskbarClock() {
 
-  document.body.classList.remove("section-open", "menu-open");
-  document.querySelectorAll("nav ul li a").forEach((a) => a.classList.remove("active-link"));
+  const el = document.getElementById("taskbar-time");
 
-  // Recolhe a pasta de trabalhos
-  const worksFolder = document.querySelector(".works-folder");
-  worksFolder?.classList.remove("expanded");
+  if (!el) {
 
-  const tl = gsap.timeline({ onComplete: () => { isAnimating = false; } });
-  const visibleSection = document.querySelector(".content-section.visible");
+    return;
 
-  if (visibleSection) {
-    tl.to(visibleSection, {
-      opacity: 0,
-      x: 80,
-      duration: 0.4,
-      ease: "power2.in",
-      onComplete: () => {
-        visibleSection.classList.remove("visible");
-        gsap.set(visibleSection, { visibility: "hidden" });
-      },
-    });
   }
 
-  tl.call(() => animateNavToCenter(tl, visibleSection ? "-=0.1" : "0"));
+  const now = new Date();
+  const hh = String(now.getHours()).padStart(2, "0");
+  const mm = String(now.getMinutes()).padStart(2, "0");
+
+  el.textContent = `${hh}:${mm}`;
+
+}
+
+updateTaskbarClock();
+setInterval(updateTaskbarClock, 15000);
+
+
+/* ================================================================
+   ACESSIBILIDADE — CARDS DE ILUSTRAÇÃO POR TECLADO
+================================================================ */
+
+document.querySelectorAll(".illus-card").forEach((card) => {
+
+  card.setAttribute("tabindex", "0");
+  card.setAttribute("role", "button");
+
+  const img = card.querySelector("img");
+
+  if (img) {
+
+    card.setAttribute("aria-label", img.alt || "Ver imagem ampliada");
+
+  }
+
+  card.addEventListener("keydown", (event) => {
+
+    if (event.key === "Enter" || event.key === " ") {
+
+      event.preventDefault();
+      openLightbox(card);
+
+    }
+
+  });
+
 });
 
+
 /* ================================================================
-   MENU MOBILE (HAMBURGER)
+   ESTADO INICIAL
 ================================================================ */
 
-function toggleMenu() {
-  const navEl = document.getElementById("main-nav");
-  const hamburger = document.getElementById("hamburger");
-  const menuItems = navEl.querySelectorAll(
-    ".nav-header, .lang-switch, #main-nav > ul > li, .works-subfolder li"
-  );
-  const isOpen = navEl.classList.contains("show");
+openSection("sobre", null);
 
-  gsap.killTweensOf([navEl, hamburger, menuItems]);
 
-  if (isOpen) {
-    // Fechar menu
-    hamburger.setAttribute("aria-expanded", "false");
-    hamburger.textContent = "☰";
+/* ================================================================
+   RESPONSIVE (resize)
+================================================================ */
 
-    gsap
-      .timeline({
-        defaults: { ease: "power2.inOut" },
-        onComplete: () => {
-          navEl.classList.remove("show");
-          document.body.classList.remove("menu-open");
-          gsap.set(navEl, { clearProps: "opacity,scale,visibility" });
-          gsap.set(menuItems, { clearProps: "opacity,y" });
-        },
-      })
-      .to(hamburger, { rotate: 0, duration: 0.25 }, 0)
-      .to(menuItems, { opacity: 0, y: -10, stagger: 0.025, duration: 0.18 }, 0)
-      .to(navEl, { opacity: 0, scale: 0.96, duration: 0.35 }, 0.08);
-  } else {
-    // Abrir menu
-    navEl.classList.add("show");
-    document.body.classList.add("menu-open");
-    hamburger.setAttribute("aria-expanded", "true");
-    hamburger.textContent = "×";
+window.addEventListener(
+  "resize",
+  () => {
 
-    gsap
-      .timeline({ defaults: { ease: "power3.out" } })
-      .set(navEl, { visibility: "visible", opacity: 0, scale: 0.96 })
-      .set(menuItems, { opacity: 0, y: 18 })
-      .to(hamburger, { rotate: 90, duration: 0.3 }, 0)
-      .to(navEl, { opacity: 1, scale: 1, duration: 0.45 }, 0)
-      .to(menuItems, { opacity: 1, y: 0, stagger: 0.055, duration: 0.45 }, 0.12);
+    if (
+      !isSmallScreen()
+    ) {
+
+      document
+        .getElementById(
+          "main-nav"
+        )
+        .classList.remove(
+          "show"
+        );
+
+    }
+
   }
-}
-
-/* ================================================================
-   WORKS FOLDER
-================================================================ */
-
-function openWorks(event) {
-  event.preventDefault();
-
-  const worksFolder = document.querySelector(".works-folder");
-  worksFolder?.classList.add("expanded");
-
-  const clickedLink = event.target.closest("a");
-  document.querySelectorAll("nav ul li a").forEach((a) => a.classList.remove("active-link"));
-  clickedLink.classList.add("active-link");
-}
-
+);
