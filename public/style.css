@@ -652,6 +652,17 @@ body::before {
   color: white;
 }
 
+#websitebutton {
+  max-width: 88px;
+  max-height: 35px;
+  margin-bottom: 0;
+}
+
+.imsphynx {
+  color: #581c0c;
+  text-decoration: none;
+}
+
 /* ================================================================
    BARRA DE TAREFAS
 ================================================================ */
