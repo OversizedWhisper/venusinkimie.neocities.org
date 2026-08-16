@@ -1,1276 +1,1014 @@
 <!doctype html>
 <html lang="pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Kimie's Portfolio</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon" type="image/png" href="img/PFP.png" />
-    <link rel="stylesheet" href="style.css" />
+  <title>Kimie's Portfolio</title>
 
-    <script>
-      document.documentElement.classList.add("js");
-    </script>
-  </head>
+  <link rel="icon" type="image/png" href="img/PFP.png" />
+  <link rel="stylesheet" href="style.css" />
 
-  <body>
-    <!-- ============================================================
+  <script>
+    document.documentElement.classList.add("js");
+  </script>
+</head>
+
+<body>
+  <!-- ============================================================
          ÍCONES DE AMBIENTE DE TRABALHO (decorativo, só desktop)
     ============================================================ -->
-    <div class="xp-desktop-icons" aria-hidden="true">
-      <div class="xp-desktop-icon">
-        <span class="xp-icon">🖥️</span>
-        <span>My Computer</span>
+  <div class="xp-desktop-icons" aria-hidden="true">
+    <div class="xp-desktop-icon">
+      <span class="xp-icon">🖥️</span>
+      <span>My Computer</span>
+    </div>
+    <div class="xp-desktop-icon">
+      <span class="xp-icon">📁</span>
+      <span>My Portfolio</span>
+    </div>
+    <div class="xp-desktop-icon">
+      <span class="xp-icon">🗑️</span>
+      <span>Recycle Bin</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+         JANELA DO "BROWSER" — tudo vive aqui dentro
+    ============================================================ -->
+  <div class="xp-browser">
+    <!-- Barra de título -->
+    <div class="xp-titlebar">
+      <div class="xp-title-left">
+        <span class="xp-ie-logo" aria-hidden="true">e</span>
+        <span class="xp-window-title">Kimie's Portfolio</span>
       </div>
-      <div class="xp-desktop-icon">
-        <span class="xp-icon">📁</span>
-        <span>My Portfolio</span>
-      </div>
-      <div class="xp-desktop-icon">
-        <span class="xp-icon">🗑️</span>
-        <span>Recycle Bin</span>
+      <div class="xp-window-buttons" aria-hidden="true">
+        <span>—</span>
+        <span>□</span>
+        <span>×</span>
       </div>
     </div>
 
-    <!-- ============================================================
-         JANELA DO "BROWSER" — tudo vive aqui dentro
-    ============================================================ -->
-    <div class="xp-browser">
-      <!-- Barra de título -->
-      <div class="xp-titlebar">
-        <div class="xp-title-left">
-          <span class="xp-ie-logo" aria-hidden="true">e</span>
-          <span class="xp-window-title">Kimie's Portfolio</span>
-        </div>
-        <div class="xp-window-buttons" aria-hidden="true">
-          <span>—</span>
-          <span>□</span>
-          <span>×</span>
-        </div>
+    <!-- Barra de menu -->
+    <div class="xp-menubar" aria-hidden="true">
+      <span>File</span>
+      <span>Edit</span>
+      <span>View</span>
+      <span>Favorites</span>
+      <span>Tools</span>
+      <span>Help</span>
+    </div>
+
+    <!-- Barra de ferramentas / endereço -->
+    <div class="xp-toolbar" aria-hidden="true">
+      <button class="xp-tool" type="button">←</button>
+      <button class="xp-tool" type="button">→</button>
+      <button class="xp-tool" type="button">↻</button>
+      <button class="xp-tool" type="button">⌂</button>
+      <span class="xp-address-label">Address</span>
+      <div class="xp-address" id="xp-address">
+        https://venusinkimie.neocities.org/
       </div>
+      <button class="xp-go" type="button">Go</button>
+    </div>
 
-      <!-- Barra de menu -->
-      <div class="xp-menubar" aria-hidden="true">
-        <span>File</span>
-        <span>Edit</span>
-        <span>View</span>
-        <span>Favorites</span>
-        <span>Tools</span>
-        <span>Help</span>
-      </div>
+    <!-- Botão hamburger — só aparece em mobile/tablet -->
+    <button id="hamburger" class="hamburger" type="button" onclick="toggleMenu()" aria-label="Abrir menu"
+      aria-expanded="false">
+      ☰ <span lang="pt">Menu</span><span lang="en">Menu</span>
+    </button>
 
-      <!-- Barra de ferramentas / endereço -->
-      <div class="xp-toolbar" aria-hidden="true">
-        <button class="xp-tool" type="button">←</button>
-        <button class="xp-tool" type="button">→</button>
-        <button class="xp-tool" type="button">↻</button>
-        <button class="xp-tool" type="button">⌂</button>
-        <span class="xp-address-label">Address</span>
-        <div class="xp-address" id="xp-address">
-          https://venusinkimie.neocities.org/
+    <!-- Corpo do browser: sidebar (desktop) / topo (mobile) + conteúdo -->
+    <div class="xp-browser-body">
+      <nav id="main-nav">
+        <div class="nav-header">
+          <img class="titleimg" src="img/LOGOTIPO.png" alt="Kimie logo" tabindex="0" role="button"
+            aria-label="Voltar à página inicial" />
+          <div class="lang-switch">
+            <button id="btn-pt" class="active" onclick="setLang('pt')">
+              PT
+            </button>
+            <span>|</span>
+            <button id="btn-en" onclick="setLang('en')">EN</button>
+          </div>
         </div>
-        <button class="xp-go" type="button">Go</button>
-      </div>
 
-      <!-- Botão hamburger — só aparece em mobile/tablet -->
-      <button
-        id="hamburger"
-        class="hamburger"
-        type="button"
-        onclick="toggleMenu()"
-        aria-label="Abrir menu"
-        aria-expanded="false"
-      >
-        ☰ <span lang="pt">Menu</span><span lang="en">Menu</span>
-      </button>
+        <ul>
+          <li>
+            <a href="#" onclick="openSection('sobre', event)">
+              <span lang="pt">Sobre mim</span>
+              <span lang="en">About me</span>
+            </a>
+          </li>
 
-      <!-- Corpo do browser: sidebar (desktop) / topo (mobile) + conteúdo -->
-      <div class="xp-browser-body">
-        <nav id="main-nav">
-          <div class="nav-header">
-            <img
-              class="titleimg"
-              src="img/LOGOTIPO.png"
-              alt="Kimie logo"
-              tabindex="0"
-              role="button"
-              aria-label="Voltar à página inicial"
-            />
-            <div class="lang-switch">
-              <button id="btn-pt" class="active" onclick="setLang('pt')">
-                PT
-              </button>
-              <span>|</span>
-              <button id="btn-en" onclick="setLang('en')">EN</button>
+          <li class="nav-folder">
+            <a href="#" onclick="toggleFolder(event)">
+              <span lang="pt">Trabalhos</span>
+              <span lang="en">Works</span>
+            </a>
+            <ul class="nav-subfolder">
+              <li class="nav-folder">
+                <a href="#" onclick="toggleFolder(event)">
+                  <span lang="pt">Ilustração</span>
+                  <span lang="en">Illustration</span>
+                </a>
+                <ul class="nav-subfolder">
+                  <li class="nav-folder">
+                    <a href="#" onclick="toggleFolder(event)">
+                      <span lang="pt">Digital</span>
+                      <span lang="en">Digital</span>
+                    </a>
+                    <ul class="nav-subfolder">
+                      <li>
+                        <a href="#" onclick="openSection('ilustracao', event)">
+                          <span lang="pt">Ilustração Digital</span>
+                          <span lang="en">Digital Illustration</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" onclick="openSection('pixelart', event)">
+                          <span lang="pt">Pixel Art</span>
+                          <span lang="en">Pixel Art</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#" onclick="openSection('ilustracaotrad', event)">
+                      <span lang="pt">Tradicional</span>
+                      <span lang="en">Traditional</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" onclick="openSection('infantil', event)">
+                      <span lang="pt">Infantil</span>
+                      <span lang="en">Children's</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#" onclick="openSection('design', event)">
+                  <span lang="pt">Design</span>
+                  <span lang="en">Design</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" onclick="openSection('animacao', event)">
+                  <span lang="pt">Animação</span>
+                  <span lang="en">Animation</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" onclick="openSection('web', event)">
+                  <span lang="pt">Desenvolvimento Web</span>
+                  <span lang="en">Web Dev</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" onclick="openSection('game', event)">
+                  <span lang="pt">Desenvolvimento de Jogos</span>
+                  <span lang="en">Game Dev</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#" onclick="openSection('links', event)">
+              <span lang="pt">Links</span>
+              <span lang="en">Links</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <main id="content" class="content-area">
+        <!-- ══════════════════════════════════════
+               SOBRE MIM
+          ══════════════════════════════════════ -->
+        <section id="sobre" class="content-section">
+          <h1>
+            <span lang="pt">Sobre mim</span>
+            <span lang="en">About me</span>
+          </h1>
+
+          <div class="about-container">
+            <img class="about-photo" src="img/PFP.png" alt="Kimie" loading="lazy" />
+            <div class="about-text">
+              <p>
+                <span lang="pt">
+                  Olá! O meu nome é Luísa, mas nas artes sou conhecida como
+                  Kimie! Sou artista digital e designer gráfica. Atualmente a
+                  viver na ilha da Madeira.<br /><br />
+                  Sou uma pessoa movida pela curiosidade, por desafios e pela
+                  criatividade. Procuro constantemente novas formas de
+                  crescer, tanto a nível pessoal como profissional, explorando
+                  ideias que me desafiem a pensar de maneira diferente.<br /><br />
+                  No meu tempo livre, gosto de ouvir música e desenhar, usando
+                  esses momentos como forma de me expressar e relaxar.
+                  Sinto-me especialmente ligada a projetos criativos que me
+                  permitem experimentar e dar vida a novas ideias.
+                </span>
+                <span lang="en">
+                  Hi! My name is Luísa, but artistically I go by Kimie! I'm a
+                  digital artist and graphic designer. Currently based in
+                  Madeira Island.<br /><br />
+                  I am driven by curiosity, challenges, and creativity. I
+                  constantly seek new ways to grow, both personally and
+                  professionally, exploring ideas that push me to think
+                  differently.<br /><br />
+                  In my free time, I enjoy listening to music and drawing,
+                  using these moments to express myself and unwind. I feel
+                  especially connected to creative projects that allow me to
+                  experiment and bring ideas to life.
+                </span>
+              </p>
             </div>
           </div>
 
-          <ul>
-            <li>
-              <a href="#" onclick="openSection('sobre', event)">
-                <span lang="pt">Sobre mim</span>
-                <span lang="en">About me</span>
-              </a>
-            </li>
+          <h2>
+            <span lang="pt">Línguas</span>
+            <span lang="en">Languages</span>
+          </h2>
+          <div class="lang-pills">
+            <span class="lang-pill">
+              <span lang="pt">Português</span><span lang="en">Portuguese</span>
+              <small><span lang="pt">nativo</span><span lang="en">native</span></small>
+            </span>
+            <span class="lang-pill">
+              <span lang="pt">Inglês</span><span lang="en">English</span>
+              <small>C2</small>
+            </span>
+            <span class="lang-pill">
+              <span lang="pt">Espanhol</span><span lang="en">Spanish</span>
+              <small>A2</small>
+            </span>
+          </div>
 
-            <li class="nav-folder">
-              <a href="#" onclick="toggleFolder(event)">
-                <span lang="pt">Trabalhos</span>
-                <span lang="en">Works</span>
-              </a>
-              <ul class="nav-subfolder">
-                <li class="nav-folder">
-                  <a href="#" onclick="toggleFolder(event)">
-                    <span lang="pt">Ilustração</span>
-                    <span lang="en">Illustration</span>
-                  </a>
-                  <ul class="nav-subfolder">
-                    <li class="nav-folder">
-                      <a href="#" onclick="toggleFolder(event)">
-                        <span lang="pt">Digital</span>
-                        <span lang="en">Digital</span>
-                      </a>
-                      <ul class="nav-subfolder">
-                        <li>
-                          <a
-                            href="#"
-                            onclick="openSection('ilustracao', event)"
-                          >
-                            <span lang="pt">Ilustração Digital</span>
-                            <span lang="en">Digital Illustration</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" onclick="openSection('pixelart', event)">
-                            <span lang="pt">Pixel Art</span>
-                            <span lang="en">Pixel Art</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        onclick="openSection('ilustracaotrad', event)"
-                      >
-                        <span lang="pt">Tradicional</span>
-                        <span lang="en">Traditional</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" onclick="openSection('infantil', event)">
-                        <span lang="pt">Infantil</span>
-                        <span lang="en">Children's</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#" onclick="openSection('design', event)">
-                    <span lang="pt">Design</span>
-                    <span lang="en">Design</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" onclick="openSection('animacao', event)">
-                    <span lang="pt">Animação</span>
-                    <span lang="en">Animation</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" onclick="openSection('web', event)">
-                    <span lang="pt">Desenvolvimento Web</span>
-                    <span lang="en">Web Dev</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" onclick="openSection('game', event)">
-                    <span lang="pt">Desenvolvimento de Jogos</span>
-                    <span lang="en">Game Dev</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <a href="#" onclick="openSection('links', event)">
-                <span lang="pt">Links</span>
-                <span lang="en">Links</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        <main id="content" class="content-area">
-          <!-- ══════════════════════════════════════
-               SOBRE MIM
-          ══════════════════════════════════════ -->
-          <section id="sobre" class="content-section">
-            <h1>
-              <span lang="pt">Sobre mim</span>
-              <span lang="en">About me</span>
-            </h1>
-
-            <div class="about-container">
-              <img
-                class="about-photo"
-                src="img/PFP.png"
-                alt="Kimie"
-                loading="lazy"
-              />
-              <div class="about-text">
-                <p>
-                  <span lang="pt">
-                    Olá! O meu nome é Luísa, mas nas artes sou conhecida como
-                    Kimie! Sou artista digital e designer gráfica. Atualmente a
-                    viver na ilha da Madeira.<br /><br />
-                    Sou uma pessoa movida pela curiosidade, por desafios e pela
-                    criatividade. Procuro constantemente novas formas de
-                    crescer, tanto a nível pessoal como profissional, explorando
-                    ideias que me desafiem a pensar de maneira diferente.<br /><br />
-                    No meu tempo livre, gosto de ouvir música e desenhar, usando
-                    esses momentos como forma de me expressar e relaxar.
-                    Sinto-me especialmente ligada a projetos criativos que me
-                    permitem experimentar e dar vida a novas ideias.
-                  </span>
-                  <span lang="en">
-                    Hi! My name is Luísa, but artistically I go by Kimie! I'm a
-                    digital artist and graphic designer. Currently based in
-                    Madeira Island.<br /><br />
-                    I am driven by curiosity, challenges, and creativity. I
-                    constantly seek new ways to grow, both personally and
-                    professionally, exploring ideas that push me to think
-                    differently.<br /><br />
-                    In my free time, I enjoy listening to music and drawing,
-                    using these moments to express myself and unwind. I feel
-                    especially connected to creative projects that allow me to
-                    experiment and bring ideas to life.
-                  </span>
-                </p>
-              </div>
+          <h2>
+            <span lang="pt">Educação</span>
+            <span lang="en">Education</span>
+          </h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="timeline-year">2023–2025</span>
+              <h3>
+                <span lang="pt">Mestrado em Design e Multimédia</span>
+                <span lang="en">Master's Degree in Design and Multimedia</span>
+              </h3>
+              <p>
+                <span lang="pt"><i>Universidade de Coimbra</i></span>
+                <span lang="en"><i>University of Coimbra</i></span>
+              </p>
             </div>
 
-            <h2>
-              <span lang="pt">Línguas</span>
-              <span lang="en">Languages</span>
-            </h2>
-            <div class="lang-pills">
-              <span class="lang-pill">
-                <span lang="pt">Português</span
-                ><span lang="en">Portuguese</span>
-                <small
-                  ><span lang="pt">nativo</span
-                  ><span lang="en">native</span></small
-                >
-              </span>
-              <span class="lang-pill">
-                <span lang="pt">Inglês</span><span lang="en">English</span>
-                <small>C2</small>
-              </span>
-              <span class="lang-pill">
-                <span lang="pt">Espanhol</span><span lang="en">Spanish</span>
-                <small>A2</small>
-              </span>
+            <div class="timeline-item">
+              <span class="timeline-year">2023</span>
+              <h3>Erasmus+</h3>
+              <p>
+                <span lang="pt"><i>Universidade de Castilla-La Mancha, Espanha</i></span>
+                <span lang="en"><i>University of Castilla-La Mancha, Spain</i></span>
+              </p>
             </div>
 
-            <h2>
-              <span lang="pt">Educação</span>
-              <span lang="en">Education</span>
-            </h2>
-            <div class="timeline">
-              <div class="timeline-item">
-                <span class="timeline-year">2023–2025</span>
-                <h3>
-                  <span lang="pt">Mestrado em Design e Multimédia</span>
-                  <span lang="en"
-                    >Master's Degree in Design and Multimedia</span
-                  >
-                </h3>
-                <p>
-                  <span lang="pt"><i>Universidade de Coimbra</i></span>
-                  <span lang="en"><i>University of Coimbra</i></span>
-                </p>
-              </div>
-
-              <div class="timeline-item">
-                <span class="timeline-year">2023</span>
-                <h3>Erasmus+</h3>
-                <p>
-                  <span lang="pt"
-                    ><i>Universidade de Castilla-La Mancha, Espanha</i></span
-                  >
-                  <span lang="en"
-                    ><i>University of Castilla-La Mancha, Spain</i></span
-                  >
-                </p>
-              </div>
-
-              <div class="timeline-item">
-                <span class="timeline-year">2020–2023</span>
-                <h3>
-                  <span lang="pt">Licenciatura em Design</span>
-                  <span lang="en">Bachelor's Degree in Design</span>
-                </h3>
-                <p>
-                  <span lang="pt"><i>Universidade da Madeira</i></span>
-                  <span lang="en"><i>University of Madeira</i></span>
-                </p>
-              </div>
+            <div class="timeline-item">
+              <span class="timeline-year">2020–2023</span>
+              <h3>
+                <span lang="pt">Licenciatura em Design</span>
+                <span lang="en">Bachelor's Degree in Design</span>
+              </h3>
+              <p>
+                <span lang="pt"><i>Universidade da Madeira</i></span>
+                <span lang="en"><i>University of Madeira</i></span>
+              </p>
             </div>
+          </div>
 
-            <h2>
-              <span lang="pt">Experiência</span>
-              <span lang="en">Experience</span>
-            </h2>
-            <div class="timeline">
-              <div class="timeline-item">
-                <span class="timeline-year">
-                  <span lang="pt">2025–presente</span>
-                  <span lang="en">2025–present</span>
+          <h2>
+            <span lang="pt">Experiência</span>
+            <span lang="en">Experience</span>
+          </h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="timeline-year">
+                <span lang="pt">2025–presente</span>
+                <span lang="en">2025–present</span>
+              </span>
+              <h3>
+                <span lang="pt">Ilustradora Autónoma</span>
+                <span lang="en">Freelance Illustrator</span>
+              </h3>
+              <p class="descjob">
+                <span lang="pt">
+                  – Ilustração<br />
+                  – Design de personagem<br />
+                  – Layout e design de página
                 </span>
-                <h3>
-                  <span lang="pt">Ilustradora Autónoma</span>
-                  <span lang="en">Freelance Illustrator</span>
-                </h3>
-                <p class="descjob">
-                  <span lang="pt">
-                    – Ilustração<br />
-                    – Design de personagem<br />
-                    – Layout e design de página
-                  </span>
-                  <span lang="en">
-                    – Illustration<br />
-                    – Character design<br />
-                    – Layout and page design
-                  </span>
-                </p>
-              </div>
-
-              <div class="timeline-item">
-                <span class="timeline-year">2024–2025</span>
-                <h3>
-                  <span lang="pt">Estágio</span>
-                  <span lang="en">Internship</span>
-                </h3>
-                <p>
-                  <span lang="pt"
-                    ><i
-                      >Centro de Neurociências e Biologia Celular (CNC-UC),
-                      Coimbra</i
-                    ></span
-                  >
-                  <span lang="en"
-                    ><i
-                      >Center for Neuroscience and Cell Biology (CNC-UC),
-                      Coimbra</i
-                    ></span
-                  >
-                </p>
-                <p class="descjob">
-                  <span lang="pt">
-                    – Design de personagem<br />
-                    – Ilustração e criação de elementos visuais<br />
-                    – Desenvolvimento web<br />
-                    – Colaboração multidisciplinar e em equipa
-                  </span>
-                  <span lang="en">
-                    – Character design<br />
-                    – Illustration and visual asset creation<br />
-                    – Web development
-                  </span>
-                </p>
-              </div>
+                <span lang="en">
+                  – Illustration<br />
+                  – Character design<br />
+                  – Layout and page design
+                </span>
+              </p>
             </div>
-          </section>
 
-          <!-- ══════════════════════════════════════
+            <div class="timeline-item">
+              <span class="timeline-year">2024–2025</span>
+              <h3>
+                <span lang="pt">Estágio</span>
+                <span lang="en">Internship</span>
+              </h3>
+              <p>
+                <span lang="pt"><i>Centro de Neurociências e Biologia Celular (CNC-UC),
+                    Coimbra</i></span>
+                <span lang="en"><i>Center for Neuroscience and Cell Biology (CNC-UC),
+                    Coimbra</i></span>
+              </p>
+              <p class="descjob">
+                <span lang="pt">
+                  – Design de personagem<br />
+                  – Ilustração e criação de elementos visuais<br />
+                  – Desenvolvimento web<br />
+                  – Colaboração multidisciplinar e em equipa
+                </span>
+                <span lang="en">
+                  – Character design<br />
+                  – Illustration and visual asset creation<br />
+                  – Web development
+                </span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
                ILUSTRAÇÃO DIGITAL
           ══════════════════════════════════════ -->
-          <section id="ilustracao" class="content-section">
-            <h1>
-              <span lang="pt">Ilustração Digital</span>
-              <span lang="en">Digital Illustration</span>
-            </h1>
-            <div class="illus-grid">
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/1.jpg" alt="Ilustração 1" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/2.jpg" alt="Ilustração 2" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/3.png" alt="Ilustração 3" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/4.jpg" alt="Ilustração 4" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/5.jpeg" alt="Ilustração 5" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/6.jpg" alt="Ilustração 6" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/7.jpeg" alt="Ilustração 7" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/8.jpg" alt="Ilustração 8" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/9.jpg" alt="Ilustração 9" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/10.jpg" alt="Ilustração 10" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/11.jpg" alt="Ilustração 11" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/12.jpg" alt="Ilustração 12" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/13.jpg" alt="Ilustração 13" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/14.jpg" alt="Ilustração 14" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/15.jpg" alt="Ilustração 15" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/16.png" alt="Ilustração 16" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/17.png" alt="Ilustração 17" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/18.jpg" alt="Ilustração 18" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/19.jpg" alt="Ilustração 19" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/20.jpg" alt="Ilustração 20" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/21.jpg" alt="Ilustração 21" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/22.jpg" alt="Ilustração 22" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/23.jpg" alt="Ilustração 23" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/24.jpeg" alt="Ilustração 24" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/25.jpg" alt="Ilustração 25" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/26.jpg" alt="Ilustração 26" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/27.jpg" alt="Ilustração 27" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/ilus/28.jpg" alt="Ilustração 28" loading="lazy" />
-              </div>
+        <section id="ilustracao" class="content-section">
+          <h1>
+            <span lang="pt">Ilustração Digital</span>
+            <span lang="en">Digital Illustration</span>
+          </h1>
+          <div class="illus-grid">
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/1.jpg" alt="Ilustração 1" loading="lazy" />
             </div>
-          </section>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/2.jpg" alt="Ilustração 2" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/3.png" alt="Ilustração 3" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/4.jpg" alt="Ilustração 4" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/5.jpeg" alt="Ilustração 5" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/6.jpg" alt="Ilustração 6" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/7.jpeg" alt="Ilustração 7" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/8.jpg" alt="Ilustração 8" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/9.jpg" alt="Ilustração 9" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/10.jpg" alt="Ilustração 10" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/11.jpg" alt="Ilustração 11" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/12.jpg" alt="Ilustração 12" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/13.jpg" alt="Ilustração 13" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/14.jpg" alt="Ilustração 14" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/15.jpg" alt="Ilustração 15" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/16.png" alt="Ilustração 16" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/17.png" alt="Ilustração 17" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/18.jpg" alt="Ilustração 18" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/19.jpg" alt="Ilustração 19" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/20.jpg" alt="Ilustração 20" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/21.jpg" alt="Ilustração 21" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/22.jpg" alt="Ilustração 22" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/23.jpg" alt="Ilustração 23" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/24.jpeg" alt="Ilustração 24" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/25.jpg" alt="Ilustração 25" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/26.jpg" alt="Ilustração 26" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/27.jpg" alt="Ilustração 27" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/28.jpg" alt="Ilustração 28" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/29.jpg" alt="Ilustração 27" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/ilus/30.jpg" alt="Ilustração 28" loading="lazy" />
+            </div>
+          </div>
+        </section>
 
-          <!-- ══════════════════════════════════════
+        <!-- ══════════════════════════════════════
                PIXEL ART
           ══════════════════════════════════════ -->
-          <section id="pixelart" class="content-section">
-            <h1>
-              <span lang="pt">Pixel Art</span>
-              <span lang="en">Pixel Art</span>
-            </h1>
-            WIP
-            <div class="illus-grid">
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/pixel/1.jpg" alt="Ilustração 1" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/pixel/2.jpg" alt="Ilustração 2" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/pixel/3.jpg" alt="Ilustração 3" loading="lazy" />
-              </div>
-          </section>
+        <section id="pixelart" class="content-section">
+          <h1>
+            <span lang="pt">Pixel Art</span>
+            <span lang="en">Pixel Art</span>
+          </h1>
+          WIP
+          <div class="illus-grid">
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/pixel/1.jpg" alt="Ilustração 1" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/pixel/2.jpg" alt="Ilustração 2" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/pixel/3.jpg" alt="Ilustração 3" loading="lazy" />
+            </div>
+        </section>
 
-          <!-- ══════════════════════════════════════
+        <!-- ══════════════════════════════════════
                ILUSTRAÇÃO TRADICIONAL
           ══════════════════════════════════════ -->
-          <section id="ilustracaotrad" class="content-section">
-            <h1>
-              <span lang="pt">Ilustração Tradicional</span>
-              <span lang="en">Traditional Illustration</span>
-            </h1>
-            <div class="illus-grid">
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img
-                  src="img/trad_ilu/1.jpg"
-                  alt="Ilustração 1"
-                  loading="lazy"
-                />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img
-                  src="img/trad_ilu/2.jpg"
-                  alt="Ilustração 2"
-                  loading="lazy"
-                />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img
-                  src="img/trad_ilu/3.jpg"
-                  alt="Ilustração 3"
-                  loading="lazy"
-                />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img
-                  src="img/trad_ilu/4.jpg"
-                  alt="Ilustração 4"
-                  loading="lazy"
-                />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img
-                  src="img/trad_ilu/5.jpg"
-                  alt="Ilustração 5"
-                  loading="lazy"
-                />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img
-                  src="img/trad_ilu/6.jpg"
-                  alt="Ilustração 6"
-                  loading="lazy"
-                />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img
-                  src="img/trad_ilu/7.jpg"
-                  alt="Ilustração 7"
-                  loading="lazy"
-                />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img
-                  src="img/trad_ilu/8.jpg"
-                  alt="Ilustração 8"
-                  loading="lazy"
-                />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img
-                  src="img/trad_ilu/9.jpg"
-                  alt="Ilustração 9"
-                  loading="lazy"
-                />
-              </div>
+        <section id="ilustracaotrad" class="content-section">
+          <h1>
+            <span lang="pt">Ilustração Tradicional</span>
+            <span lang="en">Traditional Illustration</span>
+          </h1>
+          <div class="illus-grid">
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/trad_ilu/1.jpg" alt="Ilustração 1" loading="lazy" />
             </div>
-          </section>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/trad_ilu/2.jpg" alt="Ilustração 2" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/trad_ilu/3.jpg" alt="Ilustração 3" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/trad_ilu/4.jpg" alt="Ilustração 4" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/trad_ilu/5.jpg" alt="Ilustração 5" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/trad_ilu/6.jpg" alt="Ilustração 6" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/trad_ilu/7.jpg" alt="Ilustração 7" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/trad_ilu/8.jpg" alt="Ilustração 8" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/trad_ilu/9.jpg" alt="Ilustração 9" loading="lazy" />
+            </div>
+          </div>
+        </section>
 
-          <!-- ══════════════════════════════════════
+        <!-- ══════════════════════════════════════
                ILUSTRAÇÃO INFANTIL
           ══════════════════════════════════════ -->
-          <section id="infantil" class="content-section">
-            <h1>
-              <span lang="pt">Ilustração Infantil</span>
-              <span lang="en">Children's Illustration</span>
-            </h1>
-            WIP
-            <div class="illus-grid">
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/kid/1.jpg" alt="Ilustração 1" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/kid/2.jpg" alt="Ilustração 2" loading="lazy" />
-              </div>
-              <div class="illus-card" onclick="openLightbox(this)">
-                <img src="img/kid/3.jpg" alt="Ilustração 3" loading="lazy" />
-              </div>
-          </section>
+        <section id="infantil" class="content-section">
+          <h1>
+            <span lang="pt">Ilustração Infantil</span>
+            <span lang="en">Children's Illustration</span>
+          </h1>
+          WIP
+          <div class="illus-grid">
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/kid/1.jpg" alt="Ilustração 1" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/kid/2.jpg" alt="Ilustração 2" loading="lazy" />
+            </div>
+            <div class="illus-card" onclick="openLightbox(this)">
+              <img src="img/kid/3.jpg" alt="Ilustração 3" loading="lazy" />
+            </div>
+        </section>
 
-          <!-- ══════════════════════════════════════
+        <!-- ══════════════════════════════════════
                DESIGN
           ══════════════════════════════════════ -->
-          <section id="design" class="content-section">
-            <h1>
-              <span lang="pt">Design</span>
-              <span lang="en">Design</span>
-            </h1>
-            <div class="project-list">
-              <div class="project-card">
-                <h2 class="project-title">
-                  <span lang="pt"> Ballerina Dolls</span>
-                  <span lang="en"> Ballerina Dolls</span>
-                </h2>
-                <img
-                  class="project-img"
-                  src="img/des/1.jpeg"
-                  alt="Ballerina Dolls"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >Este projeto foi desenvolvido como parte da disciplina de
-                    Design III na Universidade de Madeira. O projeto explorou o
-                    design e criação de um conceito visual para bonecas de
-                    madeira, com o processo criativo guiado pelo tema do projeto
-                    e restrições materiais.</span
-                  >
-                  <span lang="en"
-                    >This project was developed as part of the Design III course
-                    at the University of Madeira. The project explored the
-                    design and creation of a visual concept for wooden dolls,
-                    with the creative process guided by the project’s theme and
-                    material constraints.</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="https://www.behance.net/gallery/175727957/Ballerina-Dolls"
-                  alt="Ballerina Dolls"
-                  loading="lazy"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
-
-              <div class="project-card">
-                <h2 class="project-title">
-                  <span lang="pt">
-                    Linha do Tempo: A História do Bom Design</span
-                  >
-                  <span lang="en"> Timeline: The History of Great Design</span>
-                </h2>
-                <img
-                  class="project-img"
-                  src="img/des/2.png"
-                  alt="Timeline: The History of Great Design"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >Este projeto foi desenvolvido como parte da disciplina de
-                    History of Design na Universidade de Madeira. A linha do
-                    tempo explora momentos, movimentos e obras influentes ao
-                    longo da história do design, destacando como o design
-                    evoluiu através de diferentes períodos e contextos.</span
-                  >
-                  <span lang="en"
-                    >This project was developed as part of the History of Design
-                    course at the University of Madeira. The timeline explores
-                    key moments, movements, and influential works throughout the
-                    history of design, highlighting how design has evolved
-                    across different periods and contexts.</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="https://www.behance.net/gallery/254339169/History-of-Great-Design"
-                  alt="Timeline: The History of Great Design"
-                  loading="lazy"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
-
-                 <div class="project-card">
-                <h2 class="project-title">
-                  <span lang="pt">
-                   Do modelo ao real </span
-                  >
-                  <span lang="en"> Model to Real</span>
-                </h2>
-                <img
-                  class="project-img"
-                  src="img/des/3.png"
-                  alt="Model to Real"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >Projeto final na cadeira de Modelação, foi-nos pedido criar uma moodboard com as ideias que mais nos agradavam e transformar em um objeto real.</span
-                  >
-                  <span lang="en"
-                    >Final project in the Modeling course, we were asked to create a moodboard with the ideas we liked the most and transform them into a real object.</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="https://www.behance.net/gallery/203277589/From-3D-to-Real-Life"
-                  alt="Model to Real"
-                  loading="lazy"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
+        <section id="design" class="content-section">
+          <h1>
+            <span lang="pt">Design</span>
+            <span lang="en">Design</span>
+          </h1>
+          <div class="project-list">
+            <div class="project-card">
+              <h2 class="project-title">
+                <span lang="pt"> Ballerina Dolls</span>
+                <span lang="en"> Ballerina Dolls</span>
+              </h2>
+              <img class="project-img" src="img/des/1.jpeg" alt="Ballerina Dolls" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">Este projeto foi desenvolvido como parte da disciplina de
+                  Design III na Universidade de Madeira. O projeto explorou o
+                  design e criação de um conceito visual para bonecas de
+                  madeira, com o processo criativo guiado pelo tema do projeto
+                  e restrições materiais.</span>
+                <span lang="en">This project was developed as part of the Design III course
+                  at the University of Madeira. The project explored the
+                  design and creation of a visual concept for wooden dolls,
+                  with the creative process guided by the project’s theme and
+                  material constraints.</span>
+              </p>
+              <a class="project-link" href="https://www.behance.net/gallery/175727957/Ballerina-Dolls"
+                alt="Ballerina Dolls" loading="lazy">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
             </div>
-          </section>
 
-          <!-- ══════════════════════════════════════
+            <div class="project-card">
+              <h2 class="project-title">
+                <span lang="pt">
+                  Linha do Tempo: A História do Bom Design</span>
+                <span lang="en"> Timeline: The History of Great Design</span>
+              </h2>
+              <img class="project-img" src="img/des/2.png" alt="Timeline: The History of Great Design" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">Este projeto foi desenvolvido como parte da disciplina de
+                  History of Design na Universidade de Madeira. A linha do
+                  tempo explora momentos, movimentos e obras influentes ao
+                  longo da história do design, destacando como o design
+                  evoluiu através de diferentes períodos e contextos.</span>
+                <span lang="en">This project was developed as part of the History of Design
+                  course at the University of Madeira. The timeline explores
+                  key moments, movements, and influential works throughout the
+                  history of design, highlighting how design has evolved
+                  across different periods and contexts.</span>
+              </p>
+              <a class="project-link" href="https://www.behance.net/gallery/254339169/History-of-Great-Design"
+                alt="Timeline: The History of Great Design" loading="lazy">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
+            </div>
+
+            <div class="project-card">
+              <h2 class="project-title">
+                <span lang="pt">
+                  Do modelo ao real </span>
+                <span lang="en"> Model to Real</span>
+              </h2>
+              <img class="project-img" src="img/des/3.png" alt="Model to Real" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">Projeto final na cadeira de Modelação, foi-nos pedido criar uma moodboard com as ideias
+                  que mais nos agradavam e transformar em um objeto real.</span>
+                <span lang="en">Final project in the Modeling course, we were asked to create a moodboard with the ideas
+                  we liked the most and transform them into a real object.</span>
+              </p>
+              <a class="project-link" href="https://www.behance.net/gallery/203277589/From-3D-to-Real-Life"
+                alt="Model to Real" loading="lazy">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
+            </div>
+
+            <div class="project-card">
+              <h2 class="project-title">
+                <span lang="pt">
+                  Ideia de avó
+                </span>
+                <span lang="en">Grandma's idea</span>
+              </h2>
+              <img class="project-img" src="img/des/4.jpg" alt="Grandma's idea" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">Project made in Drawing II class.
+                  It was meant for us to study the problematics we had in our neighborhood. In my case, it was the lack
+                  of creative activities.
+
+                  For the name, I thought on something more funny and related to the public that would explore it, the
+                  elderly. So, “mascot” of this fanzine was an old lady exploring and giving activities.
+                </span>
+                <span lang="en">Project created in the Drawing II class.
+                  It was intended for us to study the problematics we faced in our neighborhood. In my case, it was the
+                  lack of creative activities.
+
+                  For the name, I thought of something more humorous and related to the audience that would explore it,
+                  the elderly. So, the "mascot" of this fanzine was an old lady exploring and offering activities.
+                </span>
+              </p>
+              <a class="project-link" href="https://www.behance.net/gallery/175726513/Fanzine-Ideia-de-Avo"
+                alt="Grandma's idea" loading="lazy">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
                ANIMAÇÃO
           ══════════════════════════════════════ -->
-          <section id="animacao" class="content-section">
-            <h1>
-              <span lang="pt">Animação</span>
-              <span lang="en">Animation</span>
-            </h1>
-            <div class="project-list">
-              <div class="project-card">
-                <h2 class="project-title">Carved in Fear</h2>
-                <img
-                  class="project-img"
-                  src="img/ani/carved.png"
-                  alt="Carved in Fear"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >Animação feita no âmbito da disciplina de animação e imagem
-                    em media computacionais orientada pela docente Sandra Santos
-                    no segundo ano de mestrado de design e multimédia da
-                    Universidade de Coimbra.</span
-                  >
-                  <span lang="en"
-                    >Animation created as part of the Animation and Image in
-                    Computer Media course, supervised by Professor Sandra
-                    Santos, in the second year of the Master's program in Design
-                    and Multimedia at the University of Coimbra.</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="https://youtu.be/Wr3HtZbaFDI"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
-
-              <div class="project-card">
-                <h2 class="project-title">
-                  <span lang="pt">
-                    Mário Cezariny — Vídeo em Homenagem</span
-                  >
-                  <span lang="en"> Mário Cesariny — Homage Video</span>
-                </h2>
-                <img
-                  class="project-img"
-                  src="img/ani/cesar.png"
-                  alt="Mário Cezariny — Vídeo em Homenagem"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >O conceito deste projeto visa imergir o espectador num
-                    universo onde sonhos e realidade se entrelaçam de forma
-                    intrigante. Inspirado pelo poema ‘Em todas as ruas te
-                    encontro’, a abordagem visual e auditiva utiliza a técnica
-                    de colagem animada para explorar os elementos presentes
-                    na obra de Mário Cesariny.</span
-                  >
-                  <span lang="en"
-                    >The concept for this project seeks to immerse the viewer in
-                    a universe where dreams and reality intertwine in a
-                    intriguing. Inspired by the poem ‘Em todas as ruas te
-                    encontro’, the visual and auditory approach uses the
-                    animated collage technique to explore the elements present
-                    in the work of Mário Cesariny.</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="https://www.behance.net/portfolio/editor?project_id=203280355"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
-
-              <div class="project-card">
-                <h2 class="project-title">Enemy – Lyric Video</h2>
-                <img
-                  class="project-img"
-                  src="img/ani/enemy.jpeg"
-                  alt="Enemy Lyric Video"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >Animação feita no âmbito da disciplina de "Diseño Digital"
-                    em Programa Erasmus+ na UCLM (Universidade de Castilla-La
-                    Mancha).</span
-                  >
-                  <span lang="en"
-                    >Animation created as part of the "Diseño Digital" course in
-                    the Erasmus+ program at UCLM (University of Castilla-La
-                    Mancha).</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="https://www.youtube.com/watch?v=B-xZtDVXMbY"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
-
-              <div class="project-card">
-                <h2 class="project-title">
-                  <span lang="pt">Sally Face, mas uma série</span>
-                  <span lang="en">Sally Face, but as a series</span>
-                </h2>
-                <img
-                  class="project-img"
-                  src="img/ani/sally.png"
-                  alt="Sally Face"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >Animação feita no âmbito da disciplina de "Diseño Digital"
-                    em Programa Erasmus+ na UCLM (Universidade de Castilla-La
-                    Mancha).</span
-                  >
-                  <span lang="en"
-                    >Animation created as part of the "Diseño Digital" course in
-                    the Erasmus+ program at UCLM (University of Castilla-La
-                    Mancha).</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="https://www.youtube.com/watch?v=EcckX6MMHdA"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
-
-              <div class="project-card">
-                <h2 class="project-title">
-                  <span lang="pt">Render de Animação</span>
-                  <span lang="en">Animation Render</span>
-                </h2>
-                <img
-                  class="project-img"
-                  src="img/ani/render.png"
-                  alt="Animation Render"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >Animação feita no âmbito da disciplina de ACT em Programa
-                    Erasmus+ na UCLM (Universidade de Castilla-La Mancha).</span
-                  >
-                  <span lang="en"
-                    >Animation created as part of the ACT course in the Erasmus+
-                    program at UCLM (University of Castilla-La Mancha).</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="https://www.youtube.com/watch?v=IeIU9SkZhAk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
-
-              <div class="project-card">
-                <h2 class="project-title">
-                  <span lang="pt"
-                    >Resumo em animação – Monstros e Companhia</span
-                  >
-                  <span lang="en">Summary in Animation – Monsters Inc.</span>
-                </h2>
-                <img
-                  class="project-img"
-                  src="img/ani/monster.png"
-                  alt="Monsters Inc."
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >Animação feita no âmbito da disciplina de Laboratório
-                    Digital na Universidade da Madeira.</span
-                  >
-                  <span lang="en"
-                    >Animation created as part of the Digital Laboratory course
-                    at the University of Madeira.</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="https://www.youtube.com/watch?v=Y2RsZfMVr8U"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-                <a
-                  class="project-link"
-                  href="https://www.youtube.com/watch?v=8KLfEZS-vkE"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span lang="pt">Um extra →</span>
-                  <span lang="en">An extra →</span>
-                </a>
-              </div>
+        <section id="animacao" class="content-section">
+          <h1>
+            <span lang="pt">Animação</span>
+            <span lang="en">Animation</span>
+          </h1>
+          <div class="project-list">
+            <div class="project-card">
+              <h2 class="project-title">Carved in Fear</h2>
+              <img class="project-img" src="img/ani/carved.png" alt="Carved in Fear" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">Animação feita no âmbito da disciplina de animação e imagem
+                  em media computacionais orientada pela docente Sandra Santos
+                  no segundo ano de mestrado de design e multimédia da
+                  Universidade de Coimbra.</span>
+                <span lang="en">Animation created as part of the Animation and Image in
+                  Computer Media course, supervised by Professor Sandra
+                  Santos, in the second year of the Master's program in Design
+                  and Multimedia at the University of Coimbra.</span>
+              </p>
+              <a class="project-link" href="https://youtu.be/Wr3HtZbaFDI" target="_blank" rel="noopener noreferrer">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
             </div>
-          </section>
 
-          <!-- ══════════════════════════════════════
+            <div class="project-card">
+              <h2 class="project-title">
+                <span lang="pt">
+                  Mário Cezariny — Vídeo em Homenagem</span>
+                <span lang="en"> Mário Cesariny — Homage Video</span>
+              </h2>
+              <img class="project-img" src="img/ani/cesar.png" alt="Mário Cezariny — Vídeo em Homenagem"
+                loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">O conceito deste projeto visa imergir o espectador num
+                  universo onde sonhos e realidade se entrelaçam de forma
+                  intrigante. Inspirado pelo poema ‘Em todas as ruas te
+                  encontro’, a abordagem visual e auditiva utiliza a técnica
+                  de colagem animada para explorar os elementos presentes
+                  na obra de Mário Cesariny.</span>
+                <span lang="en">The concept for this project seeks to immerse the viewer in
+                  a universe where dreams and reality intertwine in a
+                  intriguing. Inspired by the poem ‘Em todas as ruas te
+                  encontro’, the visual and auditory approach uses the
+                  animated collage technique to explore the elements present
+                  in the work of Mário Cesariny.</span>
+              </p>
+              <a class="project-link" href="https://www.behance.net/portfolio/editor?project_id=203280355"
+                target="_blank" rel="noopener noreferrer">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
+            </div>
+
+            <div class="project-card">
+              <h2 class="project-title">Enemy – Lyric Video</h2>
+              <img class="project-img" src="img/ani/enemy.jpeg" alt="Enemy Lyric Video" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">Animação feita no âmbito da disciplina de "Diseño Digital"
+                  em Programa Erasmus+ na UCLM (Universidade de Castilla-La
+                  Mancha).</span>
+                <span lang="en">Animation created as part of the "Diseño Digital" course in
+                  the Erasmus+ program at UCLM (University of Castilla-La
+                  Mancha).</span>
+              </p>
+              <a class="project-link" href="https://www.youtube.com/watch?v=B-xZtDVXMbY" target="_blank"
+                rel="noopener noreferrer">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
+            </div>
+
+            <div class="project-card">
+              <h2 class="project-title">
+                <span lang="pt">Sally Face, mas uma série</span>
+                <span lang="en">Sally Face, but as a series</span>
+              </h2>
+              <img class="project-img" src="img/ani/sally.png" alt="Sally Face" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">Animação feita no âmbito da disciplina de "Diseño Digital"
+                  em Programa Erasmus+ na UCLM (Universidade de Castilla-La
+                  Mancha).</span>
+                <span lang="en">Animation created as part of the "Diseño Digital" course in
+                  the Erasmus+ program at UCLM (University of Castilla-La
+                  Mancha).</span>
+              </p>
+              <a class="project-link" href="https://www.youtube.com/watch?v=EcckX6MMHdA" target="_blank"
+                rel="noopener noreferrer">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
+            </div>
+
+            <div class="project-card">
+              <h2 class="project-title">
+                <span lang="pt">Render de Animação</span>
+                <span lang="en">Animation Render</span>
+              </h2>
+              <img class="project-img" src="img/ani/render.png" alt="Animation Render" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">Animação feita no âmbito da disciplina de ACT em Programa
+                  Erasmus+ na UCLM (Universidade de Castilla-La Mancha).</span>
+                <span lang="en">Animation created as part of the ACT course in the Erasmus+
+                  program at UCLM (University of Castilla-La Mancha).</span>
+              </p>
+              <a class="project-link" href="https://www.youtube.com/watch?v=IeIU9SkZhAk" target="_blank"
+                rel="noopener noreferrer">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
+            </div>
+
+            <div class="project-card">
+              <h2 class="project-title">
+                <span lang="pt">Resumo em animação – Monstros e Companhia</span>
+                <span lang="en">Summary in Animation – Monsters Inc.</span>
+              </h2>
+              <img class="project-img" src="img/ani/monster.png" alt="Monsters Inc." loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">Animação feita no âmbito da disciplina de Laboratório
+                  Digital na Universidade da Madeira.</span>
+                <span lang="en">Animation created as part of the Digital Laboratory course
+                  at the University of Madeira.</span>
+              </p>
+              <a class="project-link" href="https://www.youtube.com/watch?v=Y2RsZfMVr8U" target="_blank"
+                rel="noopener noreferrer">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
+              <a class="project-link" href="https://www.youtube.com/watch?v=8KLfEZS-vkE" target="_blank"
+                rel="noopener noreferrer">
+                <span lang="pt">Um extra →</span>
+                <span lang="en">An extra →</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
                DESENVOLVIMENTO WEB
           ══════════════════════════════════════ -->
-          <section id="web" class="content-section">
-            <h1>
-              <span lang="pt">Desenvolvimento Web</span>
-              <span lang="en">Web Dev</span>
-            </h1>
-            <div class="project-list">
-              <div class="project-card">
-                <h2 class="project-title">
-                  <span lang="pt"
-                    >Página Web para a "Cogumelos do 'Prado ao Prato'"</span
-                  >
-                  <span lang="en"
-                    >Website for "Cogumelos do 'Prado ao Prato'"</span
-                  >
-                </h2>
-                <img
-                  class="project-img"
-                  src="img/web/1.jpg"
-                  alt="Project preview"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >Projeto de Dissertação, com foco no desenvolvimento de um
-                    website para o projeto, da Universidade de Coimbra,
-                    “Cogumelos do 'Prado ao Prato'”, de modo a promover o
-                    consumo de cogumelos para uma alimentação saudável e
-                    promover o cultivo sustentável.</span
-                  >
-                  <span lang="en"
-                    >Dissertation project, focused on the development of a
-                    website for the project, from the University of Coimbra,
-                    “Cogumelos do 'Prado ao Prato'”, in order to promote the
-                    consumption of mushrooms for a healthy diet and promote
-                    sustainable cultivation.</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="https://cogumelosdopradoaoprato.github.io/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
-
-              <div class="project-card">
-                <h2 class="project-title">
-                  Calçada de Carriche – Scrollytelling
-                </h2>
-                <img
-                  class="project-img"
-                  src="img/web/2.png"
-                  alt="Project preview"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >Scrollytelling feito para a aula de Narrativa Visual. O
-                    projecto baseia-se na história contida no poema "Calçada de
-                    Carriche" do escritor português António Gedeão.</span
-                  >
-                  <span lang="en"
-                    >Scrollytelling created for the Visual Narration class. The
-                    project is based on the story contained in the poem "Calçada
-                    de Carriche" by the Portuguese writer António Gedeão.</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="https://oversizedwhisper.github.io/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
-
-              <div class="project-card">
-                <h2 class="project-title">DinoLand Paris</h2>
-                <img
-                  class="project-img"
-                  src="img/web/3.png"
-                  alt="Project preview"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >Este projeto foi feito em Design de Meios Interativos na
-                    Universidade da Madeira em 2022. A ideia era criar um
-                    website onde foi escolhido fazer algo inspirado em Jurassic
-                    Park, criando um website para um zoológico de
-                    dinossauros!</span
-                  >
-                  <span lang="en"
-                    >This project was done in Design de Meios Interativos at
-                    Universidade da Madeira in 2022. The idea was to create a
-                    website, where was chosen to do something inspired by
-                    Jurassic Park by creating a website for a dinosaur
-                    zoo!</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
+        <section id="web" class="content-section">
+          <h1>
+            <span lang="pt">Desenvolvimento Web</span>
+            <span lang="en">Web Dev</span>
+          </h1>
+          <div class="project-list">
+            <div class="project-card">
+              <h2 class="project-title">
+                <span lang="pt">Página Web para a "Cogumelos do 'Prado ao Prato'"</span>
+                <span lang="en">Website for "Cogumelos do 'Prado ao Prato'"</span>
+              </h2>
+              <img class="project-img" src="img/web/1.jpg" alt="Project preview" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">Projeto de Dissertação, com foco no desenvolvimento de um
+                  website para o projeto, da Universidade de Coimbra,
+                  “Cogumelos do 'Prado ao Prato'”, de modo a promover o
+                  consumo de cogumelos para uma alimentação saudável e
+                  promover o cultivo sustentável.</span>
+                <span lang="en">Dissertation project, focused on the development of a
+                  website for the project, from the University of Coimbra,
+                  “Cogumelos do 'Prado ao Prato'”, in order to promote the
+                  consumption of mushrooms for a healthy diet and promote
+                  sustainable cultivation.</span>
+              </p>
+              <a class="project-link" href="https://cogumelosdopradoaoprato.github.io/" target="_blank"
+                rel="noopener noreferrer">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
             </div>
-          </section>
 
-          <!-- ══════════════════════════════════════
+            <div class="project-card">
+              <h2 class="project-title">
+                Calçada de Carriche – Scrollytelling
+              </h2>
+              <img class="project-img" src="img/web/2.png" alt="Project preview" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">Scrollytelling feito para a aula de Narrativa Visual. O
+                  projecto baseia-se na história contida no poema "Calçada de
+                  Carriche" do escritor português António Gedeão.</span>
+                <span lang="en">Scrollytelling created for the Visual Narration class. The
+                  project is based on the story contained in the poem "Calçada
+                  de Carriche" by the Portuguese writer António Gedeão.</span>
+              </p>
+              <a class="project-link" href="https://oversizedwhisper.github.io/" target="_blank"
+                rel="noopener noreferrer">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
+            </div>
+
+            <div class="project-card">
+              <h2 class="project-title">DinoLand Paris</h2>
+              <img class="project-img" src="img/web/3.png" alt="Project preview" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">Este projeto foi feito em Design de Meios Interativos na
+                  Universidade da Madeira em 2022. A ideia era criar um
+                  website onde foi escolhido fazer algo inspirado em Jurassic
+                  Park, criando um website para um zoológico de
+                  dinossauros!</span>
+                <span lang="en">This project was done in Design de Meios Interativos at
+                  Universidade da Madeira in 2022. The idea was to create a
+                  website, where was chosen to do something inspired by
+                  Jurassic Park by creating a website for a dinosaur
+                  zoo!</span>
+              </p>
+              <a class="project-link" href="#" target="_blank" rel="noopener noreferrer">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
                DESENVOLVIMENTO DE JOGOS
           ══════════════════════════════════════ -->
-          <section id="game" class="content-section">
-            <h1>
-              <span lang="pt">Desenvolvimento de Jogos</span>
-              <span lang="en">Game Dev</span>
-            </h1>
-            <div class="project-list">
-              <div class="project-card">
-                <h2 class="project-title">A.L.M.A: Crónicas de Portugal</h2>
-                <img
-                  class="project-img"
-                  src="img/game/1.png"
-                  alt="Project preview"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt"
-                    >“A.L.M.A: Crónicas de Portugal” é um jogo eletrónico criado
-                    no âmbito da disciplina de Design de Jogos no primeiro ano
-                    do Mestrado em Design e Multimédia. O tema do jogo é a
-                    história e as lendas de Portugal, e como estas se podem
-                    influenciar mutuamente e afetar o futuro da nação quando
-                    modificadas.</span
-                  >
-                  <span lang="en"
-                    >“A.L.M.A: Chronicles of Portugal” is a video game created
-                    as part of the Game Design course in the 1st year of the
-                    Master's in Design and Multimedia. The game's theme is the
-                    history and legends of Portugal, and how these can affect
-                    each other and the future of the nation when modified.</span
-                  >
-                </p>
-                <a
-                  class="project-link"
-                  href="https://youtu.be/sn_vhUGBwms"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
-
-              <div class="project-card">
-                <h2 class="project-title">Falling to Hell</h2>
-                <img
-                  class="project-img"
-                  src="img/game/2.png"
-                  alt="Project preview"
-                  loading="lazy"
-                />
-                <p class="project-desc">
-                  <span lang="pt">
-                    Este projeto foi feito na aula de Programação. Foi-nos
-                    pedido para criar um jogo no programa Processing, que seria
-                    uma variação do Cubway. Neste jogo de categoria puzzle, o
-                    objetivo é guiar uma figura vermelha pelo espaço até chegar
-                    ao destino pretendido, que no caso deste jogo, o outro lado
-                    da área de jogo.<br /><br />
-                    Código e Cenários: Laura Silva<br />
-                    Cutscene, Screens, Personagem e Logo: Luisa Santos<br />
-                    Som: Diogo Ribeiro
-                  </span>
-                  <span lang="en">
-                    This project was done in Programming class. We were asked to
-                    create a game in the Processing program, which would be a
-                    variation of Cubway. In this puzzle game, the objective is
-                    to guide a red figure through space until it reaches its
-                    intended destination, which in this game is the other side
-                    of the playing area.<br /><br />
-                    Code and Scenarios: Laura Silva<br />
-                    Cutscene, Screens, Character and Logo: Luisa Santos<br />
-                    Sound: Diogo Ribeiro
-                  </span>
-                </p>
-                <a
-                  class="project-link"
-                  href="https://youtu.be/5kSgVdT8L-8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span lang="pt">Ver projeto →</span>
-                  <span lang="en">View project →</span>
-                </a>
-              </div>
+        <section id="game" class="content-section">
+          <h1>
+            <span lang="pt">Desenvolvimento de Jogos</span>
+            <span lang="en">Game Dev</span>
+          </h1>
+          <div class="project-list">
+            <div class="project-card">
+              <h2 class="project-title">A.L.M.A: Crónicas de Portugal</h2>
+              <img class="project-img" src="img/game/1.png" alt="Project preview" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">“A.L.M.A: Crónicas de Portugal” é um jogo eletrónico criado
+                  no âmbito da disciplina de Design de Jogos no primeiro ano
+                  do Mestrado em Design e Multimédia. O tema do jogo é a
+                  história e as lendas de Portugal, e como estas se podem
+                  influenciar mutuamente e afetar o futuro da nação quando
+                  modificadas.</span>
+                <span lang="en">“A.L.M.A: Chronicles of Portugal” is a video game created
+                  as part of the Game Design course in the 1st year of the
+                  Master's in Design and Multimedia. The game's theme is the
+                  history and legends of Portugal, and how these can affect
+                  each other and the future of the nation when modified.</span>
+              </p>
+              <a class="project-link" href="https://youtu.be/sn_vhUGBwms" target="_blank" rel="noopener noreferrer">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
             </div>
-          </section>
-          <section id="links" class="content-section">
-            <h1>
-              <span lang="pt">Links</span>
-              <span lang="en">Links</span>
-            </h1>
-            <p>
-              <span lang="pt">Podes encontrar mais do meu trabalho em:</span>
-              <span lang="en">You can find more of my work at:</span>
-            </p>
-            <ul class="links-list">
-              <li>
-                <a
-                  href="https://www.instagram.com/venusinkimie/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Instagram — @venusinkimie</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://www.behance.net/venusinkimie"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Behance — @venusinkimie</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://www.artstation.com/venusinkimie"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >ArtStation — @venusinkimie</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://bsky.app/profile/venusinkimie.bsky.social"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >BlueSky — @venusinkimie.bsky.social</a
-                >
-              </li>
-              <li>
-                <a href="mailto:venusinkimie@gmail.com"
-                  >Email — venusinkimie@gmail.com</a
-                >
-              </li>
-            </ul>
 
-            <h2>
-              <span lang="pt">Sobre o website</span>
-              <span lang="en">About the website</span>
-            </h2>
-            <p>
-              <span lang="pt"
-                >Website criado para mostrar os meus projetos, sejam académicos
-                ou pessoais.</span
-              >
-              <span lang="en"
-                >This website was created to showcase my projects, whether
-                academic or personal.</span
-              >
-            </p>
+            <div class="project-card">
+              <h2 class="project-title">Falling to Hell</h2>
+              <img class="project-img" src="img/game/2.png" alt="Project preview" loading="lazy" />
+              <p class="project-desc">
+                <span lang="pt">
+                  Este projeto foi feito na aula de Programação. Foi-nos
+                  pedido para criar um jogo no programa Processing, que seria
+                  uma variação do Cubway. Neste jogo de categoria puzzle, o
+                  objetivo é guiar uma figura vermelha pelo espaço até chegar
+                  ao destino pretendido, que no caso deste jogo, o outro lado
+                  da área de jogo.<br /><br />
+                  Código e Cenários: Laura Silva<br />
+                  Cutscene, Screens, Personagem e Logo: Luisa Santos<br />
+                  Som: Diogo Ribeiro
+                </span>
+                <span lang="en">
+                  This project was done in Programming class. We were asked to
+                  create a game in the Processing program, which would be a
+                  variation of Cubway. In this puzzle game, the objective is
+                  to guide a red figure through space until it reaches its
+                  intended destination, which in this game is the other side
+                  of the playing area.<br /><br />
+                  Code and Scenarios: Laura Silva<br />
+                  Cutscene, Screens, Character and Logo: Luisa Santos<br />
+                  Sound: Diogo Ribeiro
+                </span>
+              </p>
+              <a class="project-link" href="https://youtu.be/5kSgVdT8L-8" target="_blank" rel="noopener noreferrer">
+                <span lang="pt">Ver projeto →</span>
+                <span lang="en">View project →</span>
+              </a>
+            </div>
+          </div>
+        </section>
+        <section id="links" class="content-section">
+          <h1>
+            <span lang="pt">Links</span>
+            <span lang="en">Links</span>
+          </h1>
+          <p>
+            <span lang="pt">Podes encontrar mais do meu trabalho em:</span>
+            <span lang="en">You can find more of my work at:</span>
+          </p>
+          <ul class="links-list">
+            <li>
+              <a href="https://www.instagram.com/venusinkimie/" target="_blank" rel="noopener noreferrer">Instagram —
+                @venusinkimie</a>
+            </li>
+            <li>
+              <a href="https://www.behance.net/venusinkimie" target="_blank" rel="noopener noreferrer">Behance —
+                @venusinkimie</a>
+            </li>
+            <li>
+              <a href="https://www.artstation.com/venusinkimie" target="_blank" rel="noopener noreferrer">ArtStation —
+                @venusinkimie</a>
+            </li>
+            <li>
+              <a href="https://bsky.app/profile/venusinkimie.bsky.social" target="_blank"
+                rel="noopener noreferrer">BlueSky — @venusinkimie.bsky.social</a>
+            </li>
+            <li>
+              <a href="mailto:venusinkimie@gmail.com">Email — venusinkimie@gmail.com</a>
+            </li>
+          </ul>
 
-            <h2>
-              <span lang="pt">Inspiração para o website</span>
-              <span lang="en">Inspiration for the website</span>
-            </h2>
-            <p class="inspo">
-              <a href="https://solilokii.neocities.org/">
-                <img
-                  src="https://files.catbox.moe/qbry58.gif"
-                  alt="solilokii"
-                />
-              </a>
-              <a class="imsphynx" href="https://imsphynx.neocities.org/">
-                <img
-                  id="websitebutton"
-                  src="https://imsphynx.neocities.org/img/avatarStill.png"
-                  alt="imsphynx avatar"
-                />
-                imsphynx
-              </a>
-            </p>
-            <p>
-              <img
-                src="https://pixelsafari.neocities.org/buttons/1neo29.gif"
-                alt=""
-              />
-            </p>
-          </section>
-        </main>
-      </div>
+          <h2>
+            <span lang="pt">Sobre o website</span>
+            <span lang="en">About the website</span>
+          </h2>
+          <p>
+            <span lang="pt">Website criado para mostrar os meus projetos, sejam académicos
+              ou pessoais.</span>
+            <span lang="en">This website was created to showcase my projects, whether
+              academic or personal.</span>
+          </p>
+
+          <h2>
+            <span lang="pt">Inspiração para o website</span>
+            <span lang="en">Inspiration for the website</span>
+          </h2>
+          <p class="inspo">
+            <a href="https://solilokii.neocities.org/">
+              <img src="https://files.catbox.moe/qbry58.gif" alt="solilokii" />
+            </a>
+            <a class="imsphynx" href="https://imsphynx.neocities.org/">
+              <img id="websitebutton" src="https://imsphynx.neocities.org/img/avatarStill.png" alt="imsphynx avatar" />
+              imsphynx
+            </a>
+          </p>
+          <p>
+            <img src="https://pixelsafari.neocities.org/buttons/1neo29.gif" alt="" />
+          </p>
+        </section>
+      </main>
     </div>
+  </div>
 
-    <!-- ============================================================
+  <!-- ============================================================
          LIGHTBOX
     ============================================================ -->
-    <div id="lightbox" onclick="closeLightbox()">
-      <button id="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">
-        ✕
-      </button>
-      <img id="lightbox-img" src="" alt="" />
-    </div>
+  <div id="lightbox" onclick="closeLightbox()">
+    <button id="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">
+      ✕
+    </button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
 
-    <!-- ============================================================
+  <!-- ============================================================
          BARRA DE TAREFAS
     ============================================================ -->
-    <div class="xp-taskbar">
-      <button class="start-button" type="button" onclick="goHome(event)">
-        <span class="windows-logo" aria-hidden="true">🪟</span>
-        <strong>start</strong>
-      </button>
-      <div class="taskbar-window">🖥️ Kimie's Portfolio</div>
-      <div class="taskbar-time" id="taskbar-time">12:00</div>
-    </div>
+  <div class="xp-taskbar">
+    <button class="start-button" type="button" onclick="goHome(event)">
+      <span class="windows-logo" aria-hidden="true">🪟</span>
+      <strong>start</strong>
+    </button>
+    <div class="taskbar-window">🖥️ Kimie's Portfolio</div>
+    <div class="taskbar-time" id="taskbar-time">12:00</div>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
+
 </html>

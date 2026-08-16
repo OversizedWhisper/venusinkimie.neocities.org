@@ -50,7 +50,11 @@ body::before {
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.35), transparent 45%),
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(255, 255, 255, 0.35),
+      transparent 45%
+    ),
     linear-gradient(135deg, #3a7eb5, #8ebbdc);
 }
 
@@ -111,7 +115,11 @@ body::before {
   padding: 0 6px;
   color: white;
   font-weight: bold;
-  background: linear-gradient(to bottom, var(--xp-titlebar-a), var(--xp-titlebar-b));
+  background: linear-gradient(
+    to bottom,
+    var(--xp-titlebar-a),
+    var(--xp-titlebar-b)
+  );
 }
 
 .xp-title-left {
@@ -521,7 +529,9 @@ body::before {
   border-radius: 3px;
   cursor: pointer;
   aspect-ratio: 1 / 1;
-  transition: box-shadow 0.15s, transform 0.15s;
+  transition:
+    box-shadow 0.15s,
+    transform 0.15s;
 }
 
 .illus-card:hover {
@@ -774,7 +784,11 @@ body::before {
     max-height: none;
     border-right: 0;
     border-bottom: 1px solid #b8b5a2;
-    background: linear-gradient(to bottom, var(--xp-titlebar-a), var(--xp-titlebar-b));
+    background: linear-gradient(
+      to bottom,
+      var(--xp-titlebar-a),
+      var(--xp-titlebar-b)
+    );
   }
 
   .nav-header {
