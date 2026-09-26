@@ -17,19 +17,27 @@
 
 <body>
   <!-- ============================================================
+         FUNDO ESTILO "BLISS" (céu, nuvens, colinas)
+    ============================================================ -->
+  <div class="bliss-wallpaper" aria-hidden="true">
+    <div class="bliss-hill-back"></div>
+    <div class="bliss-hill-front"></div>
+  </div>
+
+  <!-- ============================================================
          ÍCONES DE AMBIENTE DE TRABALHO (decorativo, só desktop)
     ============================================================ -->
   <div class="xp-desktop-icons" aria-hidden="true">
     <div class="xp-desktop-icon">
-      <span class="xp-icon">🖥️</span>
+      <span class="xp-icon xp-ico-computer"></span>
       <span>My Computer</span>
     </div>
     <div class="xp-desktop-icon">
-      <span class="xp-icon">📁</span>
+      <span class="xp-icon xp-ico-folder-big"></span>
       <span>My Portfolio</span>
     </div>
     <div class="xp-desktop-icon">
-      <span class="xp-icon">🗑️</span>
+      <span class="xp-icon xp-ico-bin"></span>
       <span>Recycle Bin</span>
     </div>
   </div>
@@ -41,13 +49,13 @@
     <!-- Barra de título -->
     <div class="xp-titlebar">
       <div class="xp-title-left">
-        <span class="xp-ie-logo" aria-hidden="true">e</span>
-        <span class="xp-window-title">Kimie's Portfolio</span>
+        <span class="xp-ie-logo" aria-hidden="true"></span>
+        <span class="xp-window-title">Kimie's Portfolio - Microsoft Internet Explorer</span>
       </div>
       <div class="xp-window-buttons" aria-hidden="true">
-        <span>—</span>
-        <span>□</span>
-        <span>×</span>
+        <span class="xp-btn-min"></span>
+        <span class="xp-btn-max"></span>
+        <span class="xp-btn-close"></span>
       </div>
     </div>
 
@@ -59,19 +67,62 @@
       <span>Favorites</span>
       <span>Tools</span>
       <span>Help</span>
+      <span class="xp-flag" aria-hidden="true"></span>
     </div>
 
     <!-- Barra de ferramentas / endereço -->
     <div class="xp-toolbar" aria-hidden="true">
-      <button class="xp-tool" type="button">←</button>
-      <button class="xp-tool" type="button">→</button>
-      <button class="xp-tool" type="button">↻</button>
-      <button class="xp-tool" type="button">⌂</button>
-      <span class="xp-address-label">Address</span>
-      <div class="xp-address" id="xp-address">
-        https://venusinkimie.neocities.org/
+      <div class="xp-toolbar-row">
+        <button class="xp-tool xp-tool-wide" type="button" onclick="goHome(event)">
+          <span class="xp-tool-icon xp-ico-back"></span>
+          <span class="xp-tool-label">Back</span>
+          <span class="xp-tool-caret">▾</span>
+        </button>
+        <button class="xp-tool xp-tool-wide" type="button" disabled>
+          <span class="xp-tool-icon xp-ico-forward"></span>
+          <span class="xp-tool-label">Forward</span>
+          <span class="xp-tool-caret">▾</span>
+        </button>
+        <div class="xp-tool-sep"></div>
+        <button class="xp-tool" type="button" title="Stop">
+          <span class="xp-tool-icon xp-ico-stop"></span>
+        </button>
+        <button class="xp-tool" type="button" title="Refresh" onclick="location.reload()">
+          <span class="xp-tool-icon xp-ico-refresh"></span>
+        </button>
+        <button class="xp-tool" type="button" title="Home" onclick="goHome(event)">
+          <span class="xp-tool-icon xp-ico-home"></span>
+        </button>
+        <div class="xp-tool-sep"></div>
+        <button class="xp-tool xp-tool-wide" type="button">
+          <span class="xp-tool-icon xp-ico-search"></span>
+          <span class="xp-tool-label">Search</span>
+        </button>
+        <button class="xp-tool xp-tool-wide" type="button">
+          <span class="xp-tool-icon xp-ico-favorites"></span>
+          <span class="xp-tool-label">Favorites</span>
+        </button>
+        <div class="xp-tool-sep"></div>
+        <button class="xp-tool" type="button" title="Mail">
+          <span class="xp-tool-icon xp-ico-mail"></span>
+        </button>
+        <button class="xp-tool" type="button" title="Print" onclick="window.print()">
+          <span class="xp-tool-icon xp-ico-print"></span>
+        </button>
       </div>
-      <button class="xp-go" type="button">Go</button>
+      <div class="xp-toolbar-row">
+        <span class="xp-address-label">Address</span>
+        <div class="xp-address" id="xp-address">
+          <span class="xp-address-icon"></span>
+          <span class="xp-address-text">https://venusinkimie.neocities.org/</span>
+          <span class="xp-address-dropdown">▾</span>
+        </div>
+        <button class="xp-go" type="button">
+          <span class="xp-go-icon"></span>Go
+        </button>
+        <span class="xp-links-label">Links</span>
+        <span class="xp-links-caret">»</span>
+      </div>
     </div>
 
     <!-- Botão hamburger — só aparece em mobile/tablet -->
@@ -1008,6 +1059,16 @@
         </section>
       </main>
     </div>
+
+    <!-- Barra de estado -->
+    <div class="xp-statusbar" aria-hidden="true">
+      <span class="xp-statusbar-text">Done</span>
+      <span class="xp-statusbar-sep"></span>
+      <span class="xp-statusbar-zone">
+        <span class="xp-zone-icon"></span>
+        Internet
+      </span>
+    </div>
   </div>
 
   <!-- ============================================================
@@ -1024,12 +1085,26 @@
          BARRA DE TAREFAS
     ============================================================ -->
   <div class="xp-taskbar">
-    <button class="start-button" type="button" onclick="goHome(event)">
-      <span class="windows-logo" aria-hidden="true">🪟</span>
+    <button class="start-button" type="button" onclick="goHome(event)" aria-label="Start">
+      <span class="windows-logo" aria-hidden="true"></span>
       <strong>start</strong>
     </button>
-    <div class="taskbar-window">🖥️ Kimie's Portfolio</div>
-    <div class="taskbar-time" id="taskbar-time">12:00</div>
+
+    <div class="quick-launch" aria-hidden="true">
+      <span class="xp-ie-logo xp-ie-logo-tiny" aria-hidden="true"></span>
+    </div>
+
+    <div class="taskbar-window" title="Kimie's Portfolio - Microsoft Internet Explorer">
+      <span class="xp-ie-logo xp-ie-logo-tiny" aria-hidden="true"></span>
+      <span>Kimie's Portfolio - Microsoft Internet Explorer</span>
+    </div>
+
+    <div class="taskbar-tray" aria-hidden="true">
+      <span class="taskbar-tray-icon xp-ico-shield"></span>
+      <span class="taskbar-tray-icon xp-ico-network"></span>
+      <span class="taskbar-tray-icon xp-ico-volume"></span>
+      <span class="taskbar-time" id="taskbar-time">1:58 AM</span>
+    </div>
   </div>
 
   <script src="script.js"></script>

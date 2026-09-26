@@ -2,10 +2,6 @@
    WINDOWS XP — KIMIE PORTFOLIO
 ================================================================ */
 
-/* ================================================================
-   RESET & PALETA
-================================================================ */
-
 * {
   box-sizing: border-box;
 }
@@ -17,7 +13,7 @@
   --xp-titlebar-a: #4d9fe3;
   --xp-titlebar-b: #075aa5;
   --xp-content-bg: #ffffff;
-  --xp-taskbar-height: 34px;
+  --xp-taskbar-height: 31px;
   --xp-sidebar-width: 230px;
 }
 
@@ -30,10 +26,10 @@ body {
 }
 
 body {
-  font-family: Tahoma, "MS Sans Serif", Arial, sans-serif;
+  font-family: Tahoma, "Segoe UI", Verdana, Arial, sans-serif;
   font-size: 13px;
   color: #000;
-  background: linear-gradient(135deg, #3a7eb5 0%, #6da4d0 45%, #c4dff1 100%);
+  background: #2f7cd6;
   min-height: 100vh;
   overflow: hidden; /* a "área de trabalho" nunca faz scroll, só as janelas */
 }
@@ -43,19 +39,75 @@ body {
   color: #fff;
 }
 
-/* Fundo tipo "Bliss wallpaper" */
-body::before {
-  content: "";
+/* Scrollbar estilo Windows XP (Luna) */
+#main-nav::-webkit-scrollbar,
+.content-area::-webkit-scrollbar {
+  width: 17px;
+}
+
+#main-nav::-webkit-scrollbar-track,
+.content-area::-webkit-scrollbar-track {
+  background: #e8e6dc
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 2px,
+      rgba(0, 0, 0, 0.03) 2px 3px
+    );
+  border-left: 1px solid #b8b5a2;
+}
+
+#main-nav::-webkit-scrollbar-thumb,
+.content-area::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #e2ecf9 0%, #a9c8ec 15%, #6ba0dd 50%, #a9c8ec 85%, #e2ecf9 100%);
+  border: 1px solid #6084b0;
+  border-radius: 2px;
+}
+
+#main-nav::-webkit-scrollbar-button,
+.content-area::-webkit-scrollbar-button {
+  height: 16px;
+  background: linear-gradient(to bottom, #f2f7fd, #cfe1f4);
+  border: 1px solid #6084b0;
+}
+
+/* ================================================================
+   FUNDO "BLISS" (céu, nuvens, colinas) — homenagem ao wallpaper XP
+================================================================ */
+
+.bliss-wallpaper {
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -3;
+  overflow: hidden;
   background:
-    radial-gradient(
-      circle at 50% 35%,
-      rgba(255, 255, 255, 0.35),
-      transparent 45%
-    ),
-    linear-gradient(135deg, #3a7eb5, #8ebbdc);
+    radial-gradient(ellipse 260px 90px at 20% 18%, rgba(255, 255, 255, 0.85), transparent 70%),
+    radial-gradient(ellipse 320px 110px at 62% 10%, rgba(255, 255, 255, 0.75), transparent 70%),
+    radial-gradient(ellipse 220px 80px at 85% 22%, rgba(255, 255, 255, 0.65), transparent 70%),
+    radial-gradient(ellipse 200px 70px at 40% 28%, rgba(255, 255, 255, 0.55), transparent 70%),
+    linear-gradient(to bottom, #1c5fc9 0%, #3f86e0 30%, #86bdef 60%, #cfe8fa 85%, #e9f5fc 100%);
+}
+
+.bliss-hill-back {
+  position: absolute;
+  left: -15%;
+  right: -15%;
+  bottom: -32%;
+  height: 62%;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #7fbf4a 0%, #57a52e 55%, #3f8f22 100%);
+  transform: scaleX(1.25);
+}
+
+.bliss-hill-front {
+  position: absolute;
+  left: -20%;
+  right: -8%;
+  bottom: -42%;
+  height: 58%;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #4f9f2a 0%, #2f7d18 60%, #1f5e0f 100%);
+  transform: scaleX(1.15) translateY(6%);
+  box-shadow: 0 -6px 14px rgba(0, 0, 0, 0.12) inset;
 }
 
 /* ================================================================
@@ -82,8 +134,25 @@ body::before {
 
 .xp-icon {
   display: block;
-  font-size: 34px;
-  margin-bottom: 4px;
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 4px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+}
+
+.xp-ico-computer {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='4' width='26' height='18' rx='1' fill='%23dce6f5' stroke='%23345a91' stroke-width='1.3'/%3E%3Crect x='6' y='7' width='20' height='12' fill='%23fff' stroke='%23345a91' stroke-width='1'/%3E%3Crect x='11' y='23' width='10' height='2.6' fill='%23a9a9a9'/%3E%3Crect x='8.5' y='26.2' width='15' height='2.2' rx='1' fill='%23c8c8c8' stroke='%23888' stroke-width='0.5'/%3E%3C/svg%3E");
+}
+
+.xp-ico-folder-big {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M3 9 h9 l3 3 h14 v14 a2 2 0 0 1 -2 2 h-22 a2 2 0 0 1 -2 -2 z' fill='%23ffd35c' stroke='%23c79a1e' stroke-width='1'/%3E%3Cpath d='M3 9 v-2 a2 2 0 0 1 2 -2 h6 l3 3' fill='%23ffe08a' stroke='%23c79a1e' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+.xp-ico-bin {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M9 11 h14 l-1.4 15.5a2 2 0 0 1 -2 1.8h-7.2a2 2 0 0 1 -2-1.8z' fill='%23e7e9ec' stroke='%237b8794' stroke-width='1.2'/%3E%3Cpath d='M7 11 h18' stroke='%237b8794' stroke-width='1.4'/%3E%3Cpath d='M12 8 h8 l1 3 h-10 z' fill='%23cfd4da' stroke='%237b8794' stroke-width='1'/%3E%3Cpath d='M13 14 v10 M16 14 v10 M19 14 v10' stroke='%237b8794' stroke-width='1.2'/%3E%3C/svg%3E");
 }
 
 /* ================================================================
@@ -92,139 +161,467 @@ body::before {
 
 .xp-browser {
   position: fixed;
-  top: 4%;
-  left: 6%;
-  right: 6%;
-  bottom: calc(var(--xp-taskbar-height) + 16px);
+  top: 13%;
+  left: 11%;
+  right: 13%;
+  bottom: calc(var(--xp-taskbar-height) + 9%);
   z-index: 10;
   display: flex;
   flex-direction: column;
   background: var(--xp-chrome);
-  border: 2px solid var(--xp-chrome-border);
-  border-radius: 8px 8px 0 0;
-  box-shadow: 4px 5px 16px rgba(0, 0, 0, 0.45);
+  border: 1px solid #0a2f70;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 3px 4px 14px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
 .xp-titlebar {
   flex: 0 0 auto;
-  height: 30px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 6px;
+  padding: 0 3px 0 4px;
   color: white;
   font-weight: bold;
   background: linear-gradient(
-    to bottom,
-    var(--xp-titlebar-a),
-    var(--xp-titlebar-b)
+    180deg,
+    #2f6fe0 0%,
+    #1958c8 15%,
+    #3d7bec 30%,
+    #1958c8 55%,
+    #0f429e 100%
   );
+  border-bottom: 1px solid #0a2f70;
 }
 
 .xp-title-left {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   min-width: 0;
 }
 
 .xp-ie-logo {
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-weight: bold;
-  font-size: 20px;
-  color: white;
+  position: relative;
+  width: 17px;
+  height: 17px;
   flex-shrink: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #6db4ff, #1a56c4 60%, #0c3a8f 100%);
+  box-shadow: 0 0 0 1px #0a2f70;
+}
+
+.xp-ie-logo::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 2px solid #f4b400;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  transform: rotate(45deg);
+}
+
+.xp-ie-logo-tiny {
+  width: 13px;
+  height: 13px;
 }
 
 .xp-window-title {
-  font-size: 12px;
+  font-size: 11.5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
 }
 
 .xp-window-buttons {
   display: flex;
-  gap: 3px;
+  gap: 1px;
   flex-shrink: 0;
 }
 
 .xp-window-buttons span {
-  width: 20px;
-  height: 18px;
+  position: relative;
+  width: 21px;
+  height: 19px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #3179c5;
-  border: 1px solid #14518c;
-  font-size: 11px;
+  border-radius: 3px;
+  cursor: default;
+}
+
+.xp-btn-min,
+.xp-btn-max {
+  background: linear-gradient(180deg, #6facf2 0%, #2f74dd 45%, #1a56b8 55%, #4d8fe8 100%);
+  border: 1px solid #0d3f78;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+  margin-right: 1px;
+}
+
+.xp-btn-max {
+  margin-right: 4px;
+}
+
+.xp-btn-close {
+  background: linear-gradient(180deg, #ff9d78 0%, #ea5a2e 45%, #c8300f 55%, #f0713f 100%);
+  border: 1px solid #7a1206;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+/* glifos desenhados (em vez de emoji/texto, para consistência entre sistemas) */
+.xp-window-buttons span::before {
+  content: "";
+  display: block;
+}
+
+.xp-btn-min::before {
+  width: 8px;
+  height: 2px;
+  background: white;
+  margin-top: 5px;
+}
+
+.xp-btn-max::before {
+  width: 9px;
+  height: 8px;
+  border: 1.6px solid white;
+  border-radius: 0.5px;
+  background: transparent;
+}
+
+.xp-btn-close::before {
+  width: 10px;
+  height: 10px;
+  background:
+    linear-gradient(45deg, transparent 44%, white 44%, white 56%, transparent 56%),
+    linear-gradient(-45deg, transparent 44%, white 44%, white 56%, transparent 56%);
+}
+
+.xp-window-buttons span:hover {
+  filter: brightness(1.15);
+}
+
+.xp-window-buttons span:active {
+  filter: brightness(0.85);
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .xp-menubar {
+  position: relative;
   flex: 0 0 auto;
-  height: 24px;
+  height: 21px;
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding-left: 8px;
+  gap: 16px;
+  padding-left: 6px;
   background: var(--xp-chrome);
   border-bottom: 1px solid #aaa;
   font-size: 11px;
 }
 
+.xp-flag {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+}
+
+.xp-flag::before,
+.xp-flag::after {
+  content: "";
+}
+
+.xp-flag {
+  background:
+    linear-gradient(#f35325, #f35325) 0 0/6px 6px no-repeat,
+    linear-gradient(#81bc06, #81bc06) 8px 0/6px 6px no-repeat,
+    linear-gradient(#05a6f0, #05a6f0) 0 8px/6px 6px no-repeat,
+    linear-gradient(#ffba08, #ffba08) 8px 8px/6px 6px no-repeat;
+}
+
 .xp-toolbar {
   flex: 0 0 auto;
-  height: 42px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: linear-gradient(to bottom, #f4f2e8, #e9e6d8);
+  border-bottom: 1px solid #9c9982;
+}
+
+.xp-toolbar-row {
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px;
-  background: #f3f1e7;
-  border-bottom: 1px solid #aaa;
+  gap: 2px;
+  padding: 3px 6px;
+}
+
+.xp-tool-sep {
+  width: 1px;
+  align-self: stretch;
+  margin: 3px 4px;
+  background: #b7b39c;
+  box-shadow: 1px 0 0 #fff;
 }
 
 .xp-tool {
-  min-width: 32px;
-  height: 28px;
-  border: 1px solid #aaa;
-  background: linear-gradient(#fff, #ddd);
+  min-width: 30px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 3px 6px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  color: #22345f;
+  font-family: inherit;
   cursor: pointer;
 }
 
+.xp-tool-wide {
+  padding: 3px 8px 3px 6px;
+}
+
+.xp-tool .xp-tool-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.xp-tool .xp-tool-label {
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.xp-tool .xp-tool-caret {
+  font-size: 8px;
+  margin-left: 1px;
+  color: #555;
+}
+
+.xp-tool:hover {
+  border-color: #8fb8e6;
+  background: linear-gradient(to bottom, #fef6d8, #fce392);
+}
+
 .xp-tool:active {
-  background: linear-gradient(#ccc, #eee);
+  border-color: #7098c9;
+  background: linear-gradient(to bottom, #d7e6f7, #b7d0ef);
+}
+
+.xp-tool[disabled] {
+  color: #a7a48e;
+  cursor: default;
+}
+
+.xp-tool[disabled] .xp-tool-icon {
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+
+.xp-tool[disabled]:hover {
+  border-color: transparent;
+  background: transparent;
+}
+
+/* Ícones da toolbar, desenhados em SVG inline (sem assets externos) */
+.xp-ico-back {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23d8d8d8' stroke='%23888' stroke-width='0.6'/%3E%3Cpath d='M14.5 7 L9 12 L14.5 17' fill='none' stroke='%23555' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.xp-ico-forward {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23d8d8d8' stroke='%23999' stroke-width='0.6'/%3E%3Cpath d='M9.5 7 L15 12 L9.5 17' fill='none' stroke='%23999' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.xp-ico-stop {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='2' width='18' height='20' rx='2' fill='%23fff' stroke='%237f9db9' stroke-width='1.3'/%3E%3Cpath d='M8 8 L16 16 M16 8 L8 16' stroke='%23cc2b2b' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.xp-ico-refresh {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='2' width='18' height='20' rx='2' fill='%23fff' stroke='%237f9db9' stroke-width='1.3'/%3E%3Cpath d='M6.5 12a5.5 5.5 0 0 1 9-4.2l1-1v4.4h-4.4l1.2-1.2a3.7 3.7 0 0 0 -6 2.9' fill='none' stroke='%232f8f2f' stroke-width='1.8' stroke-linecap='round'/%3E%3Cpath d='M17.5 12a5.5 5.5 0 0 1 -9 4.2l-1 1v-4.4h4.4l-1.2 1.2a3.7 3.7 0 0 0 6 -2.9' fill='none' stroke='%232f8f2f' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.xp-ico-home {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3 L22 12 H19 V21 H14 V15 H10 V21 H5 V12 H2 Z' fill='%232f6fbe'/%3E%3Crect x='9.6' y='14.6' width='4.8' height='6.4' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+.xp-ico-search {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='10' cy='10' r='6' fill='none' stroke='%23295ea8' stroke-width='2.4'/%3E%3Cline x1='15' y1='15' x2='21' y2='21' stroke='%23295ea8' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.xp-ico-favorites {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2 L14.6 9 H22 L16 13.5 L18 21 L12 16.5 L6 21 L8 13.5 L2 9 H9.4 Z' fill='%23f4c430' stroke='%23a5780a' stroke-width='0.6'/%3E%3C/svg%3E");
+}
+
+.xp-ico-mail {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='1' fill='%23fff' stroke='%234472a8' stroke-width='1.4'/%3E%3Cpath d='M2 6 L12 14 L22 6' fill='none' stroke='%234472a8' stroke-width='1.4'/%3E%3C/svg%3E");
+}
+
+.xp-ico-print {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='5' y='8' width='14' height='7' fill='%23b9b6a4' stroke='%23716e5c'/%3E%3Crect x='7' y='3' width='10' height='6' fill='%23fff' stroke='%23716e5c'/%3E%3Crect x='7' y='15' width='10' height='6' fill='%23fff' stroke='%23716e5c'/%3E%3C/svg%3E");
+}
+
+.xp-ico-ie-small {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #6db4ff, #1a56c4 60%, #0c3a8f 100%);
 }
 
 .xp-address-label {
-  margin-left: 8px;
+  margin-left: 4px;
   font-size: 11px;
   white-space: nowrap;
+  color: #333;
 }
 
 .xp-address {
   flex: 1;
   min-width: 0;
-  height: 24px;
+  height: 22px;
   display: flex;
   align-items: center;
-  padding: 0 7px;
+  gap: 5px;
+  padding: 0 4px;
   background: white;
-  border: 1px solid #777;
+  border: 1px solid #7f9db9;
+  border-radius: 1px;
   font-size: 11px;
+  overflow: hidden;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.xp-address-icon {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 2 H15 L19 6 V22 H6 Z' fill='%23fff' stroke='%237f9db9' stroke-width='1.4'/%3E%3Cpath d='M15 2 V6 H19' fill='none' stroke='%237f9db9' stroke-width='1.4'/%3E%3C/svg%3E");
+}
+
+.xp-address-text {
+  flex: 1;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+.xp-address-dropdown {
+  flex-shrink: 0;
+  width: 16px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #b9c9db;
+  background: linear-gradient(to bottom, #fff, #dce6f3);
+  font-size: 8px;
+  color: #444;
+}
+
 .xp-go {
-  height: 24px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   padding: 0 10px;
-  border: 1px solid #aaa;
-  background: linear-gradient(#fff, #ddd);
+  border: 1px solid #7f9db9;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, #fefefe, #e2ddc9);
   cursor: pointer;
   flex-shrink: 0;
+  font-size: 11px;
+  color: #333;
+}
+
+.xp-go:active {
+  background: linear-gradient(to bottom, #d5d0bc, #efeadb);
+}
+
+.xp-go-icon {
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%232f8f2f'/%3E%3Cpath d='M9 7 L16 12 L9 17 Z' fill='white'/%3E%3C/svg%3E");
+}
+
+.xp-links-label {
+  margin-left: 10px;
+  font-size: 11px;
+  color: #333;
+}
+
+.xp-links-caret {
+  margin-left: 3px;
+  font-size: 10px;
+  color: #555;
+}
+
+/* ================================================================
+   BARRA DE ESTADO (fundo da janela)
+================================================================ */
+
+.xp-statusbar {
+  flex: 0 0 auto;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px;
+  background: var(--xp-chrome);
+  border-top: 1px solid #fff;
+  box-shadow: 0 -1px 0 #9c9982;
+  font-size: 11px;
+  color: #333;
+}
+
+.xp-statusbar-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.xp-statusbar-sep {
+  width: 1px;
+  height: 14px;
+  background: #b7b39c;
+  box-shadow: 1px 0 0 #fff;
+}
+
+.xp-statusbar-zone {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.xp-zone-icon {
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%232f6fbe'/%3E%3Cpath d='M2 12h20M12 2c3 3 3 17 0 20M12 2c-3 3-3 17 0 20' fill='none' stroke='white' stroke-width='1.3'/%3E%3C/svg%3E");
 }
 
 /* ================================================================
@@ -325,11 +722,31 @@ body::before {
 #main-nav a {
   display: flex;
   align-items: center;
+  gap: 7px;
   min-height: 28px;
   padding: 5px 10px;
   color: var(--xp-text);
   text-decoration: none;
   font-size: 12.5px;
+}
+
+#main-nav a::before {
+  content: "";
+  flex-shrink: 0;
+  width: 15px;
+  height: 13px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 1 h6 l4 4 v9.2a.8.8 0 0 1 -.8.8H3a.8.8 0 0 1 -.8-.8V1.8A.8.8 0 0 1 3 1z' fill='%23fff' stroke='%237f9db9' stroke-width='0.9'/%3E%3Cpath d='M9 1 v4 h4' fill='none' stroke='%237f9db9' stroke-width='0.9'/%3E%3C/svg%3E");
+}
+
+.nav-folder > a::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1 4 h5 l1.4 1.4H15 v8 a1 1 0 0 1 -1 1 H2 a1 1 0 0 1 -1 -1 z' fill='%23ffcf4d' stroke='%23b5860f' stroke-width='0.8'/%3E%3C/svg%3E");
+}
+
+.nav-folder.expanded > a::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1 5 h4.5 l1.2 1.3H15 l-1.3 7.2a1 1 0 0 1 -1 .8H2.4a1 1 0 0 1 -1-.8z' fill='%23ffe27a' stroke='%23b5860f' stroke-width='0.8'/%3E%3Cpath d='M1 5 v-1.3a1 1 0 0 1 1-1h3.2l1.3 1.3' fill='none' stroke='%23b5860f' stroke-width='0.8'/%3E%3C/svg%3E");
 }
 
 #main-nav a:hover,
@@ -674,7 +1091,9 @@ body::before {
 }
 
 /* ================================================================
-   BARRA DE TAREFAS
+   BARRA DE TAREFAS — WINDOWS XP LUNA
+   Inspirada diretamente na taskbar clássica do Windows XP:
+   Start verde, quick launch, janela activa e system tray azul.
 ================================================================ */
 
 .xp-taskbar {
@@ -684,62 +1103,182 @@ body::before {
   bottom: 0;
   height: var(--xp-taskbar-height);
   display: flex;
-  align-items: center;
-  background: linear-gradient(to bottom, #3c9b32, #167109);
-  border-top: 2px solid #68c75c;
+  align-items: stretch;
+  background:
+    linear-gradient(to bottom,
+      #3f8de8 0%,
+      #286ed1 8%,
+      #245ec8 48%,
+      #1949aa 52%,
+      #17429d 100%);
+  border-top: 1px solid #8db8f2;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.35),
+    0 -1px 2px rgba(0,0,0,.15);
   z-index: 30000;
+  font-family: Tahoma, "Segoe UI", Arial, sans-serif;
 }
 
+/* START — formato e cores Luna */
 .start-button {
+  position: relative;
   height: var(--xp-taskbar-height);
-  min-width: 105px;
-  padding: 0 12px;
+  min-width: 102px;
+  padding: 0 17px 0 9px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   border: 0;
-  color: white;
-  background: linear-gradient(to bottom, #5fba50, #207b17);
+  border-right: 1px solid #276d20;
   border-radius: 0 15px 15px 0;
+  color: #fff;
+  background:
+    linear-gradient(to bottom,
+      #78d65b 0%,
+      #5fc441 12%,
+      #39a52c 48%,
+      #268d1d 52%,
+      #54bf3b 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.48),
+    inset 0 -1px 0 rgba(0,70,0,.35),
+    1px 0 2px rgba(0,0,0,.2);
   font-style: italic;
   font-size: 15px;
-  font-family: inherit;
+  line-height: 1;
+  font-weight: bold;
+  font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.42);
   cursor: pointer;
+  flex-shrink: 0;
+}
+
+.start-button:hover {
+  background:
+    linear-gradient(to bottom,
+      #8be16b 0%,
+      #6bce4b 45%,
+      #3ba52c 55%,
+      #63c94a 100%);
 }
 
 .start-button:active {
-  filter: brightness(0.9);
+  filter: brightness(.9);
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,.28);
 }
 
+/* Logo XP no Start */
 .windows-logo {
-  font-size: 18px;
+  width: 22px;
+  height: 19px;
+  flex: 0 0 22px;
+  display: block;
+  position: relative;
+  transform: skewY(-7deg);
+  filter: drop-shadow(1px 1px 0 rgba(0,0,0,.18));
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 20'%3E%3Cpath fill='%23f34b23' d='M1 1l10-1v9H1z'/%3E%3Cpath fill='%2376b82a' d='M13 0l10 1v8H13z'/%3E%3Cpath fill='%230d8fe8' d='M1 11h10v9L1 18z'/%3E%3Cpath fill='%23ffc20a' d='M13 11h10v8l-10 1z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
+/* QUICK LAUNCH */
+.quick-launch {
+  height: calc(100% - 2px);
+  min-width: 58px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 8px 0 7px;
+  margin: 1px 0 0 3px;
+  border-right: 1px solid #17428f;
+  box-shadow: 1px 0 0 rgba(255,255,255,.18);
+  flex-shrink: 0;
+}
+
+.quick-launch::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  display: block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23f4f4f4' stroke='%23546b84' d='M3 2h7l3 3v9H3z'/%3E%3Cpath fill='%236aa4e5' d='M10 2v4h4z'/%3E%3Cpath fill='%233d79bd' d='M5 8h6v1H5zm0 2h6v1H5z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.ql-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* JANELA ACTIVA — aspecto de botão pressionado do XP */
 .taskbar-window {
-  height: 27px;
-  min-width: 180px;
-  margin-left: 5px;
-  padding: 5px 12px;
-  color: white;
-  background: linear-gradient(to bottom, #3c86ce, #1e5fa6);
-  border: 1px solid #144c84;
-  font-size: 12px;
+  height: calc(100% - 5px);
+  min-width: 205px;
+  max-width: 300px;
+  margin: 2px 0 0 5px;
+  padding: 0 9px;
+  gap: 6px;
+  color: #fff;
+  background:
+    linear-gradient(to bottom,
+      #3b76d8 0%,
+      #3165c5 45%,
+      #2858b5 55%,
+      #2d60bd 100%);
+  border: 1px solid #123b88;
+  border-radius: 2px;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,.18),
+    inset -1px -1px 0 rgba(0,0,0,.22);
+  font-size: 11px;
   display: flex;
   align-items: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.25);
+}
+
+.taskbar-window:hover {
+  background: linear-gradient(to bottom, #4b83df, #315fbe);
+}
+
+/* SYSTEM TRAY */
+.taskbar-tray {
+  margin-left: auto;
+  height: 100%;
+  min-width: 151px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  padding: 0 10px 0 9px;
+  background: linear-gradient(to bottom, #3b82dc, #2b69c7 48%, #245bb8 52%, #2459b3);
+  border-left: 1px solid #17418e;
+  box-shadow: inset 1px 0 0 rgba(255,255,255,.16);
+  flex-shrink: 0;
+}
+
+.taskbar-tray-icon {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.3));
 }
 
 .taskbar-time {
-  margin-left: auto;
-  height: 100%;
-  padding: 8px 12px;
+  min-width: 49px;
+  padding-left: 7px;
+  margin-left: 1px;
   color: white;
   font-size: 11px;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+  line-height: 1;
+  white-space: nowrap;
+  text-align: left;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.3);
 }
 
 /* ================================================================
@@ -761,7 +1300,8 @@ body::before {
   }
 
   .xp-menubar,
-  .xp-toolbar {
+  .xp-toolbar,
+  .xp-statusbar {
     display: none;
   }
 
@@ -924,4 +1464,416 @@ html:not([lang="en"]) [lang="en"] {
 
 html[lang="en"] [lang="pt"] {
   display: none;
+}
+/* ================================================================
+   XP LUNA REFINEMENT — inspirado no Windows XP original
+   Mantém a estrutura/funcionalidade do portfolio e refina apenas o visual.
+================================================================ */
+
+:root {
+  --xp-blue-deep: #003c9d;
+  --xp-blue: #0054c7;
+  --xp-blue-mid: #2b72d6;
+  --xp-blue-light: #6fa9ee;
+  --xp-luna-border: #0a246a;
+  --xp-bevel-light: #ffffff;
+  --xp-bevel-dark: #808080;
+  --xp-panel: #ece9d8;
+  --xp-link: #003399;
+}
+
+/* O enquadramento da janela aproxima-se da proporção da referência:
+   desktop com "área de trabalho" visível em redor. */
+@media (min-width: 1025px) {
+  .xp-browser {
+    top: 18.8%;
+    left: 12.4%;
+    right: 14.5%;
+    bottom: calc(var(--xp-taskbar-height) + 5%);
+    border: 1px solid #123d7a;
+    border-radius: 6px 6px 2px 2px;
+    box-shadow:
+      2px 2px 0 rgba(255,255,255,.28),
+      0 5px 18px rgba(0,0,0,.52);
+  }
+
+  .xp-titlebar {
+    height: 29px;
+    padding-left: 4px;
+    background:
+      linear-gradient(to bottom,
+        #7db7f4 0%,
+        #3d8be5 8%,
+        #245fc9 23%,
+        #0c4bb7 55%,
+        #08419f 76%,
+        #06398e 100%);
+    border-bottom: 1px solid #062b70;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+  }
+
+  .xp-title-left {
+    gap: 5px;
+  }
+
+  .xp-ie-logo {
+    width: 17px;
+    height: 17px;
+    box-shadow: 0 0 0 1px rgba(0,38,100,.8), inset 1px 1px 2px rgba(255,255,255,.35);
+  }
+
+  .xp-window-title {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0;
+  }
+
+  .xp-window-buttons {
+    gap: 2px;
+    padding-right: 2px;
+  }
+
+  .xp-window-buttons span {
+    width: 21px;
+    height: 20px;
+    border-radius: 3px;
+  }
+
+  .xp-btn-min,
+  .xp-btn-max {
+    background: linear-gradient(to bottom, #75b4f5 0%, #3a81db 45%, #1d55b8 55%, #4d91e5 100%);
+    border-color: #16458c;
+  }
+
+  .xp-btn-close {
+    background: linear-gradient(to bottom, #ffb18d 0%, #ed6c3b 45%, #d8461d 55%, #ef7950 100%);
+    border-color: #8b210c;
+  }
+
+  .xp-menubar {
+    height: 22px;
+    gap: 0;
+    padding-left: 5px;
+    background: #ece9d8;
+    border-bottom: 1px solid #aaa89b;
+    box-shadow: inset 0 1px 0 #fff;
+    font-size: 11px;
+  }
+
+  .xp-menubar > span:not(.xp-flag) {
+    padding: 2px 7px 3px;
+  }
+
+  .xp-menubar > span:not(.xp-flag):hover {
+    background: #316ac5;
+    color: white;
+  }
+
+  .xp-toolbar {
+    background: linear-gradient(to bottom, #f8f7f0 0%, #e9e6d8 55%, #ddd9c8 100%);
+    border-bottom: 1px solid #8f8c7d;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+  }
+
+  .xp-toolbar-row {
+    min-height: 34px;
+    padding: 2px 5px;
+  }
+
+  .xp-toolbar-row + .xp-toolbar-row {
+    min-height: 31px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+  }
+
+  .xp-tool {
+    height: 30px;
+    min-width: 30px;
+    padding: 2px 5px;
+    border-radius: 2px;
+  }
+
+  .xp-tool .xp-tool-icon {
+    width: 21px;
+    height: 21px;
+  }
+
+  .xp-tool .xp-tool-label {
+    font-size: 10px;
+  }
+
+  .xp-tool-wide {
+    padding-right: 7px;
+  }
+
+  .xp-tool:hover {
+    border-color: #b8cce5;
+    background: linear-gradient(to bottom, #fffdf0, #ffe59a);
+  }
+
+  .xp-address {
+    height: 22px;
+    border-color: #7f9db9;
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,.16), 0 0 0 1px rgba(255,255,255,.5);
+    font-size: 11px;
+  }
+
+  .xp-go {
+    height: 22px;
+    padding: 0 8px;
+    background: linear-gradient(to bottom, #fff, #e1dfd2);
+    box-shadow: inset 1px 1px 0 rgba(255,255,255,.8);
+  }
+
+  .xp-browser-body {
+    background: white;
+  }
+
+  #main-nav {
+    flex-basis: 188px;
+    background: linear-gradient(to right, #f4f2e9 0%, #ece9d8 100%);
+    border-right: 1px solid #a7a497;
+    box-shadow: inset -1px 0 0 #fff;
+  }
+
+  .nav-header {
+    padding: 12px 9px 10px;
+    gap: 7px;
+    background: linear-gradient(to bottom, #f8f7f0, #e5e2d5);
+    border-bottom: 1px solid #c0bdad;
+    box-shadow: inset 0 1px 0 #fff;
+  }
+
+  .titleimg {
+    width: 148px;
+  }
+
+  .lang-switch {
+    gap: 3px;
+  }
+
+  .lang-switch button {
+    font-size: 11px;
+    padding: 2px 5px;
+  }
+
+  #main-nav ul {
+    margin-top: 4px;
+  }
+
+  #main-nav a {
+    min-height: 25px;
+    padding: 4px 7px;
+    gap: 6px;
+    font-size: 11.5px;
+  }
+
+  #main-nav a:hover,
+  #main-nav a.active-link {
+    background: linear-gradient(to bottom, #6ea8e8 0%, #3f7fd1 48%, #316ac5 100%);
+    text-shadow: 1px 1px 1px rgba(0,0,0,.25);
+    box-shadow: inset 1px 1px 0 rgba(255,255,255,.25);
+  }
+
+  .nav-subfolder {
+    margin-left: 12px !important;
+    border-left: 1px dotted #a5a29a;
+    padding-left: 2px !important;
+  }
+
+  .content-area {
+    background: #fff;
+  }
+
+  .content-section {
+    padding: 22px clamp(20px, 3vw, 42px) 44px;
+  }
+
+  .content-section h1 {
+    color: #003399;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #c8c6bb;
+    text-shadow: 0 1px 0 #fff;
+  }
+
+  .content-section h2 {
+    color: #003399;
+    font-size: 17px;
+    margin-top: 1.35em;
+  }
+
+  .content-section p {
+    line-height: 1.55;
+  }
+
+  .about-photo {
+    width: 104px;
+    height: 104px;
+    border-radius: 2px;
+    border: 2px solid #7f9db9;
+    padding: 2px;
+    background: #ece9d8;
+  }
+
+  .lang-pill {
+    border-radius: 2px;
+    padding: 5px 9px;
+    border-color: #9aaec5;
+    background: linear-gradient(#fff, #edf3fb);
+  }
+
+  .timeline {
+    border-left: 1px solid #a9a79d;
+  }
+
+  .timeline-item::before {
+    width: 9px;
+    height: 9px;
+    left: -1.73em;
+    border-width: 2px;
+    border-color: #316ac5;
+  }
+
+  .illus-grid {
+    gap: 10px;
+  }
+
+  .illus-card {
+    border-radius: 2px;
+    border-color: #9aaec5;
+    background: #f1f1f1;
+    box-shadow: inset 1px 1px 0 #fff;
+  }
+
+  .illus-card:hover {
+    box-shadow: 0 2px 7px rgba(0,0,0,.28), inset 1px 1px 0 #fff;
+  }
+
+  .project-card {
+    border-radius: 2px;
+    background: #f5f4ec;
+    border-color: #b8b5a2;
+    box-shadow: inset 1px 1px 0 #fff;
+  }
+
+  .links-list a {
+    border-radius: 2px;
+    background: linear-gradient(#fff, #e7e5d8);
+    box-shadow: inset 1px 1px 0 #fff;
+  }
+
+  .xp-statusbar {
+    height: 21px;
+    background: #ece9d8;
+    border-top-color: #fff;
+    box-shadow: 0 -1px 0 #9c9982;
+  }
+
+  .xp-taskbar {
+    height: 34px;
+    background:
+      linear-gradient(to bottom,
+        #3b86df 0%,
+        #245dcc 20%,
+        #194bb8 50%,
+        #1643a7 55%,
+        #0d338b 100%);
+    border-top: 1px solid #79b0ee;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.32);
+  }
+
+  .start-button {
+    min-width: 96px;
+    height: 34px;
+    padding-left: 9px;
+    padding-right: 15px;
+    gap: 5px;
+    border-radius: 0 16px 16px 0;
+    background:
+      linear-gradient(to bottom,
+        #73d44d 0%,
+        #4ab735 20%,
+        #2b921f 52%,
+        #197614 57%,
+        #4fbf38 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.45),
+      1px 0 0 rgba(0,0,0,.15);
+    font-size: 15px;
+  }
+
+  .windows-logo {
+    width: 18px;
+    height: 18px;
+    transform: skew(-6deg);
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,.25));
+  }
+
+  .quick-launch {
+    margin-left: 3px;
+    padding: 0 7px;
+  }
+
+  .taskbar-window {
+    height: 28px;
+    min-width: 205px;
+    max-width: 280px;
+    margin-left: 5px;
+    padding: 0 8px;
+    background: linear-gradient(to bottom, #326dd6, #1e4cae);
+    border-color: #0b2c78;
+    box-shadow: inset 1px 1px 0 rgba(255,255,255,.13), inset 0 -1px 0 rgba(0,0,0,.28);
+    font-size: 11px;
+  }
+
+  .taskbar-tray {
+    padding: 0 9px;
+    gap: 7px;
+    background: rgba(0,48,130,.22);
+    border-left-color: #0b3388;
+  }
+
+  .taskbar-time {
+    font-size: 11px;
+    padding-left: 6px;
+  }
+}
+
+/* A área de trabalho fica mais próxima do aspecto fotográfico do Bliss original. */
+@media (min-width: 1025px) {
+  .bliss-wallpaper {
+    background:
+      radial-gradient(ellipse 300px 105px at 18% 12%, rgba(255,255,255,.95), transparent 67%),
+      radial-gradient(ellipse 420px 125px at 53% 9%, rgba(255,255,255,.82), transparent 68%),
+      radial-gradient(ellipse 260px 95px at 84% 19%, rgba(255,255,255,.9), transparent 67%),
+      linear-gradient(to bottom, #1557bd 0%, #347fd8 30%, #78b5ea 57%, #bcdcf4 78%, #e7f4fb 100%);
+  }
+
+  .bliss-hill-back {
+    bottom: -30%;
+    height: 60%;
+    background: linear-gradient(to bottom, #91c84b 0%, #5da72e 52%, #408e22 100%);
+    filter: saturate(.92);
+  }
+
+  .bliss-hill-front {
+    bottom: -39%;
+    height: 55%;
+    background: linear-gradient(to bottom, #55a72e 0%, #31851b 60%, #1f620f 100%);
+  }
+}
+
+/* Mantém o comportamento mobile existente, mas com uma barra de topo mais XP. */
+@media (max-width: 1024px) {
+  .xp-titlebar {
+    background: linear-gradient(to bottom, #5c9fe8 0%, #2d72d3 25%, #1551b6 60%, #0d409a 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.4);
+  }
+
+  .xp-taskbar {
+    background: linear-gradient(to bottom, #3478d9 0%, #1b4fb8 55%, #0d358e 100%);
+  }
 }
